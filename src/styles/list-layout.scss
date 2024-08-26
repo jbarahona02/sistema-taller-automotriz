@@ -1,0 +1,25 @@
+.list-content {
+
+    ul {
+      li {
+        .list-button {
+          opacity: 0;
+          .MuiAvatar-root {
+            background-color: rgba(255, 0, 0, 0.1);
+            .MuiSvgIcon-root {
+              color: red;
+            }
+          }
+        }
+  
+        &:hover {
+          .list-button {
+            opacity: 1;
+          }
+        }
+  
+      }
+    }
+  
+  }
+  

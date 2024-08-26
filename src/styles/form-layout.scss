@@ -1,0 +1,44 @@
+
+.form-content {
+    padding-top: 1rem;
+    height: calc(100vh - (8px + 24px + 56px + 32px + 37px + 48px + 1rem + 25px));
+    overflow-y: auto;
+  }
+  
+  .query-search-bar {
+    padding-top: 1rem;
+    height: 5rem;
+    overflow-y: auto;
+  }
+  
+  .query-content {
+    height: calc(100vh - (8px + 24px + 56px + 32px + 37px + 48px + 1rem + 25px + 1rem + 32px));
+    overflow-y: auto;
+  }
+  
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  
+    .form-status-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      min-width: 0;
+  
+      &.active {
+          background-color: #689f38;
+      }
+  
+      &.inactive {
+        background-color: red;
+      }
+  
+      .MuiSvgIcon-root {
+        color: white !important;
+      }
+    }
+  
+  }
+  

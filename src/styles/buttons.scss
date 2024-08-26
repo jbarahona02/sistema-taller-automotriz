@@ -1,0 +1,70 @@
+.MuiButton-root {
+    border-radius: 100px !important;
+    text-transform: capitalize !important;
+  }
+  
+  .button-add {
+    position: absolute !important;
+    z-index: 2;
+    bottom: -22px;
+    right: -19px;
+    min-width: auto !important;
+    display: flex !important;
+    padding: 1rem !important;
+    background-color: #689f38 !important;
+    box-shadow: 0 5px 16px -6px #000;
+    .MuiSvgIcon-root {
+      color: white !important;
+    }
+  }
+  
+  .btn-menu-action {
+    position: absolute;
+    padding: 0;
+    z-index: 99999;
+    top: 1rem;
+  
+    button {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #001b40;
+      border: 1px solid rgb(255 255 255 / 30%);
+      border-radius: 100px;
+      box-shadow: 0 5px 16px -6px #000;
+  
+      svg {
+        color: white;
+      }
+    }
+  
+    &-rotate {
+      transform: rotate(180deg);
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: end;
+
+    #cancel-button {
+      border-radius: 5px !important;
+      background: #FF0000;
+      font-size: 14px;
+      padding: 11px 25px;
+      margin-right: 30px;
+      box-shadow: none;
+    }
+
+    #submit-button {
+      border-radius: 5px !important;
+      background: #2C2C2C;
+      font-size: 14px;
+      padding: 11px 25px;
+      box-shadow: none;
+    }
+  }
+  
+  
