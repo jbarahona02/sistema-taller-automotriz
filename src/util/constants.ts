@@ -3,7 +3,8 @@ import {
     Badge,
     Garage,
     MinorCrash,
-    HomeRepairService
+    HomeRepairService,
+    Group
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -26,12 +27,16 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/type-vehicle-list`,
                 name: "Tipos de vehiculos",
                 NavIcon: MinorCrash
-            }
-            ,
+            },
             {
                 to: `${ADMIN_BASE_PATH}/taller-list`,
                 name: "Talleres",
                 NavIcon: HomeRepairService
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/cliente-list`,
+                name: "Clientes",
+                NavIcon: Group
             }
         ]
     }

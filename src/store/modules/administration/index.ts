@@ -6,3 +6,5 @@ export * from './typeVehicle/typeVehicleListSlice';
 export * from './typeVehicle/typeVehicleSlice';
 export * from './taller/tallerListSlice';
 export * from './taller/tallerSlice';
+export * from './cliente/clienteListSlice';
+export * from './cliente/clienteSlice';

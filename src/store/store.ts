@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {sidenavSlice} from "./ui";
-import { MechanicInterface, MechanicSearchBarInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface } from "../interfaces";
+import { ClienteInterface, ClienteListInterface, MechanicInterface, MechanicSearchBarInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface } from "../interfaces";
 import { mechanicListSlice, mechanicSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice } from "./modules/administration";
 import { tallerListSlice } from "./modules/administration/taller/tallerListSlice";
 import { tallerSlice } from "./modules/administration/taller/tallerSlice";
+import { clienteListSlice } from "./modules/administration/cliente/clienteListSlice";
+import { clienteSlice } from "./modules/administration/cliente/clienteSlice";
 
 export interface StoreInterface {
     mechanicListSlice: MechanicSearchBarInterface,
@@ -13,7 +15,9 @@ export interface StoreInterface {
     typeVehicleListSlice: TypeVehicleListInterface,
     typeVehicleSlice: TypeVehicleInterface,
     tallerListSlice: TallerListInterface,
-    tallerSlice: TallerInterface
+    tallerSlice: TallerInterface,
+    clienteListSlice: ClienteListInterface,
+    clienteSlice: ClienteInterface
 }
 
 export const store = configureStore({
@@ -26,7 +30,9 @@ export const store = configureStore({
         typeVehicleListSlice: typeVehicleListSlice.reducer,
         typeVehicleSlice: typeVehicleSlice.reducer,
         tallerListSlice: tallerListSlice.reducer,
-        tallerSlice: tallerSlice.reducer
+        tallerSlice: tallerSlice.reducer,
+        clienteListSlice: clienteListSlice.reducer,
+        clienteSlice: clienteSlice.reducer
     }
 });
 
