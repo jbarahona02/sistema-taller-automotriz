@@ -41,7 +41,7 @@ export class Utilities {
             cancelButtonColor: "#FF0000FF",
             cancelButtonText: 'Cancelar',
         });
-        return result.isDismissed;
+        return result.isConfirmed;
     }
 
     static capitalizeFirstLetter = (text : string ): string => text.substring(0,1).toUpperCase() + text.substring(1,text.length).toLowerCase();

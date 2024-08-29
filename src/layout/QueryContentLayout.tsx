@@ -11,7 +11,7 @@ import {
     TableHead,
     TableRow
 } from "@mui/material";
-import {Add, Delete} from "@mui/icons-material";
+import { Add, Delete } from "@mui/icons-material";
 import { RemoveRedEyeOutlined, DriveFileRenameOutlineOutlined, DeleteForeverOutlined } from "@mui/icons-material";
 
 interface Props {
@@ -19,9 +19,9 @@ interface Props {
     tableBody: any[];
     properties: string[];
     onAdd: () => void;
-    onUpdate: () => void;
-    onDelete: () => void;
-    onSelect: () => void;
+    onUpdate: (code: number) => void;
+    onDelete: (code: number) => void;
+    idField: string;
 }
 
 const StyledTableCell = styled(TableCell)((_) => ({
@@ -38,7 +38,7 @@ const StyledTableCell = styled(TableCell)((_) => ({
     },
 }));
 
-export const QueryContentLayout = ({onAdd, onDelete , onSelect, onUpdate, tableHeaders, tableBody, properties}: Props) => {
+export const QueryContentLayout = ({ onAdd, onDelete, onUpdate, idField, tableHeaders, tableBody, properties }: Props) => {
 
     return (
         <>
@@ -52,9 +52,9 @@ export const QueryContentLayout = ({onAdd, onDelete , onSelect, onUpdate, tableH
                     mt: 2
                 }}
                 className={'grid-main-container'}
-                style={{paddingTop: 0, borderRadius: 15 }}
+                style={{ paddingTop: 0, borderRadius: 15 }}
             >
-                <Box sx={{width: '100%', paddingTop: 0}} className={'query-content'}>
+                <Box sx={{ width: '100%', paddingTop: 0 }} className={'query-content'}>
                     <TableContainer component={Paper} className={'table-content-height table'}>
                         <Table stickyHeader>
                             <TableHead>
@@ -72,33 +72,37 @@ export const QueryContentLayout = ({onAdd, onDelete , onSelect, onUpdate, tableH
                                         <TableRow key={i}>
                                             {
                                                 properties.map((propertie) => (
-                                                
+
                                                     <TableCell key={propertie} align={'center'} className="cells">{body[propertie]}</TableCell>
                                                 ))
                                             }
 
-                                             {
-                                            
+                                            {
+
                                                 body['estado'] && <TableCell key="status" align={'center'}>
                                                     <div className="status-container">
-                                                        <div className={body['estado'] ? 'green-container':'red-container'}>
+                                                        <div className={body['estado'] ? 'green-container' : 'red-container'}>
 
                                                         </div>
                                                     </div>
                                                 </TableCell>
-                                             }
+                                            }
 
-                                             <TableCell key="actions" align={'center'} className="cells">
-                                                <IconButton>
-                                                    <RemoveRedEyeOutlined  style={{ color: 'black' }} onClick={onSelect}/>
+                                            <TableCell key="actions" align={'center'} className="cells">
+                                                <IconButton
+                                                    onClick={() => onUpdate(body[idField])}
+                                                    style={{ color: 'black' }}
+                                                >
+                                                    <DriveFileRenameOutlineOutlined />
                                                 </IconButton>
-                                                <IconButton>
-                                                    <DriveFileRenameOutlineOutlined  style={{ color: 'black' }} onClick={onUpdate}/>
+                                                <IconButton
+                                                    onClick={() => onDelete(body[idField])}
+                                                    style={{ color: 'red' }}
+                                                >
+                                                    <DeleteForeverOutlined />
                                                 </IconButton>
-                                                <IconButton>
-                                                    <DeleteForeverOutlined  style={{ color: 'red' }} onClick={onDelete}/>
-                                                </IconButton>
-                                             </TableCell>
+                                            </TableCell>
+
                                         </TableRow>
                                     ))
                                 }
@@ -108,7 +112,7 @@ export const QueryContentLayout = ({onAdd, onDelete , onSelect, onUpdate, tableH
                 </Box>
 
                 <Button className={'button-add'} onClick={onAdd}>
-                    <Add/>
+                    <Add />
                 </Button>
             </Grid>
         </>
