@@ -54,8 +54,11 @@ export default tseslint.config({
 1. env
 2. Interface
 3. Slice
-4. Store
-5. Validations
-6. Form
-7. Page
-8. RoutesAdministration
+4. Store.ts
+5. Store
+6. Validations
+7. Form
+8. Page
+9. routesAdministration
+10. Pages index.ts
+11. Util constants.ts
