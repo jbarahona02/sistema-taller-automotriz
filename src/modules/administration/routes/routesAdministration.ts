@@ -2,6 +2,8 @@ import {ModuleRoute} from "../../../interfaces";
 import { MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
 import { ClienteListPage } from "../pages/cliente/ClienteListPage";
 import { ClientePage } from "../pages/cliente/ClientePage";
+import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
+import { DiasNoDisponiblesPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesPage";
 import { TallerListPage } from "../pages/taller/TallerListPage";
 import { TallerPage } from "../pages/taller/TallerPage";
 import { TypeVehicleListPage } from "../pages/typeVehicle/TypeVehicleListPage";
@@ -70,5 +72,18 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'cliente/:cliCodigo',
         Component: ClientePage 
+    },
+    {
+        path: 'dias-no-disponibles-list',
+        Component: DiasNoDisponiblesListPage
+        
+    },
+    {
+        path: 'dias-no-disponibles',
+        Component: DiasNoDisponiblesPage
+    },
+    {
+        path: 'dias-no-disponibles/:dndCodigo',
+        Component: DiasNoDisponiblesPage 
     }
 ];

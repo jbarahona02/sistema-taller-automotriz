@@ -8,3 +8,5 @@ export * from './taller/tallerListSlice';
 export * from './taller/tallerSlice';
 export * from './cliente/clienteListSlice';
 export * from './cliente/clienteSlice';
+export * from './diasNoDisponibles/diasNoDisponiblesListSlice';
+export * from './diasNoDisponibles/diasNoDisponiblesSlice';
