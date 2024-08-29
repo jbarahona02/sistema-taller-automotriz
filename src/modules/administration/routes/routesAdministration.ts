@@ -8,6 +8,8 @@ import { TallerListPage } from "../pages/taller/TallerListPage";
 import { TallerPage } from "../pages/taller/TallerPage";
 import { TypeVehicleListPage } from "../pages/typeVehicle/TypeVehicleListPage";
 import { TypeVehiclePage } from "../pages/typeVehicle/TypeVehiclePage";
+import { VehiculoListPage } from "../pages/vehiculo/VehiculoListPage";
+import { VehiculoPage } from "../pages/vehiculo/VehiculoPage";
 
 
 
@@ -85,5 +87,18 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'dias-no-disponibles/:dndCodigo',
         Component: DiasNoDisponiblesPage 
+    },
+    {
+        path: 'vehiculo-list',
+        Component: VehiculoListPage
+        
+    },
+    {
+        path: 'vehiculo',
+        Component: VehiculoPage
+    },
+    {
+        path: 'vehiculo/:vehPlaca',
+        Component: VehiculoPage 
     }
 ];

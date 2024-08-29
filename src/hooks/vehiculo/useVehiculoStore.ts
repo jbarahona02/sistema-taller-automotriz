@@ -3,23 +3,24 @@ import { StoreInterface } from "../../store";
 import { getEnvVariables } from "../../helpers";
 import { automotiveWorkshopApi } from "../../api";
 import {
-    cleanDiasNoDisponiblesData,
-    setDiasNoDisponiblesResult,
+    cleanVehiculoData,
+    setVehiculoResult,
 } from "../../store/modules/administration";
 import { Utilities } from "../../util";
-import { DiasNoDisponiblesInterface } from "../../interfaces";
+import { VehiculoInterface } from "../../interfaces";
 
-const { VITE_DIAS_NO_DISPONIBLES_URI } = getEnvVariables();
+const { VITE_VEHICULO_URI } = getEnvVariables();
 
-export const useDiasNoDisponiblesStore = () => {
+export const useVehiculoStore = () => {
 
-    const diasNoDisponiblesValue = useSelector((state: StoreInterface) => state.diasNoDisponiblesSlice);
+    const vehiculoValue = useSelector((state: StoreInterface) => state.vehiculoSlice);
     const dispatch = useDispatch();
 
-    const findById = async (code: number) => {
+    const findById = async (code: string) => {
         try {
-            const {data} = await automotiveWorkshopApi.get(`${VITE_DIAS_NO_DISPONIBLES_URI}/${code}`);
-            dispatch(setDiasNoDisponiblesResult(data));
+            const {data} = await automotiveWorkshopApi.get(`${VITE_VEHICULO_URI}/${code}`);
+            console.log(data);
+            dispatch(setVehiculoResult(data));
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -31,18 +32,18 @@ export const useDiasNoDisponiblesStore = () => {
         }
     }
 
-    const saveOrUpdate = async (diasNoDisponibles: DiasNoDisponiblesInterface) => {
+    const saveOrUpdate = async (vehiculo: VehiculoInterface) => {
         try {
-            if (diasNoDisponibles.dndCodigo) {
-                const {data} = await automotiveWorkshopApi.patch(`${VITE_DIAS_NO_DISPONIBLES_URI}/${diasNoDisponibles.dndCodigo}`, diasNoDisponibles);
+            if (vehiculo.vehPlaca) {
+                const {data} = await automotiveWorkshopApi.patch(`${VITE_VEHICULO_URI}/${vehiculo.vehPlaca}`, vehiculo);
                 await Utilities.successAlarm('Registro actualizado');
-                dispatch(setDiasNoDisponiblesResult(data));
+                dispatch(setVehiculoResult(data));
                 return;
             }
 
-            const {data} = await automotiveWorkshopApi.post(`${VITE_DIAS_NO_DISPONIBLES_URI}`, diasNoDisponibles);
+            const {data} = await automotiveWorkshopApi.post(`${VITE_VEHICULO_URI}`, vehiculo);
             await Utilities.successAlarm('Registro guardado');
-            dispatch(setDiasNoDisponiblesResult(data));
+            dispatch(setVehiculoResult(data));
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -55,12 +56,12 @@ export const useDiasNoDisponiblesStore = () => {
     }
 
     const cleanForm = () => {
-        dispatch(cleanDiasNoDisponiblesData());
+        dispatch(cleanVehiculoData());
     }
 
 
     return {
-        ...diasNoDisponiblesValue,
+        ...vehiculoValue,
         findById,
         saveOrUpdate,
         cleanForm

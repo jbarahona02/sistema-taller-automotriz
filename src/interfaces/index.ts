@@ -5,3 +5,4 @@ export * from './typeVehicle.interface.ts';
 export * from './taller.interface.ts';
 export * from './cliente.interface.ts';
 export * from './diasNoDisponibles.interface.ts';
+export * from './vehiculo.intrerface.ts';

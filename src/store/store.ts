@@ -1,11 +1,13 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {sidenavSlice} from "./ui";
-import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MechanicInterface, MechanicSearchBarInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface } from "../interfaces";
+import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MechanicInterface, MechanicSearchBarInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
 import { diasNoDisponiblesListSlice, diasNoDisponiblesSlice, mechanicListSlice, mechanicSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice } from "./modules/administration";
 import { tallerListSlice } from "./modules/administration/taller/tallerListSlice";
 import { tallerSlice } from "./modules/administration/taller/tallerSlice";
 import { clienteListSlice } from "./modules/administration/cliente/clienteListSlice";
 import { clienteSlice } from "./modules/administration/cliente/clienteSlice";
+import { vehiculoListSlice } from "./modules/administration/vehiculo/vehiculoListSlice";
+import { vehiculoSlice } from "./modules/administration/vehiculo/vehiculoSlice";
 
 export interface StoreInterface {
     mechanicListSlice: MechanicSearchBarInterface,
@@ -20,6 +22,8 @@ export interface StoreInterface {
     clienteSlice: ClienteInterface,
     diasNoDisponiblesListSlice: DiasNoDisponiblesListInterface,
     diasNoDisponiblesSlice: DiasNoDisponiblesInterface,
+    vehiculoListSlice: VehiculoListInterface,
+    vehiculoSlice: VehiculoInterface
 }
 
 export const store = configureStore({
@@ -36,7 +40,9 @@ export const store = configureStore({
         clienteListSlice: clienteListSlice.reducer,
         clienteSlice: clienteSlice.reducer,
         diasNoDisponiblesListSlice: diasNoDisponiblesListSlice.reducer,
-        diasNoDisponiblesSlice: diasNoDisponiblesSlice.reducer
+        diasNoDisponiblesSlice: diasNoDisponiblesSlice.reducer,
+        vehiculoListSlice: vehiculoListSlice.reducer,
+        vehiculoSlice: vehiculoSlice.reducer
     }
 });
 

@@ -10,3 +10,5 @@ export * from './cliente/clienteListSlice';
 export * from './cliente/clienteSlice';
 export * from './diasNoDisponibles/diasNoDisponiblesListSlice';
 export * from './diasNoDisponibles/diasNoDisponiblesSlice';
+export * from './vehiculo/vehiculoListSlice';
+export * from './vehiculo/vehiculoSlice';

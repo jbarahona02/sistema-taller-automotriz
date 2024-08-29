@@ -19,8 +19,8 @@ interface Props {
     tableBody: any[];
     properties: string[];
     onAdd: () => void;
-    onUpdate: (code: number) => void;
-    onDelete: (code: number) => void;
+    onUpdate: (code: any) => void;
+    onDelete: (code: any) => void;
     idField: string;
 }
 

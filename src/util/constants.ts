@@ -5,7 +5,8 @@ import {
     MinorCrash,
     HomeRepairService,
     Group,
-    CalendarMonth
+    CalendarMonth,
+    DirectionsCar
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -43,6 +44,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/dias-no-disponibles-list`,
                 name: "Dias no disponibles",
                 NavIcon: CalendarMonth
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/vehiculo-list`,
+                name: "Vehiculos",
+                NavIcon: DirectionsCar
             }
         ]
     }
