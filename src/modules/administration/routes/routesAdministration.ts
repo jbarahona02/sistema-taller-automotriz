@@ -1,5 +1,7 @@
 import {ModuleRoute} from "../../../interfaces";
 import { MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
+import { TallerListPage } from "../pages/taller/TallerListPage";
+import { TallerPage } from "../pages/taller/TallerPage";
 import { TypeVehicleListPage } from "../pages/typeVehicle/TypeVehicleListPage";
 import { TypeVehiclePage } from "../pages/typeVehicle/TypeVehiclePage";
 
@@ -40,5 +42,18 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'type-vehicle/:tveCodigo',
         Component: TypeVehiclePage 
+    },
+    {
+        path: 'taller-list',
+        Component: TallerListPage 
+        
+    },
+    {
+        path: 'taller',
+        Component: TallerPage 
+    },
+    {
+        path: 'taller/:tllCodigo',
+        Component: TallerPage 
     }
 ];

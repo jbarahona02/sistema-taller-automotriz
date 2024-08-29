@@ -4,3 +4,5 @@ export * from './vehicleBrand/vehicleBrandListSlice';
 export * from './vehicleBrand/vehicleBrandSlice';
 export * from './typeVehicle/typeVehicleListSlice';
 export * from './typeVehicle/typeVehicleSlice';
+export * from './taller/tallerListSlice';
+export * from './taller/tallerSlice';
