@@ -30,7 +30,7 @@ export const VehiculoForm = () => {
 
     const onSubmit = async (values: FormikValues) => {
         await saveOrUpdate({
-            vehPlaca: vehPlaca ? vehPlaca : '',
+            vehPlaca: values.vehPlaca,
             vehNumeroChasis: values.vehNumeroChasis,
             vheModelo: values.vheModelo,
             vheColor: values.vheColor,
@@ -41,7 +41,9 @@ export const VehiculoForm = () => {
             cliente: cliente.find(t => t.cliCodigo === values.cliCodigo) || null,
             marcaVehiculo: marcaVehiculo.find(t => t.mveCodigo === values.mveCodigo) || null,
             tipoVehiculo: tipoVehiculo.find(t => t.tveCodigo === values.tveCodigo) || null
-        });
+        },
+        vehPlaca ? true : false
+    );
 
         if (vehPlaca) {
             await findById(vehPlaca);

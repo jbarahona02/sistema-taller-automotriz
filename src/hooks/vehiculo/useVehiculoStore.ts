@@ -32,9 +32,9 @@ export const useVehiculoStore = () => {
         }
     }
 
-    const saveOrUpdate = async (vehiculo: VehiculoInterface) => {
+    const saveOrUpdate = async (vehiculo: VehiculoInterface, isUpdate: boolean) => {
         try {
-            if (vehiculo.vehPlaca) {
+            if (isUpdate) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_VEHICULO_URI}/${vehiculo.vehPlaca}`, vehiculo);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setVehiculoResult(data));
