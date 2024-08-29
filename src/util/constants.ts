@@ -1,7 +1,8 @@
 import {SideNavType} from "../interfaces";
 import {
     Badge,
-    Garage
+    Garage,
+    MinorCrash
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -19,6 +20,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/vehicle-brand-list`,
                 name: "Marcas de vehiculos",
                 NavIcon: Garage
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/type-vehicle-list`,
+                name: "Tipos de vehiculos",
+                NavIcon: MinorCrash
             }
         ]
     }

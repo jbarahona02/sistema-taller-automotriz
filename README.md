@@ -48,3 +48,14 @@ export default tseslint.config({
   },
 })
 ```
+
+# Pasos para implementar un nuevo crud
+
+1. env
+2. Interface
+3. Slice
+4. Store
+5. Validations
+6. Form
+7. Page
+8. RoutesAdministration
