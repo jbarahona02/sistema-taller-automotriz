@@ -5,7 +5,7 @@ import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import { useTypeVehicleListStore } from "../../../../hooks";
 
-const tableHeaders = ['Id', 'Nombre', 'Acciones'];
+const tableHeaders = ['Id', 'Nombre', 'Descripción', 'Acciones'];
 
 export const TypeVehicleListPage = () => {
   const navigate = useNavigate();
