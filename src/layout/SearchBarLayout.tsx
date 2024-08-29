@@ -52,13 +52,15 @@ export const SearchBarLayout = ({
                                         {child}
                                     </Grid>
                                 ))}
+                                <Grid item xs="auto">
+                                    <CustomSwitchComponent label="Valor" name="valor" />
+                                </Grid>
                             </Grid>
                         </Form>
                     )}
                 </Formik>
             </Grid>
             <Grid item xs={2} sx={{ pl: 1.5 }}>
-                <CustomSwitchComponent label="Valor" value={true} />
                 <IconButton onClick={onClick}>
                     <SearchOutlined />
                 </IconButton>

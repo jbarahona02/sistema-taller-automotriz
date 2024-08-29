@@ -3,40 +3,44 @@ import { CustomInputText } from "../../../../components/form";
 import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
-import { useTypeVehicleListStore } from "../../../../hooks";
+import { useNivelGravedadListStore } from "../../../../hooks";
 
-const tableHeaders = ['Id', 'Nombre', 'Descripción', 'Acciones'];
+const tableHeaders = ['Id', 'Nombre', 'Descripción', 'Estado', 'Acciones'];
 
-export const TypeVehicleListPage = () => {
+export const NivelGravedadListPage = () => {
   const navigate = useNavigate();
-  const { content, findAll, remove } = useTypeVehicleListStore();
+  const { content, findAll, remove } = useNivelGravedadListStore();
 
   const onAdd = () => {
-    navigate(`${ADMIN_BASE_PATH}/type-vehicle/`);
+    navigate(`${ADMIN_BASE_PATH}/nivel-gravedad/`);
   };
 
-  const onUpdate = (tveCodigo: number) => {
-    if (tveCodigo !== null) {
-      navigate(`${ADMIN_BASE_PATH}/type-vehicle/${tveCodigo}`);
+  const onUpdate = (ngrCodigo: number) => {
+    if (ngrCodigo !== null) {
+      navigate(`${ADMIN_BASE_PATH}/nivel-gravedad/${ngrCodigo}`);
     }
   };
 
-  const onDelete = (tveCodigo: number) => {
-    if (tveCodigo !== null) {
-      remove(tveCodigo);
+  const onDelete = (ngrCodigo: number) => {
+    if (ngrCodigo !== null) {
+      remove(ngrCodigo);
     }
   };
 
   const renderTableBody = () => {
     if (!content || content.length === 0) return [];
   
-    return content;
+    return content.map((item) => ({
+      ...item,
+      'estado': item.ngrEstado
+    }));
   };
+
 
 
   return (
     <>
-      <TitleComponent title={'Tipos de vehiculos'} />
+      <TitleComponent title={'Niveles de gravedad'} />
 
       <SearchBarLayout
         initialValues={{ search: '' }}
@@ -44,8 +48,7 @@ export const TypeVehicleListPage = () => {
         onClean={() => findAll()}
         onClick={() => { }}
       >
-        <CustomInputText label={'Nombre'} name={'tveNombre'} xs={20} />
-        <CustomInputText label={'Descripción'} name={'tveDescripcion'} xs={20} />
+        <CustomInputText label={'Nombre'} name={'ngrNombre'} xs={20} />
       </SearchBarLayout>
 
       <QueryContentLayout
@@ -53,9 +56,9 @@ export const TypeVehicleListPage = () => {
         onAdd={onAdd}
         onDelete={onDelete}
         onUpdate={onUpdate}
-        properties={['tveCodigo', 'tveNombre', 'tveDescripcion']}
+        properties={['ngrCodigo', 'ngrNombre', 'ngrDetalle', 'estado']}
         tableBody={renderTableBody()}
-        idField="tveCodigo"
+        idField="ngrCodigo"
       />
     </>
   );

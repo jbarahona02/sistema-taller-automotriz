@@ -2,7 +2,12 @@ import {SideNavType} from "../interfaces";
 import {
     Badge,
     Garage,
-    MinorCrash
+    MinorCrash,
+    HomeRepairService,
+    Group,
+    CalendarMonth,
+    DirectionsCar,
+    Warning
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -25,6 +30,31 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/type-vehicle-list`,
                 name: "Tipos de vehiculos",
                 NavIcon: MinorCrash
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/taller-list`,
+                name: "Talleres",
+                NavIcon: HomeRepairService
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/cliente-list`,
+                name: "Clientes",
+                NavIcon: Group
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/dias-no-disponibles-list`,
+                name: "Dias no disponibles",
+                NavIcon: CalendarMonth
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/vehiculo-list`,
+                name: "Vehiculos",
+                NavIcon: DirectionsCar
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/nivel-gravedad-list`,
+                name: "Niveles de gravedad",
+                NavIcon: Warning
             }
         ]
     }

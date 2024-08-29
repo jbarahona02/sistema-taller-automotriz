@@ -1,7 +1,17 @@
 import {ModuleRoute} from "../../../interfaces";
 import { MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
+import { ClienteListPage } from "../pages/cliente/ClienteListPage";
+import { ClientePage } from "../pages/cliente/ClientePage";
+import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
+import { DiasNoDisponiblesPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesPage";
+import { NivelGravedadListPage } from "../pages/nivelGravedad/NivelGravedadListPage";
+import { NivelGravedadPage } from "../pages/nivelGravedad/NivelGravedadPage";
+import { TallerListPage } from "../pages/taller/TallerListPage";
+import { TallerPage } from "../pages/taller/TallerPage";
 import { TypeVehicleListPage } from "../pages/typeVehicle/TypeVehicleListPage";
 import { TypeVehiclePage } from "../pages/typeVehicle/TypeVehiclePage";
+import { VehiculoListPage } from "../pages/vehiculo/VehiculoListPage";
+import { VehiculoPage } from "../pages/vehiculo/VehiculoPage";
 
 
 
@@ -40,5 +50,70 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'type-vehicle/:tveCodigo',
         Component: TypeVehiclePage 
+    },
+    {
+        path: 'taller-list',
+        Component: TallerListPage 
+        
+    },
+    {
+        path: 'taller',
+        Component: TallerPage 
+    },
+    {
+        path: 'taller/:tllCodigo',
+        Component: TallerPage 
+    },
+    {
+        path: 'cliente-list',
+        Component: ClienteListPage 
+        
+    },
+    {
+        path: 'cliente',
+        Component: ClientePage
+    },
+    {
+        path: 'cliente/:cliCodigo',
+        Component: ClientePage 
+    },
+    {
+        path: 'dias-no-disponibles-list',
+        Component: DiasNoDisponiblesListPage
+        
+    },
+    {
+        path: 'dias-no-disponibles',
+        Component: DiasNoDisponiblesPage
+    },
+    {
+        path: 'dias-no-disponibles/:dndCodigo',
+        Component: DiasNoDisponiblesPage 
+    },
+    {
+        path: 'vehiculo-list',
+        Component: VehiculoListPage
+        
+    },
+    {
+        path: 'vehiculo',
+        Component: VehiculoPage
+    },
+    {
+        path: 'vehiculo/:vehPlaca',
+        Component: VehiculoPage 
+    },
+    {
+        path: 'nivel-gravedad-list',
+        Component: NivelGravedadListPage
+        
+    },
+    {
+        path: 'nivel-gravedad',
+        Component: NivelGravedadPage
+    },
+    {
+        path: 'nivel-gravedad/:ngrCodigo',
+        Component: NivelGravedadPage 
     }
 ];
