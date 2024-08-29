@@ -28,11 +28,11 @@ export interface Module {
 }
 
 export interface Paging<T> {
-    hasNext: boolean;
-    hasPrevious: boolean;
-    totalPageCount: number;
-    totalItemCount: number;
     content: T[];
+    totalElements: number;
+    totalPages: number;
+    firstPage: boolean;
+    lastPage: boolean;
     currentPage: number;
     pageSize: number;
 }
@@ -70,17 +70,6 @@ export interface SearchBarItem {
     isDatePicker: boolean,
     placeholder: string
 }
-
-export interface Paging<T> {
-    hasNext: boolean;
-    hasPrevious: boolean;
-    totalPageCount: number;
-    totalItemCount: number;
-    content: T[];
-    currentPage: number;
-    pageSize: number;
-}
-
 type AllowedValueTypes = string | number | Date | Moment;
 
 export interface KeyValuePair {

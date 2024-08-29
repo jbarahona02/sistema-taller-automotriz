@@ -86,12 +86,6 @@ export const FormLayout = ({
                         }
                     </Formik>
                 </Box>
-                {
-                    !!update &&
-                    <Button className={'button-add'} onClick={onClean}>
-                        <Add/>
-                    </Button>
-                }
             </Grid>
         </>
     )
