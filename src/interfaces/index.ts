@@ -6,3 +6,4 @@ export * from './taller.interface.ts';
 export * from './cliente.interface.ts';
 export * from './diasNoDisponibles.interface.ts';
 export * from './vehiculo.intrerface.ts';
+export * from './nivelGravedad.interface.ts';

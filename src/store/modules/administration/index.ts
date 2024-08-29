@@ -12,3 +12,5 @@ export * from './diasNoDisponibles/diasNoDisponiblesListSlice';
 export * from './diasNoDisponibles/diasNoDisponiblesSlice';
 export * from './vehiculo/vehiculoListSlice';
 export * from './vehiculo/vehiculoSlice';
+export * from './nivelGravedad/nivelGravedadListSlice';
+export * from './nivelGravedad/nivelGravedadSlice';

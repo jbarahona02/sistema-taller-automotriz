@@ -4,6 +4,8 @@ import { ClienteListPage } from "../pages/cliente/ClienteListPage";
 import { ClientePage } from "../pages/cliente/ClientePage";
 import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
 import { DiasNoDisponiblesPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesPage";
+import { NivelGravedadListPage } from "../pages/nivelGravedad/NivelGravedadListPage";
+import { NivelGravedadPage } from "../pages/nivelGravedad/NivelGravedadPage";
 import { TallerListPage } from "../pages/taller/TallerListPage";
 import { TallerPage } from "../pages/taller/TallerPage";
 import { TypeVehicleListPage } from "../pages/typeVehicle/TypeVehicleListPage";
@@ -100,5 +102,18 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'vehiculo/:vehPlaca',
         Component: VehiculoPage 
+    },
+    {
+        path: 'nivel-gravedad-list',
+        Component: NivelGravedadListPage
+        
+    },
+    {
+        path: 'nivel-gravedad',
+        Component: NivelGravedadPage
+    },
+    {
+        path: 'nivel-gravedad/:ngrCodigo',
+        Component: NivelGravedadPage 
     }
 ];

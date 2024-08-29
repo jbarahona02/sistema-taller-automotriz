@@ -6,7 +6,8 @@ import {
     HomeRepairService,
     Group,
     CalendarMonth,
-    DirectionsCar
+    DirectionsCar,
+    Warning
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -49,6 +50,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/vehiculo-list`,
                 name: "Vehiculos",
                 NavIcon: DirectionsCar
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/nivel-gravedad-list`,
+                name: "Niveles de gravedad",
+                NavIcon: Warning
             }
         ]
     }
