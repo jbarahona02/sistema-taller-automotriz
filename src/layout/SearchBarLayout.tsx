@@ -1,6 +1,7 @@
 import { Avatar, Box, Grid, IconButton } from "@mui/material";
 import { Form, Formik, FormikValues } from "formik";
-import { ReactElement } from "react";
+import {FormikProps} from "formik/dist/types";
+import { ReactElement, useRef } from "react";
 import { FormikHelpers } from "formik/dist/types";
 import { CancelOutlined, SearchOutlined } from "@mui/icons-material";
 import React from "react";
@@ -11,18 +12,15 @@ interface Props {
     initialValues: FormikValues;
     validationSchema?: any | (() => any);
     onSubmit: (values: FormikValues, formikHelpers: FormikHelpers<FormikValues>) => void;
-    onClean: () => void;
-    onClick: () => void;
 }
 
 export const SearchBarLayout = ({
     children,
     initialValues,
     validationSchema,
-    onSubmit,
-    onClick,
-    onClean,
+    onSubmit
 }: Props) => {
+    const formRef = useRef<FormikProps<any>>(null);
     return (
         <Grid
             container
@@ -43,28 +41,32 @@ export const SearchBarLayout = ({
                     onSubmit={onSubmit}
                     validationSchema={validationSchema}
                     enableReinitialize={true}
+                    innerRef={formRef}
                 >
-                    {() => (
-                        <Form>
-                            <Grid container spacing={2} direction="row">
-                                {React.Children.map(children, (child) => (
-                                    <Grid item xs="auto">
-                                        {child}
-                                    </Grid>
-                                ))}
-                                <Grid item xs="auto">
-                                    <CustomSwitchComponent label="Valor" name="valor" />
+                    {(props) => {
+
+                        return (
+                            <Form>
+                                <Grid container spacing={2} direction="row">
+                                    {React.Children.map(children, (child) => (
+                                        <Grid item xs="auto">
+                                            {child}
+                                        </Grid>
+                                    ))}
+                                    {/* <Grid item xs="auto">
+                                        <CustomSwitchComponent label="Valor" name="valor" />
+                                    </Grid> */}
                                 </Grid>
-                            </Grid>
-                        </Form>
-                    )}
+                            </Form>
+                        )
+                    }}
                 </Formik>
             </Grid>
             <Grid item xs={2} sx={{ pl: 1.5 }}>
-                <IconButton onClick={onClick}>
+                <IconButton onClick={() => formRef.current?.submitForm()}>
                     <SearchOutlined />
                 </IconButton>
-                <IconButton onClick={onClean}>
+                <IconButton onClick={() => formRef.current?.resetForm()}>
                     <CancelOutlined style={{ color: 'red' }} />
                 </IconButton>
             </Grid>
