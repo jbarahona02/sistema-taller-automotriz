@@ -8,7 +8,8 @@ import {
     CalendarMonth,
     DirectionsCar,
     Warning,
-    Category
+    Category,
+    BuildCircle
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -59,8 +60,13 @@ export const NAVBAR_ROUTES: SideNavType = [
             },
             {
                 to: `${ADMIN_BASE_PATH}/marca-producto-list`,
-                name: "Marca Producto",
+                name: "Marcas de productos",
                 NavIcon: Category
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/marca-equipo-list`,
+                name: "Marcas de equipos",
+                NavIcon: BuildCircle
             }
         ]
     }

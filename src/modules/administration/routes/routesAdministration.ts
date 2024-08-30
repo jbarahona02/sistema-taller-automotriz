@@ -14,6 +14,8 @@ import { VehiculoListPage } from "../pages/vehiculo/VehiculoListPage";
 import { VehiculoPage } from "../pages/vehiculo/VehiculoPage";
 import { MarcaProductoListaPage } from "../pages";
 import { MarcaProductoPage } from "../pages";
+import { MarcaEquipoListPage } from "../pages";
+import { MarcaEquipoPage } from "../pages";
 
 export const routesAdministration: ModuleRoute[] = [
     
@@ -127,5 +129,17 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'marca-producto/:mapCodigo',
         Component: MarcaProductoPage
+    },
+    {
+        path: 'marca-equipo-list',
+        Component: MarcaEquipoListPage
+    },
+    {
+        path: 'marca-equipo',
+        Component: MarcaEquipoPage
+    },
+    {
+        path: 'marca-equipo/:meqCodigo',
+        Component: MarcaEquipoPage
     }
 ];

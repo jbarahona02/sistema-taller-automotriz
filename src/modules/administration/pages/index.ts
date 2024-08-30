@@ -16,3 +16,5 @@ export * from "./nivelGravedad/NivelGravedadListPage.tsx"
 export * from "./nivelGravedad/NivelGravedadPage.tsx" 
 export * from "./marcaProducto/MarcaProductoListaPage.tsx";
 export * from "./marcaProducto/MarcaProductoPage.tsx";
+export * from "./marcaEquipo/MarcaEquipoListPage.tsx";
+export * from "./marcaEquipo/MarcaEquipoPage.tsx";

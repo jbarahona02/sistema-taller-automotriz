@@ -8,3 +8,4 @@ export * from './diasNoDisponibles.interface.ts';
 export * from './vehiculo.intrerface.ts';
 export * from './nivelGravedad.interface.ts';
 export * from './marcaProducto.interface.ts';
+export * from './marcaEquipo.interface.ts';

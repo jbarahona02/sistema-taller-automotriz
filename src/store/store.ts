@@ -1,6 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {sidenavSlice} from "./ui";
-import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MechanicInterface, MechanicSearchBarInterface, NivelGravedadInterface, NivelGravedadListInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface, MarcaProductoInterface, MarcaProductoListaInterface } from "../interfaces";
+import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MechanicInterface, MechanicSearchBarInterface, NivelGravedadInterface, NivelGravedadListInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface, MarcaProductoInterface, MarcaProductoListaInterface, MarcaEquipoListInterface, MarcaEquipoInterface } from "../interfaces";
 import { diasNoDisponiblesListSlice, diasNoDisponiblesSlice, mechanicListSlice, mechanicSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice, marcaProductoSlice, marcaProductoListaSlice } from "./modules/administration";
 import { tallerListSlice } from "./modules/administration/taller/tallerListSlice";
 import { tallerSlice } from "./modules/administration/taller/tallerSlice";
@@ -10,6 +10,8 @@ import { vehiculoListSlice } from "./modules/administration/vehiculo/vehiculoLis
 import { vehiculoSlice } from "./modules/administration/vehiculo/vehiculoSlice";
 import { nivelGravedadListSlice } from "./modules/administration/nivelGravedad/nivelGravedadListSlice";
 import { nivelGravedadSlice } from "./modules/administration/nivelGravedad/nivelGravedadSlice";
+import { marcaEquipoListSlice } from "./modules/administration";
+import { marcaEquipoSlice } from "./modules/administration";
 
 export interface StoreInterface {
     mechanicListSlice: MechanicSearchBarInterface,
@@ -29,7 +31,9 @@ export interface StoreInterface {
     nivelGravedadListSlice: NivelGravedadListInterface,
     nivelGravedadSlice: NivelGravedadInterface,
     marcaProductoListaSlice: MarcaProductoListaInterface,
-    marcaProductoSlice: MarcaProductoInterface
+    marcaProductoSlice: MarcaProductoInterface,
+    marcaEquipoListSlice: MarcaEquipoListInterface,
+    marcaEquipoSlice: MarcaEquipoInterface
 }
 
 export const store = configureStore({
@@ -52,7 +56,9 @@ export const store = configureStore({
         nivelGravedadListSlice: nivelGravedadListSlice.reducer,
         nivelGravedadSlice: nivelGravedadSlice.reducer,
         marcaProductoListaSlice: marcaProductoListaSlice.reducer,
-        marcaProductoSlice: marcaProductoSlice.reducer
+        marcaProductoSlice: marcaProductoSlice.reducer,
+        marcaEquipoListSlice: marcaEquipoListSlice.reducer,
+        marcaEquipoSlice: marcaEquipoSlice.reducer
     }
 });
 

@@ -16,3 +16,5 @@ export * from './nivelGravedad/nivelGravedadListSlice';
 export * from './nivelGravedad/nivelGravedadSlice';
 export * from './marcaProducto/marcaProductoSlice';
 export * from './marcaProducto/marcaProductoListaSlice';
+export * from './marcaEquipo/marcaEquipoListSlice';
+export * from './marcaEquipo/marcaEquipoSlice';

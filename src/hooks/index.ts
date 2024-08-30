@@ -16,3 +16,5 @@ export * from './nivelGravedad/useNivelGravedadListStore'
 export * from './nivelGravedad/useNivelGravedadStore'
 export * from './marcaProducto/useMarcaProductoListaStore';
 export * from './marcaProducto/useMarcaProductoStore';
+export * from './marcaEquipo/useMarcaEquipoListStore';
+export * from './marcaEquipo/useMarcaEquipoStore';
