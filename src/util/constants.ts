@@ -7,7 +7,8 @@ import {
     Group,
     CalendarMonth,
     DirectionsCar,
-    Warning
+    Warning,
+    Category
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -55,6 +56,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/nivel-gravedad-list`,
                 name: "Niveles de gravedad",
                 NavIcon: Warning
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/marca-producto-list`,
+                name: "Marca Producto",
+                NavIcon: Category
             }
         ]
     }

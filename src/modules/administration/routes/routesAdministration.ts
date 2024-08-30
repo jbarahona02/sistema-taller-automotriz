@@ -12,8 +12,8 @@ import { TypeVehicleListPage } from "../pages/typeVehicle/TypeVehicleListPage";
 import { TypeVehiclePage } from "../pages/typeVehicle/TypeVehiclePage";
 import { VehiculoListPage } from "../pages/vehiculo/VehiculoListPage";
 import { VehiculoPage } from "../pages/vehiculo/VehiculoPage";
-
-
+import { MarcaProductoListaPage } from "../pages";
+import { MarcaProductoPage } from "../pages";
 
 export const routesAdministration: ModuleRoute[] = [
     
@@ -115,5 +115,17 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'nivel-gravedad/:ngrCodigo',
         Component: NivelGravedadPage 
+    },
+    {
+        path: 'marca-producto-list',
+        Component: MarcaProductoListaPage
+    },
+    {
+        path: 'marca-producto',
+        Component: MarcaProductoPage
+    },
+    {
+        path: 'marca-producto/:mapCodigo',
+        Component: MarcaProductoPage
     }
 ];

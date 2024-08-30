@@ -14,3 +14,5 @@ export * from './vehiculo/vehiculoListSlice';
 export * from './vehiculo/vehiculoSlice';
 export * from './nivelGravedad/nivelGravedadListSlice';
 export * from './nivelGravedad/nivelGravedadSlice';
+export * from './marcaProducto/marcaProductoSlice';
+export * from './marcaProducto/marcaProductoListaSlice';
