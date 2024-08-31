@@ -31,18 +31,19 @@ export const useDiasNoDisponiblesStore = () => {
         }
     }
 
-    const saveOrUpdate = async (diasNoDisponibles: DiasNoDisponiblesInterface) => {
+    const saveOrUpdate = async (diasNoDisponibles: DiasNoDisponiblesInterface): Promise<boolean> => {
         try {
             if (diasNoDisponibles.dndCodigo) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_DIAS_NO_DISPONIBLES_URI}/${diasNoDisponibles.dndCodigo}`, diasNoDisponibles);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setDiasNoDisponiblesResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_DIAS_NO_DISPONIBLES_URI}`, diasNoDisponibles);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setDiasNoDisponiblesResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -51,6 +52,7 @@ export const useDiasNoDisponiblesStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

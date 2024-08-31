@@ -17,17 +17,21 @@ export const VehicleBrandForm = () => {
     } = useVehicleBrandStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             mveCodigo: mveCodigo ? mveCodigo : 0,
             mveNombre: values.mveNombre,
         });
         if(mveCodigo){
             await findById(Number(mveCodigo));
         }
+
+        if(isSuccess){
+           onClean(); 
+        }
     }
 
     const onClean = () => {
-        
+        navigate(`${ADMIN_BASE_PATH}/vehicle-brand-list`);
     }
 
     const onCancel = () => {
