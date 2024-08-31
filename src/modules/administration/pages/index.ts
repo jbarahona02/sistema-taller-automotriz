@@ -14,3 +14,5 @@ export * from "./vehiculo/VehiculoListPage.tsx"
 export * from "./vehiculo/VehiculoPage.tsx" 
 export * from "./nivelGravedad/NivelGravedadListPage.tsx" 
 export * from "./nivelGravedad/NivelGravedadPage.tsx" 
+export * from "./mechanicalSpecialty/MechanicalSpecialtyListPage.tsx";
+export * from "./mechanicalSpecialty/MechanicalSpecialtyPage.tsx";
