@@ -9,7 +9,8 @@ import {
     DirectionsCar,
     Warning,
     Category,
-    BuildCircle
+    BuildCircle,
+    Hardware
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -67,6 +68,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/marca-equipo-list`,
                 name: "Marcas de equipos",
                 NavIcon: BuildCircle
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/tipo-servicio-list`,
+                name: "Tipos de servicios",
+                NavIcon: Hardware
             }
         ]
     }

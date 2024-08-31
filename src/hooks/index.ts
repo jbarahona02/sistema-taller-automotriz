@@ -18,3 +18,5 @@ export * from './marcaProducto/useMarcaProductoListaStore';
 export * from './marcaProducto/useMarcaProductoStore';
 export * from './marcaEquipo/useMarcaEquipoListStore';
 export * from './marcaEquipo/useMarcaEquipoStore';
+export * from './tipoServicio/useTipoServicioListStore';
+export * from './tipoServicio/useTipoServicioStore';

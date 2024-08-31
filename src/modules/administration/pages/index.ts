@@ -18,3 +18,5 @@ export * from "./marcaProducto/MarcaProductoListaPage.tsx";
 export * from "./marcaProducto/MarcaProductoPage.tsx";
 export * from "./marcaEquipo/MarcaEquipoListPage.tsx";
 export * from "./marcaEquipo/MarcaEquipoPage.tsx";
+export * from "./tipoServicio/TipoServicioListPage.tsx";
+export * from "./tipoServicio/TipoServicioPage.tsx";

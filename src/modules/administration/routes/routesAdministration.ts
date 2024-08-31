@@ -16,6 +16,8 @@ import { MarcaProductoListaPage } from "../pages";
 import { MarcaProductoPage } from "../pages";
 import { MarcaEquipoListPage } from "../pages";
 import { MarcaEquipoPage } from "../pages";
+import { TipoServicioListPage } from "../pages";
+import { TipoServicioPage } from "../pages";
 
 export const routesAdministration: ModuleRoute[] = [
     
@@ -141,5 +143,17 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'marca-equipo/:meqCodigo',
         Component: MarcaEquipoPage
+    },
+    {
+        path: 'tipo-servicio-list',
+        Component: TipoServicioListPage
+    },
+    {
+        path: 'tipo-servicio',
+        Component: TipoServicioPage
+    },
+    {
+        path: 'tipo-servicio/:tsrCodigo',
+        Component: TipoServicioPage
     }
 ];
