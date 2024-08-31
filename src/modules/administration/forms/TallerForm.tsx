@@ -20,7 +20,7 @@ export const TallerForm = () => {
     } = useTallerStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             tllCodigo: tllCodigo ? tllCodigo : 0,
             tllNombre: values.tllNombre,
             tllTelefono: values.tllTelefono,
@@ -30,10 +30,15 @@ export const TallerForm = () => {
         if(tllCodigo){
             await findById(Number(tllCodigo));
         }
+
+        if(isSuccess){
+            onClean();
+        }
+
     }
 
     const onClean = () => {
-        
+        navigate(`${ADMIN_BASE_PATH}/taller-list`);
     }
 
     const onCancel = () => {

@@ -31,18 +31,19 @@ export const useNivelGravedadStore = () => {
         }
     }
 
-    const saveOrUpdate = async (nivelGravedad: NivelGravedadInterface) => {
+    const saveOrUpdate = async (nivelGravedad: NivelGravedadInterface): Promise<boolean> => {
         try {
             if (nivelGravedad.ngrCodigo) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_NIVEL_GRAVEDAD_URI}/${nivelGravedad.ngrCodigo}`, nivelGravedad);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setNivelGravedadResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_NIVEL_GRAVEDAD_URI}`, nivelGravedad);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setNivelGravedadResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -51,6 +52,7 @@ export const useNivelGravedadStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

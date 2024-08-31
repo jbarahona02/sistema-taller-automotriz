@@ -19,9 +19,16 @@ export const useVehiculoListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (placa?: string, chasis?: string, color?: string, kilometraje?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_VEHICULO_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_VEHICULO_URI}`, {
+                params: {
+                    placa: placa,
+                    chasis: chasis,
+                    color: color,
+                    sort: 'vehPlaca,asc'
+                }
+              });
             console.log(data);
             dispatch(setVehiculoPageResult(data));
         } catch (e) {

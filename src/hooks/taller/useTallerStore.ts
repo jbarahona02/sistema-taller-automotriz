@@ -31,18 +31,19 @@ export const useTallerStore = () => {
         }
     }
 
-    const saveOrUpdate = async (taller: TallerInterface) => {
+    const saveOrUpdate = async (taller: TallerInterface): Promise<boolean> => {
         try {
             if (taller.tllCodigo) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_TALLER_URI}/${taller.tllCodigo}`, taller);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setTallerResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_TALLER_URI}`, taller);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setTallerResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -51,6 +52,7 @@ export const useTallerStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

@@ -29,7 +29,7 @@ export const VehiculoForm = () => {
     const { content: tipoVehiculo } = useTypeVehicleListStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             vehPlaca: values.vehPlaca,
             vehNumeroChasis: values.vehNumeroChasis,
             vheModelo: values.vheModelo,
@@ -48,10 +48,14 @@ export const VehiculoForm = () => {
         if (vehPlaca) {
             await findById(vehPlaca);
         }
+
+        if(isSuccess){
+            onClean();
+        }
     };
 
     const onClean = () => {
-    
+        navigate(`${ADMIN_BASE_PATH}/vehiculo-list`);
     };
 
     const onCancel = () => {

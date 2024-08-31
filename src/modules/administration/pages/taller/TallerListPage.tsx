@@ -38,17 +38,17 @@ export const TallerListPage = () => {
     <>
       <TitleComponent title={'Talleres'} />
 
+
       <SearchBarLayout
-        initialValues={{ search: '' }}
-        onSubmit={() => findAll()}
-        onClean={() => findAll()}
-        onClick={() => { }}
+        initialValues={{ nombre : '', telefono: '', direccion: '', correo: ''}}
+        onSubmit={({nombre, telefono, direccion, correo}) => findAll(nombre, telefono, direccion, correo)}
       >
-        <CustomInputText label={'Nombre'} name={'tllNombre'} xs={20} />
-        <CustomInputText label={'Télefono'} name={'tllTelefono'} xs={20} />
-        <CustomInputText label={'Dirección'} name={'tllDireccion'} xs={20} />
-        <CustomInputText label={'Correo'} name={'tllCorreo'} xs={20} />
+        <CustomInputText label={'Nombre'} name={'nombre'} xs={20} />
+        <CustomInputText label={'Télefono'} name={'telefono'} xs={20} />
+        <CustomInputText label={'Dirección'} name={'direccion'} xs={20} />
+        <CustomInputText label={'Correo'} name={'correo'} xs={20} />      
       </SearchBarLayout>
+      
 
       <QueryContentLayout
         tableHeaders={tableHeaders}

@@ -31,18 +31,19 @@ export const useTypeVehicleStore = () => {
         }
     }
 
-    const saveOrUpdate = async (typeVehicle: TypeVehicleInterface) => {
+    const saveOrUpdate = async (typeVehicle: TypeVehicleInterface): Promise<boolean>  => {
         try {
             if (typeVehicle.tveCodigo) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_TYPE_VEHICLE_URI}/${typeVehicle.tveCodigo}`, typeVehicle);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setTypeVehicleResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_TYPE_VEHICLE_URI}`, typeVehicle);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setTypeVehicleResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -51,6 +52,7 @@ export const useTypeVehicleStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

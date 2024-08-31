@@ -32,18 +32,19 @@ export const useVehicleBrandStore = () => {
         }
     }
 
-    const saveOrUpdate = async (vehicleBrand: VehicleBrandInterface) => {
+    const saveOrUpdate = async (vehicleBrand: VehicleBrandInterface): Promise<boolean>  => {
         try {
             if (vehicleBrand.mveCodigo) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_VEHICLE_BRAND_URI}/${vehicleBrand.mveCodigo}`, vehicleBrand);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setVehicleBrandResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_VEHICLE_BRAND_URI}`, vehicleBrand);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setVehicleBrandResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -52,6 +53,7 @@ export const useVehicleBrandStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

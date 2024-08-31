@@ -39,13 +39,10 @@ export const TypeVehicleListPage = () => {
       <TitleComponent title={'Tipos de vehiculos'} />
 
       <SearchBarLayout
-        initialValues={{ search: '' }}
-        onSubmit={() => findAll()}
-        onClean={() => findAll()}
-        onClick={() => { }}
+        initialValues={{ nombre : ''}}
+        onSubmit={({nombre}) => findAll(nombre)}
       >
-        <CustomInputText label={'Nombre'} name={'tveNombre'} xs={20} />
-        <CustomInputText label={'Descripción'} name={'tveDescripcion'} xs={20} />
+        <CustomInputText label={'Nombre'} name={'nombre'} xs={20} />
       </SearchBarLayout>
 
       <QueryContentLayout

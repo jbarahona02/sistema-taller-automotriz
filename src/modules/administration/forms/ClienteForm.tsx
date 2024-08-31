@@ -22,7 +22,7 @@ export const ClienteForm = () => {
     } = useClienteStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             cliCodigo: cliCodigo ? cliCodigo : 0,
             cliDpi: values.cliDpi,
             cliNombres: values.cliNombres,
@@ -34,10 +34,13 @@ export const ClienteForm = () => {
         if(cliCodigo){
             await findById(Number(cliCodigo));
         }
+        if(isSuccess){
+            onClean();
+        }
     }
 
     const onClean = () => {
-        
+        navigate(`${ADMIN_BASE_PATH}/cliente-list`);
     }
 
     const onCancel = () => {

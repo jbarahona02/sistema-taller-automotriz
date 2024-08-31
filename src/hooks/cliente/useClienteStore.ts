@@ -31,18 +31,19 @@ export const useClienteStore = () => {
         }
     }
 
-    const saveOrUpdate = async (cliente: ClienteInterface) => {
+    const saveOrUpdate = async (cliente: ClienteInterface): Promise<boolean> => {
         try {
             if (cliente.cliCodigo) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_CLIENTE_URI}/${cliente.cliCodigo}`, cliente);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setClienteResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_CLIENTE_URI}`, cliente);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setClienteResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -51,6 +52,7 @@ export const useClienteStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

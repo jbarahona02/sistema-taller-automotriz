@@ -19,9 +19,17 @@ export const useTallerListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (nombre?: string, direccion?: string, telefono?: string, correo?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_TALLER_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_TALLER_URI}`, {
+                params: {
+                    nombre: nombre,
+                    direccion: direccion,
+                    telefono: telefono,
+                    correo: correo,
+                    sort: 'tllNombre,asc'
+                }
+            });
             dispatch(setTallerPageResult(data));
         } catch (e) {
             let errorMessage: string;
