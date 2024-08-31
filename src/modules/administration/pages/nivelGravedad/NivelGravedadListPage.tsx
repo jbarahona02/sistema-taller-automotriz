@@ -43,12 +43,10 @@ export const NivelGravedadListPage = () => {
       <TitleComponent title={'Niveles de gravedad'} />
 
       <SearchBarLayout
-        initialValues={{ search: '' }}
-        onSubmit={() => findAll()}
-        onClean={() => findAll()}
-        onClick={() => { }}
+        initialValues={{ nombre : ''}}
+        onSubmit={({nombre}) => findAll(nombre)}
       >
-        <CustomInputText label={'Nombre'} name={'ngrNombre'} xs={20} />
+        <CustomInputText label={'Nombre'} name={'nombre'} xs={20} />
       </SearchBarLayout>
 
       <QueryContentLayout

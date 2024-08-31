@@ -19,9 +19,14 @@ export const useDiasNoDisponiblesListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (motivo?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_DIAS_NO_DISPONIBLES_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_DIAS_NO_DISPONIBLES_URI}`, { 
+                params: {
+                    search: motivo,
+                    sort: 'dndMotivo,asc'
+                }
+             });
             dispatch(setDiasNoDisponiblesPageResult(data));
         } catch (e) {
             let errorMessage: string;

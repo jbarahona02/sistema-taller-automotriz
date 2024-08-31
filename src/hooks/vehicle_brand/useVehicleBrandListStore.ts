@@ -19,9 +19,14 @@ export const useVehicleBrandListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (nombre?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_VEHICLE_BRAND_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_VEHICLE_BRAND_URI}`, {
+                params: {
+                    search: nombre,
+                    sort: 'mveNombre,asc'
+                }
+              });
             dispatch(setVehicleBrandPageResult(data));
         } catch (e) {
             let errorMessage: string;

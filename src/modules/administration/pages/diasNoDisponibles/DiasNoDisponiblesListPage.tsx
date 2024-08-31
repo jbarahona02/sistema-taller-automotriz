@@ -41,14 +41,10 @@ export const DiasNoDisponiblesListPage = () => {
       <TitleComponent title={'Dias No Disponibles'} />
 
       <SearchBarLayout
-        initialValues={{ search: '' }}
-        onSubmit={() => findAll()}
-        onClean={() => findAll()}
-        onClick={() => { }}
+        initialValues={{ motivo : ''}}
+        onSubmit={({motivo}) => findAll(motivo)}
       >
-        <CustomInputText label={'Motivo'} name={'dndMotivo'} xs={20} />
-        <CustomInputText label={'Fecha'} name={'dndFecha'} xs={20} />
-        <CustomInputText label={'Taller'} name={'taller.tllNombre'} xs={20} />
+        <CustomInputText label={'Motivo'} name={'motivo'} xs={20} />
       </SearchBarLayout>
 
       <QueryContentLayout
