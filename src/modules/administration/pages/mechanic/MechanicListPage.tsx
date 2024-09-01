@@ -8,13 +8,13 @@ import { ADMIN_BASE_PATH } from "../../../../util";
 import moment from "moment";
 import { useMechanicListStore } from "../../../../hooks";
 
-const tableHeaders = ['DPI', 'Nombres', 'Apellidos','Teléfono','Correo','Salario','Acciones'];
+const tableHeaders = ['DPI', 'Nombres', 'Apellidos','NIT','Teléfono','Correo','Salario','Acciones'];
 
 export const MechanicListPage = () => {
 
   const navigate = useNavigate();
   const { content, findAll, remove } = useMechanicListStore();
-  console.log("data: ", content);
+
   const onAdd = () => {
     navigate(`${ADMIN_BASE_PATH}/mechanic`);
   }
@@ -49,12 +49,13 @@ export const MechanicListPage = () => {
               nombreApellidos: '', dpi: '', nit: '',telefono:'',correo:''
             }}
             onSubmit={({nombreApellidos,dpi,nit,telefono,correo}) => findAll(nombreApellidos,dpi,nit,telefono,correo) }
+            onClean={() => findAll()}
          >
-          <CustomInputText label={'Nombres o apellidos'} name={'nombreApellidos'} xs={12} />
-          <CustomInputText label={'DPI'} name={'dpi'} xs={12} />
-          <CustomInputText label={'NIT'} name={'nit'} xs={12}/>
-          <CustomInputText label={'Teléfono'} name={'telefono'} xs={12}/>
-          <CustomInputText label={'Correo'} name={'correo'} xs={12}/>
+          <CustomInputText label={'Nombres o apellidos'} name={'nombreApellidos'} xs={10} />
+          <CustomInputText label={'DPI'} name={'dpi'} xs={8} />
+          <CustomInputText label={'NIT'} name={'nit'} xs={8}/>
+          <CustomInputText label={'Teléfono'} name={'telefono'} xs={8}/>
+          <CustomInputText label={'Correo'} name={'correo'} xs={10}/>
          </SearchBarLayout>
 
          <QueryContentLayout
@@ -62,7 +63,7 @@ export const MechanicListPage = () => {
                 onAdd={onAdd}
                 onDelete={onDelete}
                 onUpdate={onUpdate}
-                properties={['mecDpi', 'mecNombres', 'mecApellidos','mecTelefono','mecCorreo','mecSalario']}
+                properties={['mecDpi', 'mecNombres', 'mecApellidos','mecNit','mecTelefono','mecCorreo','mecSalario']}
                 tableBody={renderTableBody()}
                 idField="mecCodigo"
             />

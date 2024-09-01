@@ -14,14 +14,14 @@ export const useMechanicalSpecialtyListStore = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll('');
+        findAll();
     }, []);
 
-    const findAll = async (nombre: string) => {
+    const findAll = async (nombre?: string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_MECHANICAL_SPECIALTY_URI}`, { params:
                {
-                search: nombre, sort: 'emeNombre,asc'
+                search: nombre, sort: 'emeCodigo,asc'
             }});
             dispatch(setMechanicalSpecialtyPageResult(data));
         } catch (e) {
@@ -44,7 +44,7 @@ export const useMechanicalSpecialtyListStore = () => {
             }
             await automotiveWorkshopApi.delete(`${VITE_MECHANICAL_SPECIALTY_URI}/${code}`);
             await Utilities.successAlarm('Registro eliminado');
-            await findAll('');
+            await findAll();
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {

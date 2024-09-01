@@ -3,27 +3,27 @@ import { CustomInputText } from "../../../../components/form";
 import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
-import { useMechanicalSpecialtyListStore } from "../../../../hooks";
+import { useMarcaHerramientaListStore } from "../../../../hooks";
 
-const tableHeaders = ['Id', 'Nombre', 'Descripción', 'Acciones'];
+const tableHeaders = ['Id', 'Nombre','Acciones'];
 
-export const MechanicalSpecialtyListPage = () => {
+export const MarcaHerramientaListPage = () => {
   const navigate = useNavigate();
-  const { content, findAll, remove } = useMechanicalSpecialtyListStore();
+  const { content, findAll, remove } = useMarcaHerramientaListStore();
 
   const onAdd = () => {
-    navigate(`${ADMIN_BASE_PATH}/especialidad-mecanica/`);
+    navigate(`${ADMIN_BASE_PATH}/marca-herramienta/`);
   };
 
-  const onUpdate = (emeCodigo: number) => {
-    if (emeCodigo !== null) {
-      navigate(`${ADMIN_BASE_PATH}/especialidad-mecanica/${emeCodigo}`);
+  const onUpdate = (mheCodigo: number) => {
+    if (mheCodigo !== null) {
+      navigate(`${ADMIN_BASE_PATH}/marca-herramienta/${mheCodigo}`);
     }
   };
 
-  const onDelete = (emeCodigo: number) => {
-    if (emeCodigo !== null) {
-      remove(emeCodigo);
+  const onDelete = (mheCodigo: number) => {
+    if (mheCodigo !== null) {
+      remove(mheCodigo);
     }
   };
 
@@ -36,14 +36,14 @@ export const MechanicalSpecialtyListPage = () => {
 
   return (
     <>
-      <TitleComponent title={'Especialidad mecánica'} />
+      <TitleComponent title={'Marcas de herramientas'} />
 
       <SearchBarLayout
-        initialValues={{ nombre : '' }}
+        initialValues={{ nombre : ''}}
         onSubmit={({nombre}) => findAll(nombre)}
         onClean={() => findAll()}
       >
-        <CustomInputText label={'Nombre o Descripción'} name={'nombre'} xs={20} />
+        <CustomInputText label={'Nombre'} name={'nombre'} xs={20} />
       </SearchBarLayout>
 
       <QueryContentLayout
@@ -51,9 +51,9 @@ export const MechanicalSpecialtyListPage = () => {
         onAdd={onAdd}
         onDelete={onDelete}
         onUpdate={onUpdate}
-        properties={['emeCodigo', 'emeNombre', 'emeDescripcion']}
+        properties={['mheCodigo', 'mheNombre']}
         tableBody={renderTableBody()}
-        idField="emeCodigo"
+        idField="mheCodigo"
       />
     </>
   );

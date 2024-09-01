@@ -4,35 +4,30 @@ import { useEffect } from "react";
 import { getEnvVariables } from "../../helpers";
 import { automotiveWorkshopApi } from "../../api";
 import {
-    setMechanicPageResult,
+    setMarcaHerramientaPageResult
 } from "../../store/modules/administration";
 import { Utilities } from "../../util";
 
-const { VITE_MECHANIC_URI } = getEnvVariables();
+const { VITE_MARCA_HERRAMIENTA_URI } = getEnvVariables();
 
-export const useMechanicListStore = () => {
+export const useMarcaHerramientaListStore = () => {
 
-    const mechanicListValues = useSelector((state: StoreInterface) => state.mechanicListSlice);
+    const marcaHerramientaListValues = useSelector((state: StoreInterface) => state.marcaHerramientaListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
         findAll();
     }, []);
 
-    const findAll = async (nombresApellidos?:string,dpi?:string, nit?:string,telefono?:string,correo?:string) => {
+    const findAll = async (nombre?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_MECHANIC_URI}`, {
+            const { data } = await automotiveWorkshopApi.get(`${VITE_MARCA_HERRAMIENTA_URI}`, {
                 params: {
-                    search: nombresApellidos,
-                    dpi,
-                    nit,
-                    telefono,
-                    correo,
-                    sort: 'mecCodigo,asc'
+                    search: nombre,
+                    sort: 'mheCodigo,asc'
                 }
               });
-
-            dispatch(setMechanicPageResult(data));
+            dispatch(setMarcaHerramientaPageResult(data));
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -44,13 +39,13 @@ export const useMechanicListStore = () => {
         }
     };
 
-    const remove = async (code: string) => {
+    const remove = async (code: number) => {
         try {
             const result = await Utilities.warningAlarm('¿Desea eliminar el registro?');
             if (!result) {
                 return;
             }
-            await automotiveWorkshopApi.delete(`${VITE_MECHANIC_URI}/${code}`);
+            await automotiveWorkshopApi.delete(`${VITE_MARCA_HERRAMIENTA_URI}/${code}`);
             await Utilities.successAlarm('Registro eliminado');
             await findAll();
         } catch (e) {
@@ -65,7 +60,7 @@ export const useMechanicListStore = () => {
     };
 
     return {
-        ...mechanicListValues,
+        ...marcaHerramientaListValues,
         findAll,
         remove
     }

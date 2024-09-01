@@ -33,7 +33,8 @@ export const mechanicSlice = createSlice({
             state.mecFechaNacimiento = payload.mecFechaNacimiento,
             state.mecFechaContratacion = payload.mecFechaContratacion,
             state.mecAniosExperiencia = payload.mecAniosExperiencia,
-            state.emeCodigo = payload.emeCodigo
+            state.mecSalario = payload.mecSalario,
+            state.emeCodigo = payload.especialidadMecanica ? payload.especialidadMecanica.emeCodigo : null;
             state.especialidadMecanica = payload.especialidadMecanica
         },
         cleanMechanicData: (state) => {

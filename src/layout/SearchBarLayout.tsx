@@ -12,15 +12,23 @@ interface Props {
     initialValues: FormikValues;
     validationSchema?: any | (() => any);
     onSubmit: (values: FormikValues, formikHelpers: FormikHelpers<FormikValues>) => void;
+    onClean?: () => void;
 }
 
 export const SearchBarLayout = ({
     children,
     initialValues,
     validationSchema,
-    onSubmit
+    onSubmit,
+    onClean
 }: Props) => {
     const formRef = useRef<FormikProps<any>>(null);
+
+    const onClick = () => {
+        formRef.current?.resetForm();
+        if(onClean) onClean();
+    } 
+
     return (
         <Grid
             container
@@ -66,7 +74,7 @@ export const SearchBarLayout = ({
                 <IconButton onClick={() => formRef.current?.submitForm()}>
                     <SearchOutlined />
                 </IconButton>
-                <IconButton onClick={() => formRef.current?.resetForm()}>
+                <IconButton onClick={onClick}>
                     <CancelOutlined style={{ color: 'red' }} />
                 </IconButton>
             </Grid>

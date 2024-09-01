@@ -78,18 +78,18 @@ export const MechanicForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'DPI'} name={'mecDpi'} />
-            <CustomInputText label={'Nombres'} name={'mecNombres'} />
-            <CustomInputText label={'Apellidos'} name={'mecApellidos'} />
-            <CustomInputText label={'NIT'} name={'mecNit'} />
-            <CustomInputText label={'Teléfono'} name={'mecTelefono'} />
-            <CustomInputText label={'Correo electrónico'} name={'mecCorreo'} />
-            <CustomDatePicker label={'Fecha de nacimiento'} name={'mecFechaNacimiento'} />
-            <CustomInputText label={'Salario'} name={'mecSalario'} />
-            <CustomDatePicker label={'Fecha de contratación'} name={'mecFechaContratacion'} />
-            <CustomInputText label={'Años de experiencia'} name={'mecAniosExperiencia'} />
+            <CustomInputText label={'DPI'} name={'mecDpi'} xs={2} />
+            <CustomInputText label={'Nombres'} name={'mecNombres'} xs={3}/>
+            <CustomInputText label={'Apellidos'} name={'mecApellidos'} xs={3} />
+            <CustomInputText label={'NIT'} name={'mecNit'}  xs={2}/>
+            <CustomInputText label={'Teléfono'} name={'mecTelefono'}  xs={2}/>
+            <CustomInputText label={'Correo electrónico'} name={'mecCorreo'}  xs={3}/>
+            <CustomDatePicker label={'Fecha de nacimiento'} name={'mecFechaNacimiento'}  xs={2}/>
+            <CustomInputText label={'Salario'} name={'mecSalario'} xs={2}/>
+            <CustomDatePicker label={'Fecha de contratación'} name={'mecFechaContratacion'}  xs={2}/>
+            <CustomInputText label={'Años de experiencia'} name={'mecAniosExperiencia'}  xs={2}/>
            
-            <CustomSelect label={'Especialidad mecánica'} name={'emeCodigo'}>
+            <CustomSelect label={'Especialidad mecánica'} name={'emeCodigo'}  xs={3}>
                     {mechanicalSpecialty.map(specialty => (
                         <MenuItem key={specialty.emeCodigo} value={specialty.emeCodigo}>
                             {specialty.emeNombre}
