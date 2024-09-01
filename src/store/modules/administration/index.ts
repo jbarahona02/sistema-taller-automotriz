@@ -18,3 +18,5 @@ export * from './mechanicalSpecialty/mechanicalSpecialtyListSlice';
 export * from './mechanicalSpecialty/mechanicalSpecialtySlice';
 export * from './marcaHerramienta/marcaHerramientaSlice';
 export * from './marcaHerramienta/marcaHerramientaListSlice';
+export * from './herramienta/herramientaListSlice';
+export * from './herramienta/herramientaSlice';

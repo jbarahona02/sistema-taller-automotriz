@@ -1,5 +1,5 @@
 import {ModuleRoute} from "../../../interfaces";
-import { MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
+import { HerramientaListPage, HerramientaPage, MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
 import { ClienteListPage } from "../pages/cliente/ClienteListPage";
 import { ClientePage } from "../pages/cliente/ClientePage";
 import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
@@ -143,5 +143,17 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'marca-herramienta-list',
         Component: MarcaHerramientaListPage
+    },
+    {
+        path: 'herramienta',
+        Component: HerramientaPage
+    },
+    {
+        path: 'herramienta/:herCodigo',
+        Component: HerramientaPage
+    },
+    {
+        path: 'herramientas-list',
+        Component: HerramientaListPage
     }
 ];

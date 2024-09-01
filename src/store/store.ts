@@ -1,6 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {sidenavSlice} from "./ui";
-import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MarcaHerramientaInterface, MarcaHerramientaListInterface, MechanicalSpecialtyInterface, MechanicalSpecialtyListInterface, MechanicInterface, MechanicListInterface, NivelGravedadInterface, NivelGravedadListInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
+import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, HerramientaInterface, HerramientaListInterface, MarcaHerramientaInterface, MarcaHerramientaListInterface, MechanicalSpecialtyInterface, MechanicalSpecialtyListInterface, MechanicInterface, MechanicListInterface, NivelGravedadInterface, NivelGravedadListInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
 import { diasNoDisponiblesListSlice, diasNoDisponiblesSlice, marcaHerramientaListSlice, marcaHerramientaSlice, mechanicalSpecialtyListSlice, mechanicalSpecialtySlice, mechanicListSlice, mechanicSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice } from "./modules/administration";
 import { tallerListSlice } from "./modules/administration/taller/tallerListSlice";
 import { tallerSlice } from "./modules/administration/taller/tallerSlice";
@@ -10,6 +10,8 @@ import { vehiculoListSlice } from "./modules/administration/vehiculo/vehiculoLis
 import { vehiculoSlice } from "./modules/administration/vehiculo/vehiculoSlice";
 import { nivelGravedadListSlice } from "./modules/administration/nivelGravedad/nivelGravedadListSlice";
 import { nivelGravedadSlice } from "./modules/administration/nivelGravedad/nivelGravedadSlice";
+import { herramientaListSlice } from "./modules/administration/herramienta/herramientaListSlice";
+import { herramientaSlice } from "./modules/administration/herramienta/herramientaSlice";
 
 export interface StoreInterface {
     mechanicListSlice: MechanicListInterface,
@@ -31,7 +33,9 @@ export interface StoreInterface {
     mechanicalSpecialtySlice: MechanicalSpecialtyInterface,
     mechanicalSpecialtyListSlice: MechanicalSpecialtyListInterface,
     marcaHerramientaSlice: MarcaHerramientaInterface,
-    marcaHerramientaListSlice: MarcaHerramientaListInterface
+    marcaHerramientaListSlice: MarcaHerramientaListInterface,
+    herramientaListSlice: HerramientaListInterface,
+    herramientaSlice: HerramientaInterface
 }
 
 export const store = configureStore({
@@ -56,7 +60,9 @@ export const store = configureStore({
         mechanicalSpecialtyListSlice: mechanicalSpecialtyListSlice.reducer,
         mechanicalSpecialtySlice: mechanicalSpecialtySlice.reducer,
         marcaHerramientaSlice: marcaHerramientaSlice.reducer,
-        marcaHerramientaListSlice: marcaHerramientaListSlice.reducer
+        marcaHerramientaListSlice: marcaHerramientaListSlice.reducer,
+        herramientaListSlice: herramientaListSlice.reducer,
+        herramientaSlice: herramientaSlice.reducer 
     }
 });
 

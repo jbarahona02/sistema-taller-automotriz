@@ -67,6 +67,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/marca-herramienta-list`,
                 name: "Marcas de herramientas",
                 NavIcon: Build
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/herramientas-list`,
+                name: "Herramientas",
+                NavIcon: HomeRepairService
             }
         ]
     }

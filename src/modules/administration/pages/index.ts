@@ -18,3 +18,5 @@ export * from "./mechanicalSpecialty/MechanicalSpecialtyListPage.tsx";
 export * from "./mechanicalSpecialty/MechanicalSpecialtyPage.tsx";
 export * from "./marcaHerramienta/MarcaHerramientaListPage.tsx";
 export * from "./marcaHerramienta/MarcaHerramientaPage.tsx";
+export * from "./herramientas/HerramientaListPage.tsx";
+export * from "./herramientas/HerramientaPage.tsx";

@@ -55,5 +55,5 @@ export const mechanicValidationSchema = Yup.object({
     emeCodigo: Yup 
         .number()
         .moreThan(0, 'El código de especialidad es requerido')
-        .required('El código de especialidad es requerida'),
+        .required('La especialidad mecánica es requerida'),
 })
