@@ -22,3 +22,5 @@ export * from './herramienta/herramientaListSlice';
 export * from './herramienta/herramientaSlice';
 export * from './cotizacion/cotizacionListSlice';
 export * from './cotizacion/cotizacionSlice';
+export * from './tipoPago/tipoPagoListSlice';
+export * from './tipoPago/tipoPagoSlice';

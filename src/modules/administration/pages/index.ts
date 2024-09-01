@@ -22,3 +22,5 @@ export * from "./herramientas/HerramientaListPage.tsx";
 export * from "./herramientas/HerramientaPage.tsx";
 export * from "./cotizacion/CotizacionListPage.tsx";
 export * from "./cotizacion/CotizacionPage.tsx";
+export * from "./tipoPago/TipoPagoListPage.tsx";
+export * from "./tipoPago/TipoPagoPage.tsx";

@@ -1,5 +1,5 @@
 import {ModuleRoute} from "../../../interfaces";
-import { CotizacionListPage, CotizacionPage, HerramientaListPage, HerramientaPage, MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
+import { CotizacionListPage, CotizacionPage, HerramientaListPage, HerramientaPage, MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, TipoPagoListPage, TipoPagoPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
 import { ClienteListPage } from "../pages/cliente/ClienteListPage";
 import { ClientePage } from "../pages/cliente/ClientePage";
 import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
@@ -167,6 +167,18 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'cotizacion-list',
         Component: CotizacionListPage
+    },
+    {
+        path: 'tipo-pago-list',
+        Component: TipoPagoListPage
+    },
+    {
+        path: 'tipo-pago',
+        Component: TipoPagoPage
+    },
+    {
+        path: 'tipo-pago/:tpaCodigo',
+        Component: TipoPagoPage
     }
 
 ];

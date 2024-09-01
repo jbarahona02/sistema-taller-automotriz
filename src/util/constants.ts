@@ -10,7 +10,8 @@ import {
     Warning,
     Construction,
     Build,
-    AttachMoney
+    AttachMoney,
+    RequestQuote
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -78,6 +79,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/cotizacion-list`,
                 name: "Cotizaciones",
                 NavIcon:  AttachMoney
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/tipo-pago-list`,
+                name: "Tipos de pago",
+                NavIcon:  RequestQuote
             }
         ]
     }
