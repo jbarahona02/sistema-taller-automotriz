@@ -84,9 +84,9 @@ export const MechanicForm = () => {
             <CustomInputText label={'NIT'} name={'mecNit'}  xs={2}/>
             <CustomInputText label={'Teléfono'} name={'mecTelefono'}  xs={2}/>
             <CustomInputText label={'Correo electrónico'} name={'mecCorreo'}  xs={3}/>
-            <CustomDatePicker label={'Fecha de nacimiento'} name={'mecFechaNacimiento'}  xs={2}/>
+            <CustomDatePicker label={'Fecha de nacimiento'} name={'mecFechaNacimiento'}  xs={2} restrictToToday={true}/>
             <CustomInputText label={'Salario'} name={'mecSalario'} xs={2}/>
-            <CustomDatePicker label={'Fecha de contratación'} name={'mecFechaContratacion'}  xs={2}/>
+            <CustomDatePicker label={'Fecha de contratación'} name={'mecFechaContratacion'}  xs={2} restrictToToday={true}/>
             <CustomInputText label={'Años de experiencia'} name={'mecAniosExperiencia'}  xs={2}/>
            
             <CustomSelect label={'Especialidad mecánica'} name={'emeCodigo'}  xs={3}>

@@ -14,19 +14,24 @@ interface Props {
     name: string;
     placeholder?: string;
     xs?: number;
+    restrictToToday?: boolean; // Para restringir la fecha máxima
+    minDate?: string; // Nueva propiedad para la fecha mínima en formato string
     [x: string]: any;
     onChange?: (value: Moment | null) => void;
 }
 
-export const CustomDatePicker = ({ xs = 6, onChange, ...props }: Props) => {
+export const CustomDatePicker = ({ xs = 6, onChange, restrictToToday = false, minDate, ...props }: Props) => {
     const { setFieldValue } = useFormikContext();
     const [field, meta] = useField(props);
 
     // Convierte el valor del campo a Moment
-    const fieldValue = field.value ? moment(field.value) : null;
+    const fieldValue = field.value ? moment(field.value) : undefined;
 
-    // Configura la fecha máxima permitida como Moment
-    const maxDate: Moment = moment();
+    // Configura la fecha máxima permitida si restrictToToday es true
+    const maxDate: Moment | undefined = restrictToToday ? moment() : undefined;
+
+    // Convierte minDate de string a Moment, si es proporcionada
+    const minDateMoment: Moment | undefined = minDate ? moment(minDate, 'DD/MM/YYYY') : undefined;
 
     return (
         <Grid item xs={xs}>
@@ -39,14 +44,15 @@ export const CustomDatePicker = ({ xs = 6, onChange, ...props }: Props) => {
                     {...props}
                     value={fieldValue}
                     onChange={(value: Moment | null) => {
-                        setFieldValue(field.name, value ? value.toDate() : null); 
+                        setFieldValue(field.name, value ? value.toDate() : undefined); 
                         if (onChange) {
                             onChange(value);
                         }
                     }}
                     sx={{ width: '100%' }}
                     format={'DD/MM/YYYY'}
-                    maxDate={maxDate} // Usa Moment para la fecha máxima
+                    maxDate={maxDate} // Usa undefined si no hay restricción de fecha máxima
+                    minDate={minDateMoment} // Aplica la fecha mínima si es proporcionada
                     renderInput={(params) => (
                         <TextField
                             {...params}
