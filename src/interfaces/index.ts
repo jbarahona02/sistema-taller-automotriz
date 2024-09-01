@@ -7,3 +7,5 @@ export * from './cliente.interface.ts';
 export * from './diasNoDisponibles.interface.ts';
 export * from './vehiculo.intrerface.ts';
 export * from './nivelGravedad.interface.ts';
+export * from './mechanicalSpecialty.interface.ts';
+export * from './marcaHerramienta.interface.ts';

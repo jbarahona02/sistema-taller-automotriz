@@ -1,5 +1,5 @@
-export * from './mechanicListTypeSlice';
-export * from './mechanicTypeSlice';
+export * from './mechanic/mechanicListSlice';
+export * from './mechanic/mechanicSlice';
 export * from './vehicleBrand/vehicleBrandListSlice';
 export * from './vehicleBrand/vehicleBrandSlice';
 export * from './typeVehicle/typeVehicleListSlice';
@@ -16,3 +16,5 @@ export * from './nivelGravedad/nivelGravedadListSlice';
 export * from './nivelGravedad/nivelGravedadSlice';
 export * from './mechanicalSpecialty/mechanicalSpecialtyListSlice';
 export * from './mechanicalSpecialty/mechanicalSpecialtySlice';
+export * from './marcaHerramienta/marcaHerramientaSlice';
+export * from './marcaHerramienta/marcaHerramientaListSlice';

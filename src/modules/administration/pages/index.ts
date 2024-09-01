@@ -1,5 +1,5 @@
-export * from "./MechanicListPage.tsx"
-export * from "./MechanicPage.tsx"
+export * from "./mechanic/MechanicListPage.tsx"
+export * from "./mechanic/MechanicPage.tsx"
 export * from "./vehicleBrand/VehicleBrandListPage.tsx" 
 export * from "./vehicleBrand/VehicleBrandPage.tsx" 
 export * from "./typeVehicle/TypeVehicleListPage.tsx" 
@@ -16,3 +16,5 @@ export * from "./nivelGravedad/NivelGravedadListPage.tsx"
 export * from "./nivelGravedad/NivelGravedadPage.tsx" 
 export * from "./mechanicalSpecialty/MechanicalSpecialtyListPage.tsx";
 export * from "./mechanicalSpecialty/MechanicalSpecialtyPage.tsx";
+export * from "./marcaHerramienta/MarcaHerramientaListPage.tsx";
+export * from "./marcaHerramienta/MarcaHerramientaPage.tsx";

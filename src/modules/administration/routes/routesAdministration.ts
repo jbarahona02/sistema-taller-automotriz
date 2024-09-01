@@ -1,5 +1,5 @@
 import {ModuleRoute} from "../../../interfaces";
-import { MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
+import { MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
 import { ClienteListPage } from "../pages/cliente/ClienteListPage";
 import { ClientePage } from "../pages/cliente/ClientePage";
 import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
@@ -23,6 +23,10 @@ export const routesAdministration: ModuleRoute[] = [
     },
     {
         path: 'mechanic',
+        Component: MechanicPage 
+    },
+    {
+        path: 'mechanic/:mecCodigo',
         Component: MechanicPage 
     },
     {
@@ -115,5 +119,29 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'nivel-gravedad/:ngrCodigo',
         Component: NivelGravedadPage 
+    },
+    {
+        path: 'especialidad-mecanica-list',
+        Component: MechanicalSpecialtyListPage
+    },
+    {
+        path: 'especialidad-mecanica',
+        Component: MechanicalSpecialtyPage
+    }, 
+    {
+        path: 'especialidad-mecanica/:emeCodigo',
+        Component: MechanicalSpecialtyPage
+    },
+    {
+        path: 'marca-herramienta',
+        Component: MarcaHerramientaPage
+    },
+    {
+        path: 'marca-herramienta/:mheCodigo',
+        Component: MarcaHerramientaPage
+    },
+    {
+        path: 'marca-herramienta-list',
+        Component: MarcaHerramientaListPage
     }
 ];

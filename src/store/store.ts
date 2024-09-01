@@ -1,7 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {sidenavSlice} from "./ui";
-import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MechanicalSpecialtyInterface, MechanicalSpecialtyListInterface, MechanicInterface, MechanicSearchBarInterface, NivelGravedadInterface, NivelGravedadListInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
-import { diasNoDisponiblesListSlice, diasNoDisponiblesSlice, mechanicalSpecialtyListSlice, mechanicalSpecialtySlice, mechanicListSlice, mechanicSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice } from "./modules/administration";
+import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MarcaHerramientaInterface, MarcaHerramientaListInterface, MechanicalSpecialtyInterface, MechanicalSpecialtyListInterface, MechanicInterface, MechanicListInterface, NivelGravedadInterface, NivelGravedadListInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
+import { diasNoDisponiblesListSlice, diasNoDisponiblesSlice, marcaHerramientaListSlice, marcaHerramientaSlice, mechanicalSpecialtyListSlice, mechanicalSpecialtySlice, mechanicListSlice, mechanicSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice } from "./modules/administration";
 import { tallerListSlice } from "./modules/administration/taller/tallerListSlice";
 import { tallerSlice } from "./modules/administration/taller/tallerSlice";
 import { clienteListSlice } from "./modules/administration/cliente/clienteListSlice";
@@ -12,7 +12,7 @@ import { nivelGravedadListSlice } from "./modules/administration/nivelGravedad/n
 import { nivelGravedadSlice } from "./modules/administration/nivelGravedad/nivelGravedadSlice";
 
 export interface StoreInterface {
-    mechanicListSlice: MechanicSearchBarInterface,
+    mechanicListSlice: MechanicListInterface,
     mechanicSlice : MechanicInterface,
     vehicleBrandListSlice: VehicleBrandListInterface,
     vehicleBrandSlice: VehicleBrandInterface,
@@ -29,14 +29,16 @@ export interface StoreInterface {
     nivelGravedadListSlice: NivelGravedadListInterface,
     nivelGravedadSlice: NivelGravedadInterface,
     mechanicalSpecialtySlice: MechanicalSpecialtyInterface,
-    mechanicalSpecialtyListSlice: MechanicalSpecialtyListInterface
+    mechanicalSpecialtyListSlice: MechanicalSpecialtyListInterface,
+    marcaHerramientaSlice: MarcaHerramientaInterface,
+    marcaHerramientaListSlice: MarcaHerramientaListInterface
 }
 
 export const store = configureStore({
     reducer: {
         sideNav: sidenavSlice.reducer,
-        mechanicList: mechanicListSlice.reducer,
-        mechanic: mechanicSlice.reducer,
+        mechanicListSlice: mechanicListSlice.reducer,
+        mechanicSlice: mechanicSlice.reducer,
         vehicleBrandListSlice: vehicleBrandListSlice.reducer,
         vehicleBrandSlice: vehicleBrandSlice.reducer,
         typeVehicleListSlice: typeVehicleListSlice.reducer,
@@ -52,7 +54,9 @@ export const store = configureStore({
         nivelGravedadListSlice: nivelGravedadListSlice.reducer,
         nivelGravedadSlice: nivelGravedadSlice.reducer,
         mechanicalSpecialtyListSlice: mechanicalSpecialtyListSlice.reducer,
-        mechanicalSpecialtySlice: mechanicalSpecialtySlice.reducer
+        mechanicalSpecialtySlice: mechanicalSpecialtySlice.reducer,
+        marcaHerramientaSlice: marcaHerramientaSlice.reducer,
+        marcaHerramientaListSlice: marcaHerramientaListSlice.reducer
     }
 });
 
