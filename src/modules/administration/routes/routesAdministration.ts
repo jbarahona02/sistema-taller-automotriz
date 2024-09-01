@@ -1,5 +1,5 @@
 import {ModuleRoute} from "../../../interfaces";
-import { HerramientaListPage, HerramientaPage, MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
+import { CotizacionListPage, CotizacionPage, HerramientaListPage, HerramientaPage, MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
 import { ClienteListPage } from "../pages/cliente/ClienteListPage";
 import { ClientePage } from "../pages/cliente/ClientePage";
 import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
@@ -155,5 +155,18 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'herramientas-list',
         Component: HerramientaListPage
+    },
+    {
+        path: 'cotizacion',
+        Component: CotizacionPage
+    }, 
+    {
+        path: 'cotizacion/:cotCodigo',
+        Component: CotizacionPage
+    },
+    {
+        path: 'cotizacion-list',
+        Component: CotizacionListPage
     }
+
 ];

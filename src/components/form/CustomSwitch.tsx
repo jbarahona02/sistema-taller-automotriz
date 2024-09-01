@@ -33,6 +33,10 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
+const CustomLabel = styled('span')(({ theme }) => ({
+  marginLeft: 9, // Añade margen izquierdo de 9px
+}));
+
 interface Props {
   label: string;
   name: string;
@@ -55,10 +59,9 @@ export const CustomSwitchComponent = ({ label, name, xs = 15 }: Props) => {
             onChange={handleChange}
           />
         }
-        label={label}
+        label={<CustomLabel>{label}</CustomLabel>} // Usa el componente CustomLabel
       />
     </Grid>
-
   );
 };
 

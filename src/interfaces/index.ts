@@ -10,3 +10,4 @@ export * from './nivelGravedad.interface.ts';
 export * from './mechanicalSpecialty.interface.ts';
 export * from './marcaHerramienta.interface.ts';
 export * from './herramienta.interface.ts';
+export * from './cotizacion.interface.ts';

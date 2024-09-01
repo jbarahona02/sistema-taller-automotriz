@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { CustomInputText } from "../../../../components/form";
 import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
-import { ADMIN_BASE_PATH, Utilities } from "../../../../util";
+import { ADMIN_BASE_PATH } from "../../../../util";
 import { useHerramientaListStore } from "../../../../hooks";
 
 const tableHeaders = ['Id','Nombre','Descripción','Condición','Mecánico','Marca','Acciones'];
@@ -32,8 +32,8 @@ export const HerramientaListPage = () => {
 
     return content.map((item) => ({
       ...item,
-      'mecanico.mecNombres': item.mecanico ? Utilities.capitalizeFirstLetter(item.mecanico.mecNombres!) + " " +
-        Utilities.capitalizeFirstLetter(item.mecanico.mecApellidos!) : 'No disponible',
+      'mecanico.mecNombres': item.mecanico ? item.mecanico.mecNombres + " " +
+        item.mecanico.mecApellidos : 'No disponible',
       'marcaHerramienta.mheNombre': item.marcaHerramienta ? item.marcaHerramienta.mheNombre : 'No disponible'
     }));
   };

@@ -20,3 +20,5 @@ export * from "./marcaHerramienta/MarcaHerramientaListPage.tsx";
 export * from "./marcaHerramienta/MarcaHerramientaPage.tsx";
 export * from "./herramientas/HerramientaListPage.tsx";
 export * from "./herramientas/HerramientaPage.tsx";
+export * from "./cotizacion/CotizacionListPage.tsx";
+export * from "./cotizacion/CotizacionPage.tsx";

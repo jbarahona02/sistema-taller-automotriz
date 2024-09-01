@@ -9,7 +9,8 @@ import {
     DirectionsCar,
     Warning,
     Construction,
-    Build
+    Build,
+    AttachMoney
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -72,6 +73,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/herramientas-list`,
                 name: "Herramientas",
                 NavIcon: HomeRepairService
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/cotizacion-list`,
+                name: "Cotizaciones",
+                NavIcon:  AttachMoney
             }
         ]
     }
