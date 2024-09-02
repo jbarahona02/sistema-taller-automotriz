@@ -24,3 +24,5 @@ export * from './cotizacion/cotizacionListSlice';
 export * from './cotizacion/cotizacionSlice';
 export * from './tipoPago/tipoPagoListSlice';
 export * from './tipoPago/tipoPagoSlice';
+export * from './tipoRepuesto/tipoRepuestoListSlice';
+export * from './tipoRepuesto/tipoRepuestoSlice';

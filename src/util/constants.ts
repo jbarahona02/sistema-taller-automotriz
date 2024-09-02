@@ -11,7 +11,8 @@ import {
     Construction,
     Build,
     AttachMoney,
-    RequestQuote
+    RequestQuote,
+    FindReplace
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -84,7 +85,13 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/tipo-pago-list`,
                 name: "Tipos de pago",
                 NavIcon:  RequestQuote
-            }
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/tipo-repuesto-list`,
+                name: "Tipos de repuesto",
+                NavIcon:  FindReplace
+            },
+
         ]
     }
 ];

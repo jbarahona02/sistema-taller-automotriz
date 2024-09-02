@@ -24,3 +24,5 @@ export * from "./cotizacion/CotizacionListPage.tsx";
 export * from "./cotizacion/CotizacionPage.tsx";
 export * from "./tipoPago/TipoPagoListPage.tsx";
 export * from "./tipoPago/TipoPagoPage.tsx";
+export * from "./tipoRepuesto/TipoRepuestoListPage.tsx";
+export * from "./tipoRepuesto/TipoRepuestoPage.tsx";
