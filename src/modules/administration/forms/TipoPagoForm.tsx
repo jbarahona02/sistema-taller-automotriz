@@ -19,10 +19,12 @@ export const TipoPagoForm = () => {
     } = useTipoPagoStore();
 
     const onSubmit = async (values: FormikValues) => {
-        const isSuccess = await saveOrUpdate({
-            tpaCodigo: tpaCodigo ? tpaCodigo : 0,
-            tpaNombre: values.tpaNombre
-        });
+        let params : any = {};
+
+        if(tpaCodigo) params.tpaCodigo = tpaCodigo
+
+        params.tpaNombre = values.tpaNombre
+        const isSuccess = await saveOrUpdate(params);
         if(tpaCodigo){
             await findById(Number(tpaCodigo));
         }

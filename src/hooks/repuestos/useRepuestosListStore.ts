@@ -1,29 +1,33 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getEnvVariables } from "../../helpers";
 import { StoreInterface } from "../../store";
 import { useEffect } from "react";
+import { getEnvVariables } from "../../helpers";
 import { automotiveWorkshopApi } from "../../api";
-
+import { setRepuestoPageResult } from "../../store/modules/administration";
 import { Utilities } from "../../util";
-import { setTipoRepuestoPageResult } from "../../store/modules/administration";
 
-const { VITE_TIPO_REPUESTO_URI } = getEnvVariables();
+const { VITE_REPUESTO_URI } = getEnvVariables();
 
-export const useTipoRepuestoListStore = () => {
-    const tipoRepuestoListValues = useSelector((state: StoreInterface) => state.tipoRepuestoListSlice);
+export const useRepuestoListStore = () => {
+
+    const repuestoListValues = useSelector((state: StoreInterface) => state.repuestoListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
         findAll();
     }, []);
 
-    const findAll = async (nombreODescripcion?: string) => {
+    const findAll = async (nombreODescripcion?:string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_TIPO_REPUESTO_URI}`, { params:
-               {
-                search: nombreODescripcion, sort: 'trpCodigo,asc'
-            }});
-            dispatch(setTipoRepuestoPageResult(data));
+            const { data } = await automotiveWorkshopApi.get(`${VITE_REPUESTO_URI}`,{
+                
+                params: {
+                    search: nombreODescripcion,
+                    sort: 'repCodigo,asc'
+                }
+              }
+            );
+            dispatch(setRepuestoPageResult(data));
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -35,14 +39,13 @@ export const useTipoRepuestoListStore = () => {
         }
     };
 
-
-    const remove = async (code: number) => {
+    const remove = async (code: string) => {
         try {
             const result = await Utilities.warningAlarm('¿Desea eliminar el registro?');
             if (!result) {
                 return;
             }
-            await automotiveWorkshopApi.delete(`${VITE_TIPO_REPUESTO_URI}/${code}`);
+            await automotiveWorkshopApi.delete(`${VITE_REPUESTO_URI}/${code}`);
             await Utilities.successAlarm('Registro eliminado');
             await findAll();
         } catch (e) {
@@ -57,8 +60,8 @@ export const useTipoRepuestoListStore = () => {
     };
 
     return {
-        ...tipoRepuestoListValues,
+        ...repuestoListValues,
         findAll,
         remove
     }
-}
+};

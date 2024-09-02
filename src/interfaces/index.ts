@@ -13,3 +13,5 @@ export * from './herramienta.interface.ts';
 export * from './cotizacion.interface.ts';
 export * from './tipoPago.interface.ts';
 export * from './tipoRepuesto.interface.ts';
+export * from './proveedor.interface.ts';
+export * from './repuesto.interface.ts';

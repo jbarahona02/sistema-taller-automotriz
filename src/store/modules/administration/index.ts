@@ -26,3 +26,7 @@ export * from './tipoPago/tipoPagoListSlice';
 export * from './tipoPago/tipoPagoSlice';
 export * from './tipoRepuesto/tipoRepuestoListSlice';
 export * from './tipoRepuesto/tipoRepuestoSlice';
+export * from './proveedor/proveedorListSlice';
+export * from './proveedor/proveedorSlice';
+export * from './repuesto/repuestoListSlice';
+export * from './repuesto/repuestoSlice';

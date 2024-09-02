@@ -7,6 +7,7 @@ import {
     setCotizacionPageResult
 } from "../../store/modules/administration";
 import { Utilities } from "../../util";
+import moment from "moment";
 
 const { VITE_COTIZACION_URI } = getEnvVariables();
 
@@ -25,19 +26,19 @@ export const useCotizacionListStore = () => {
         let params : any = {};
 
         if (inicioFechaCreacion) {
-            params.inicioFechaCreacion = inicioFechaCreacion;
+            params.inicioFechaCreacion = moment(inicioFechaCreacion).utc().format("YYYY-MM-DD 00:00:00");
         }
         
         if (finFechaCreacion) {
-            params.finFechaCreacion = finFechaCreacion;
+            params.finFechaCreacion = moment(finFechaCreacion).utc().format("YYYY-MM-DD 23:59:59");;
         }
         
         if (inicioFechaVencimiento) {
-            params.inicioFechaVencimiento = inicioFechaVencimiento;
+            params.inicioFechaVencimiento = moment(inicioFechaVencimiento).utc().format("YYYY-MM-DD 00:00:00");
         }
         
         if (finFechaVencimiento) {
-            params.finFechaVencimiento = finFechaVencimiento;
+            params.finFechaVencimiento = moment(finFechaVencimiento).utc().format("YYYY-MM-DD 23:59:59");;
         }
         
         // Añadir siempre el parámetro de sort

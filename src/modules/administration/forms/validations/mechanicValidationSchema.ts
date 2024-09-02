@@ -16,13 +16,13 @@ export const mechanicValidationSchema = Yup.object({
         .required('Los apellidos son requeridos'),
     mecNit: Yup
         .string()
-        .matches(/^\d{9}$|^\d{7}-\d{1}$|^\d{8}-\d{1}$/, 
-            "El campo debe tener 9 dígitos o un formato de 7 o 8 dígitos seguidos de un guión y un dígito")
+        // .matches(/^\d{9}$|^\d{7}-\d{1}$|^\d{8}-\d{1}$/, 
+        //     "El campo debe tener 9 dígitos o un formato de 7 o 8 dígitos seguidos de un guión y un dígito")
         .max(10,'El NIT puede ser de 10 caracteres máximo')
         .required('El NIT es requerido'),
     mecTelefono: Yup
         .string()
-        .matches(/^\d{4}-\d{4}$/, "El número de teléfono debe tener el formato 4445-5556")
+        .matches(/^\d{1,6}-\d{4}-\d{4}$/, 'El número de teléfono no es válido. Debe seguir el formato "extensión 1234-5678"')
         .max(15, 'El teléfono puede ser de 15 caracteres máximo')
         .required('El teléfono es requerido'),
     mecCorreo: Yup

@@ -1,5 +1,5 @@
 import {ModuleRoute} from "../../../interfaces";
-import { CotizacionListPage, CotizacionPage, HerramientaListPage, HerramientaPage, MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, TipoPagoListPage, TipoPagoPage, TipoRepuestoListPage, TipoRepuestoPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
+import { CotizacionListPage, CotizacionPage, HerramientaListPage, HerramientaPage, MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, ProveedorListPage, ProveedorPage, RepuestoListPage, RepuestoPage, TipoPagoListPage, TipoPagoPage, TipoRepuestoListPage, TipoRepuestoPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
 import { ClienteListPage } from "../pages/cliente/ClienteListPage";
 import { ClientePage } from "../pages/cliente/ClientePage";
 import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
@@ -191,5 +191,29 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'tipo-repuesto-list',
         Component: TipoRepuestoListPage
+    },
+    {
+        path: 'proveedor/',
+        Component: ProveedorPage
+    },
+    {
+        path: 'proveedor/:prvCodigo',
+        Component: ProveedorPage
+    },
+    {
+        path: 'proveedor-list',
+        Component: ProveedorListPage
+    },
+    {
+        path: 'repuestos-list',
+        Component: RepuestoListPage
+    },
+    {
+        path: 'repuesto/',
+        Component: RepuestoPage
+    },
+    {
+        path: 'repuesto/:repCodigo',
+        Component: RepuestoPage
     },
 ];

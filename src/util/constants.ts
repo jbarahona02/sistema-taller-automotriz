@@ -12,7 +12,9 @@ import {
     Build,
     AttachMoney,
     RequestQuote,
-    FindReplace
+    FindReplace,
+    Inventory,
+    Engineering
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -91,7 +93,16 @@ export const NAVBAR_ROUTES: SideNavType = [
                 name: "Tipos de repuesto",
                 NavIcon:  FindReplace
             },
-
+            {
+                to: `${ADMIN_BASE_PATH}/proveedor-list`,
+                name: "Proveedores",
+                NavIcon:  Inventory
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/repuestos-list`,
+                name: "Repuestos",
+                NavIcon:  Engineering
+            },
         ]
     }
 ];
