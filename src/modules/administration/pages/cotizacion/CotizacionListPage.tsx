@@ -6,7 +6,7 @@ import { ADMIN_BASE_PATH } from "../../../../util";
 import { useCotizacionListStore } from "../../../../hooks";
 import moment from "moment";
 
-const tableHeaders = ['Id', 'Fecha de creación', 'Fecha de vencimiento', '% Descuento', 'Total', 'Cliente','Acciones'];
+const tableHeaders = ['Id', 'Fecha de creación', 'Fecha de vencimiento', '% Descuento', 'Total','Vigente', 'Cliente','Acciones'];
 
 export const CotizacionListPage = () => {
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ export const CotizacionListPage = () => {
 
     return content.map((item) => ({
       ...item,
+      'estado': item.cotVigente,
       'fechaCreacion': `${moment(item.cotFechaCreacion).format('DD/MM/YYYY')}`,
       'fechaVencimiento': `${moment(item.cotFechaVencimiento).format('DD/MM/YYYY')}`,
       'cliente.cliNombres': item.cliente ? `${item.cliente.cliNombres} ${item.cliente.cliApellidos}` : 'No disponible',
@@ -61,7 +62,7 @@ export const CotizacionListPage = () => {
         onAdd={onAdd}
         onDelete={onDelete}
         onUpdate={onUpdate}
-        properties={['cotCodigo', 'fechaCreacion', 'fechaVencimiento', 'cotDescuento','cotTotal','cliente.cliNombres']}
+        properties={['cotCodigo', 'fechaCreacion', 'fechaVencimiento', 'cotDescuento','cotTotal','estado','cliente.cliNombres']}
         tableBody={renderTableBody()}
         idField="cotCodigo"
       />
