@@ -4,14 +4,12 @@ import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import { useMechanicalSpecialtyListStore } from "../../../../hooks";
-import { useState } from "react";
 
 const tableHeaders = ['Id', 'Nombre', 'Descripción', 'Acciones'];
 
 export const MechanicalSpecialtyListPage = () => {
   const navigate = useNavigate();
   const { content, findAll, remove } = useMechanicalSpecialtyListStore();
-  const [search, setSearch] = useState('');
 
   const onAdd = () => {
     navigate(`${ADMIN_BASE_PATH}/especialidad-mecanica/`);
@@ -43,6 +41,7 @@ export const MechanicalSpecialtyListPage = () => {
       <SearchBarLayout
         initialValues={{ nombre : '' }}
         onSubmit={({nombre}) => findAll(nombre)}
+        onClean={() => findAll()}
       >
         <CustomInputText label={'Nombre o Descripción'} name={'nombre'} xs={20} />
       </SearchBarLayout>

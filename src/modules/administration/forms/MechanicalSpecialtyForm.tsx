@@ -19,7 +19,7 @@ export const MechanicalSpecialtyForm = () => {
     } = useMechanicalSpecialtyStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             emeCodigo: emeCodigo ? emeCodigo : 0,
             emeNombre: values.emeNombre,
             emeDescripcion: values.emeDescripcion,
@@ -28,7 +28,9 @@ export const MechanicalSpecialtyForm = () => {
             await findById(Number(emeCodigo));
         }
 
-        onClean();
+        if(isSuccess){
+            onClean();
+        }    
     }
 
     const onClean = () => {
@@ -48,8 +50,8 @@ export const MechanicalSpecialtyForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'emeNombre'} />
-            <CustomInputText label={'Descripción'} name={'emeDescripcion'} />
+            <CustomInputText label={'Nombre'} name={'emeNombre'}  xs={3} />
+            <CustomInputText label={'Descripción'} name={'emeDescripcion'}  xs={5} />
         </FormLayout>
     );
 };
