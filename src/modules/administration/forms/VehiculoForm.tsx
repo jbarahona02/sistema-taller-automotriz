@@ -71,26 +71,26 @@ export const VehiculoForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Placa'} name={'vehPlaca'} />
-            <CustomInputText label={'Número de chasis'} name={'vehNumeroChasis'} />
-            <CustomInputText label={'Modelo'} name={'vheModelo'} />
-            <CustomInputText label={'Color'} name={'vheColor'} />
-            <CustomInputText label={'Kilometraje'} name={'vehKilometraje'} />
-            <CustomSelect label={'Cliente'} name={'cliCodigo'}>
+            <CustomInputText label={'Placa'} name={'vehPlaca'} xs={3}/>
+            <CustomInputText label={'Número de chasis'} name={'vehNumeroChasis'} xs={4}/>
+            <CustomInputText label={'Modelo'} name={'vheModelo'} xs={2}/>
+            <CustomInputText label={'Color'} name={'vheColor'} xs={2}/>
+            <CustomInputText label={'Kilometraje'} name={'vehKilometraje'} xs={2}/>
+            <CustomSelect label={'Cliente'} name={'cliCodigo'} xs={3}>
                 {cliente.map(t => (
                     <MenuItem key={t.cliCodigo} value={t.cliCodigo}>
                         {t.cliNombres}
                     </MenuItem>
                 ))}
             </CustomSelect>
-            <CustomSelect label={'Marca de vehiculo'} name={'mveCodigo'}>
+            <CustomSelect label={'Marca de vehiculo'} name={'mveCodigo'} xs={3}>
                 {marcaVehiculo.map(t => (
                     <MenuItem key={t.mveCodigo} value={t.mveCodigo}>
                         {t.mveNombre}
                     </MenuItem>
                 ))}
             </CustomSelect>
-            <CustomSelect label={'Tipo de vehiculo'} name={'tveCodigo'}>
+            <CustomSelect label={'Tipo de vehiculo'} name={'tveCodigo'} xs={3}>
                 {tipoVehiculo.map(t => (
                     <MenuItem key={t.tveCodigo} value={t.tveCodigo}>
                         {t.tveNombre}

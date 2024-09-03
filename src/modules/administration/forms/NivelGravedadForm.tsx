@@ -51,8 +51,8 @@ export const NivelGravedadForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'ngrNombre'} />
-            <CustomInputText label={'Descripción'} name={'ngrDetalle'} />
+            <CustomInputText label={'Nombre'} name={'ngrNombre'} xs={3}/>
+            <CustomInputText label={'Descripción'} name={'ngrDetalle'} xs={5}/>
             <CustomSwitchComponent label={'Estado'} name={'ngrEstado'} />
         </FormLayout>
     );

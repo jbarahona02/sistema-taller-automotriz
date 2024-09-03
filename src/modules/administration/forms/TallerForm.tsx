@@ -54,10 +54,10 @@ export const TallerForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'tllNombre'} />
-            <CustomInputText label={'Telefono'} name={'tllTelefono'} />
+            <CustomInputText label={'Nombre'} name={'tllNombre'} xs={3}/>
+            <CustomInputText label={'Teléfono'} name={'tllTelefono'} xs={2}/>
             <CustomInputText label={'Dirección'} name={'tllDireccion'} />
-            <CustomInputText label={'Correo'} name={'tllCorreo'} />
+            <CustomInputText label={'Correo electrónico'} name={'tllCorreo'} xs={3}/>
         </FormLayout>
     );
 };

@@ -45,6 +45,7 @@ export const NivelGravedadListPage = () => {
       <SearchBarLayout
         initialValues={{ nombre : ''}}
         onSubmit={({nombre}) => findAll(nombre)}
+        onClean={() => findAll()}
       >
         <CustomInputText label={'Nombre'} name={'nombre'} xs={20} />
       </SearchBarLayout>
