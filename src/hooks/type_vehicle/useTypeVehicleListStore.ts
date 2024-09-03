@@ -19,9 +19,14 @@ export const useTypeVehicleListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (nombreODescripcion?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_TYPE_VEHICLE_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_TYPE_VEHICLE_URI}`, {
+                params: {
+                    search: nombreODescripcion,
+                    sort: 'tveCodigo,asc'
+                }
+              });
             dispatch(setTypeVehiclePageResult(data));
         } catch (e) {
             let errorMessage: string;

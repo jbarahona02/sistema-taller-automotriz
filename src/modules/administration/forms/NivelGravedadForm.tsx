@@ -19,7 +19,7 @@ export const NivelGravedadForm = () => {
     } = useNivelGravedadStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             ngrCodigo: ngrCodigo ? ngrCodigo : 0,
             ngrNombre: values.ngrNombre,
             ngrDetalle: values.ngrDetalle,
@@ -28,10 +28,14 @@ export const NivelGravedadForm = () => {
         if (ngrCodigo) {
             await findById(Number(ngrCodigo));
         }
+
+        if(isSuccess){
+            onClean();
+        }
     }
 
     const onClean = () => {
-
+        navigate(`${ADMIN_BASE_PATH}/nivel-gravedad-list`);
     }
 
     const onCancel = () => {
@@ -47,8 +51,8 @@ export const NivelGravedadForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'ngrNombre'} />
-            <CustomInputText label={'Descripción'} name={'ngrDetalle'} />
+            <CustomInputText label={'Nombre'} name={'ngrNombre'} xs={3}/>
+            <CustomInputText label={'Descripción'} name={'ngrDetalle'} xs={5}/>
             <CustomSwitchComponent label={'Estado'} name={'ngrEstado'} />
         </FormLayout>
     );

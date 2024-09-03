@@ -1,5 +1,6 @@
 import { Moment } from "moment";
 import { Item, Paging } from "./interface";
+import { MechanicalSpecialtyInterface } from "./mechanicalSpecialty.interface";
 
 
 export interface MechanicInterface {
@@ -14,22 +15,16 @@ export interface MechanicInterface {
     mecSalario : number | null;
     mecFechaContratacion: Moment | string;
     mecAniosExperiencia : number | null;
-    mecCodigoEspecialidad : number | null;
-    estado : boolean;
+    emeCodigo : number | null;
+    especialidadMecanica: MechanicalSpecialtyInterface | null,
 }
 
-export interface MechanicSearchBarInterface {
-    mecDpi : string;
-    mecNombres : string | null;
-    mecApellidos : string | null;
-    mecSalario : number | null;
-    mechanics : MechanicInterface[];
-    page: Paging<MechanicInterface> | null;
-    items: Item[];
-    params: {
-        search: string;
-        page: number;
-    }
+export interface MechanicListInterface {
+    content: MechanicInterface[],
+    totalElements: number;
+    totalPages: number;
+    firstPage: boolean;
+    lastPage: boolean;
 }
 
 

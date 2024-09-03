@@ -19,9 +19,17 @@ export const useClienteListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (dpi?: string, nit?: string, telefono?: string, correo?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_CLIENTE_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_CLIENTE_URI}`, { 
+                params: {
+                    dpi: dpi,
+                    nit: nit,
+                    telefono: telefono,
+                    correo: correo,
+                    sort: 'cliNombres,asc'
+                }
+             });
             dispatch(setClientePageResult(data));
         } catch (e) {
             let errorMessage: string;

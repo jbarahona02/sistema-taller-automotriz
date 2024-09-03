@@ -1,5 +1,5 @@
 import {Box, Button, Grid, Tooltip} from "@mui/material";
-import {Add, ArrowBack, PowerSettingsNew} from "@mui/icons-material";
+import {Add, ArrowBack, PowerSettingsNew, Backspace, SaveAs} from "@mui/icons-material";
 import {TitleComponent} from "../modules/administration";
 import {Form, Formik, FormikValues} from "formik";
 import {ReactElement} from "react";
@@ -36,7 +36,7 @@ export const FormLayout = ({
             <Grid
                 container
                 spacing={0}
-                style={{paddingRight: 200}}
+                // style={{paddingRight: 200}}
                 sx={{
                     backgroundColor: 'white',
                     borderRadius: 2,
@@ -78,8 +78,8 @@ export const FormLayout = ({
                                         </Grid>
                                     </Box>
                                     <div className="button-container">
-                                        <Button variant="contained" type="button" onClick={onCancel} id="cancel-button"> Cancelar </Button>
-                                        <Button variant="contained" type="submit" id="submit-button"> Guardar </Button>
+                                        <Button variant="contained" type="button" onClick={onCancel} id="cancel-button"> Cancelar  <Backspace sx={{ marginLeft: '5px', color: "white", height:"18px"}} /></Button>
+                                        <Button variant="contained" type="submit" id="submit-button"> Guardar <SaveAs sx={{ marginLeft: '5px', color: "white", height:"18px"}} /> </Button>
                                     </div>
                                 </Form>
                             )

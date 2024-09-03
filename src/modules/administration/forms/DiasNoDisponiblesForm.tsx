@@ -24,7 +24,7 @@ export const DiasNoDisponiblesForm = () => {
     const { content: taller } = useTallerListStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             dndCodigo: dndCodigo ? dndCodigo : 0,
             dndMotivo: values.dndMotivo,
             dndFecha: values.dndFecha,
@@ -35,10 +35,14 @@ export const DiasNoDisponiblesForm = () => {
         if (dndCodigo) {
             await findById(Number(dndCodigo));
         }
+
+        if(isSuccess){
+            onClean();
+        }
     };
 
     const onClean = () => {
-    
+        navigate(`${ADMIN_BASE_PATH}/dias-no-disponibles-list`);
     };
 
     const onCancel = () => {
@@ -54,10 +58,10 @@ export const DiasNoDisponiblesForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Motivo'} name={'dndMotivo'} />
-            <CustomDatePicker label={'Fecha'} name={'dndFecha'} />
+            <CustomInputText label={'Motivo'} name={'dndMotivo'} xs={5}/>
+            <CustomDatePicker label={'Fecha'} name={'dndFecha'} xs={4}/>
             
-            <CustomSelect label={'Taller'} name={'tllCodigo'}>
+            <CustomSelect label={'Taller'} name={'tllCodigo'} xs={3}>
                 {taller.map(t => (
                     <MenuItem key={t.tllCodigo} value={t.tllCodigo}>
                         {t.tllNombre}

@@ -1,5 +1,5 @@
 import {ModuleRoute} from "../../../interfaces";
-import { MechanicListPage, MechanicPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
+import { CotizacionListPage, CotizacionPage, HerramientaListPage, HerramientaPage, MarcaHerramientaListPage, MarcaHerramientaPage, MechanicalSpecialtyListPage, MechanicalSpecialtyPage, MechanicListPage, MechanicPage, ProveedorListPage, ProveedorPage, RepuestoListPage, RepuestoPage, TipoPagoListPage, TipoPagoPage, TipoRepuestoListPage, TipoRepuestoPage, VehicleBrandListPage, VehicleBrandPage } from "../pages";
 import { ClienteListPage } from "../pages/cliente/ClienteListPage";
 import { ClientePage } from "../pages/cliente/ClientePage";
 import { DiasNoDisponiblesListPage } from "../pages/diasNoDisponibles/DiasNoDisponiblesListPage";
@@ -29,6 +29,10 @@ export const routesAdministration: ModuleRoute[] = [
     },
     {
         path: 'mechanic',
+        Component: MechanicPage 
+    },
+    {
+        path: 'mechanic/:mecCodigo',
         Component: MechanicPage 
     },
     {
@@ -121,6 +125,103 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'nivel-gravedad/:ngrCodigo',
         Component: NivelGravedadPage 
+    },
+    {
+        path: 'especialidad-mecanica-list',
+        Component: MechanicalSpecialtyListPage
+    },
+    {
+        path: 'especialidad-mecanica',
+        Component: MechanicalSpecialtyPage
+    }, 
+    {
+        path: 'especialidad-mecanica/:emeCodigo',
+        Component: MechanicalSpecialtyPage
+    },
+    {
+        path: 'marca-herramienta',
+        Component: MarcaHerramientaPage
+    },
+    {
+        path: 'marca-herramienta/:mheCodigo',
+        Component: MarcaHerramientaPage
+    },
+    {
+        path: 'marca-herramienta-list',
+        Component: MarcaHerramientaListPage
+    },
+    {
+        path: 'herramienta',
+        Component: HerramientaPage
+    },
+    {
+        path: 'herramienta/:herCodigo',
+        Component: HerramientaPage
+    },
+    {
+        path: 'herramientas-list',
+        Component: HerramientaListPage
+    },
+    {
+        path: 'cotizacion',
+        Component: CotizacionPage
+    }, 
+    {
+        path: 'cotizacion/:cotCodigo',
+        Component: CotizacionPage
+    },
+    {
+        path: 'cotizacion-list',
+        Component: CotizacionListPage
+    },
+    {
+        path: 'tipo-pago-list',
+        Component: TipoPagoListPage
+    },
+    {
+        path: 'tipo-pago',
+        Component: TipoPagoPage
+    },
+    {
+        path: 'tipo-pago/:tpaCodigo',
+        Component: TipoPagoPage
+    },
+    {
+        path: 'tipo-repuesto/',
+        Component: TipoRepuestoPage
+    },
+    {
+        path: 'tipo-repuesto/:trpCodigo',
+        Component: TipoRepuestoPage
+    },
+    {
+        path: 'tipo-repuesto-list',
+        Component: TipoRepuestoListPage
+    },
+    {
+        path: 'proveedor/',
+        Component: ProveedorPage
+    },
+    {
+        path: 'proveedor/:prvCodigo',
+        Component: ProveedorPage
+    },
+    {
+        path: 'proveedor-list',
+        Component: ProveedorListPage
+    },
+    {
+        path: 'repuestos-list',
+        Component: RepuestoListPage
+    },
+    {
+        path: 'repuesto/',
+        Component: RepuestoPage
+    },
+    {
+        path: 'repuesto/:repCodigo',
+        Component: RepuestoPage
+    },
     },
     {
         path: 'marca-producto-list',

@@ -32,18 +32,19 @@ export const useVehiculoStore = () => {
         }
     }
 
-    const saveOrUpdate = async (vehiculo: VehiculoInterface, isUpdate: boolean) => {
+    const saveOrUpdate = async (vehiculo: VehiculoInterface, isUpdate: boolean): Promise<boolean> => {
         try {
             if (isUpdate) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_VEHICULO_URI}/${vehiculo.vehPlaca}`, vehiculo);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setVehiculoResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_VEHICULO_URI}`, vehiculo);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setVehiculoResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -52,6 +53,7 @@ export const useVehiculoStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

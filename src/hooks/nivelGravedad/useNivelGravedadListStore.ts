@@ -19,9 +19,14 @@ export const useNivelGravedadListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (nombre? : string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_NIVEL_GRAVEDAD_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_NIVEL_GRAVEDAD_URI}`, { 
+                params: {
+                    search: nombre,
+                    sort: 'ngrNombre,asc'
+                }
+             });
             dispatch(setNivelGravedadPageResult(data));
         } catch (e) {
             let errorMessage: string;
