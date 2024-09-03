@@ -20,3 +20,5 @@ export * from './marcaEquipo/marcaEquipoListSlice';
 export * from './marcaEquipo/marcaEquipoSlice';
 export * from './tipoServicio/tipoServicioListSlice';
 export * from './tipoServicio/tipoServicioSlice';
+export * from './cita/citaListSlice';
+export * from './cita/citaSlice';

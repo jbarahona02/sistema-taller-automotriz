@@ -10,7 +10,8 @@ import {
     Warning,
     Category,
     BuildCircle,
-    Hardware
+    Hardware,
+    Checklist
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -73,6 +74,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/tipo-servicio-list`,
                 name: "Tipos de servicios",
                 NavIcon: Hardware
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/cita-list`,
+                name: "Citas",
+                NavIcon: Checklist
             }
         ]
     }

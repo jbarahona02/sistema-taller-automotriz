@@ -1,6 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {sidenavSlice} from "./ui";
-import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MechanicInterface, MechanicSearchBarInterface, NivelGravedadInterface, NivelGravedadListInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface, MarcaProductoInterface, MarcaProductoListaInterface, MarcaEquipoListInterface, MarcaEquipoInterface, TipoServicioListInterface, TipoServicioInterface } from "../interfaces";
+import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, MechanicInterface, MechanicSearchBarInterface, NivelGravedadInterface, NivelGravedadListInterface, TallerInterface, TallerListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface, MarcaProductoInterface, MarcaProductoListaInterface, MarcaEquipoListInterface, MarcaEquipoInterface, TipoServicioListInterface, TipoServicioInterface, CitaListInterface, CitaInterface } from "../interfaces";
 import { diasNoDisponiblesListSlice, diasNoDisponiblesSlice, mechanicListSlice, mechanicSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice, marcaProductoSlice, marcaProductoListaSlice } from "./modules/administration";
 import { tallerListSlice } from "./modules/administration/taller/tallerListSlice";
 import { tallerSlice } from "./modules/administration/taller/tallerSlice";
@@ -14,6 +14,8 @@ import { marcaEquipoListSlice } from "./modules/administration";
 import { marcaEquipoSlice } from "./modules/administration";
 import { tipoServicioListSlice } from "./modules/administration";
 import { tipoServicioSlice } from "./modules/administration";
+import { citaListSlice } from "./modules/administration";
+import { citaSlice } from "./modules/administration";
 
 export interface StoreInterface {
     mechanicListSlice: MechanicSearchBarInterface,
@@ -37,7 +39,9 @@ export interface StoreInterface {
     marcaEquipoListSlice: MarcaEquipoListInterface,
     marcaEquipoSlice: MarcaEquipoInterface,
     tipoServicioListSlice: TipoServicioListInterface,
-    tipoServicioSlice: TipoServicioInterface
+    tipoServicioSlice: TipoServicioInterface,
+    citaListSlice: CitaListInterface,
+    citaSlice: CitaInterface
 }
 
 export const store = configureStore({
@@ -64,7 +68,9 @@ export const store = configureStore({
         marcaEquipoListSlice: marcaEquipoListSlice.reducer,
         marcaEquipoSlice: marcaEquipoSlice.reducer,
         tipoServicioListSlice: tipoServicioListSlice.reducer,
-        tipoServicioSlice: tipoServicioSlice.reducer
+        tipoServicioSlice: tipoServicioSlice.reducer,
+        citaListSlice: citaListSlice.reducer,
+        citaSlice: citaSlice.reducer
     }
 });
 

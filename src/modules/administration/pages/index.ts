@@ -20,3 +20,5 @@ export * from "./marcaEquipo/MarcaEquipoListPage.tsx";
 export * from "./marcaEquipo/MarcaEquipoPage.tsx";
 export * from "./tipoServicio/TipoServicioListPage.tsx";
 export * from "./tipoServicio/TipoServicioPage.tsx";
+export * from "./cita/CitaListPage.tsx";
+export * from "./cita/CitaPage.tsx";

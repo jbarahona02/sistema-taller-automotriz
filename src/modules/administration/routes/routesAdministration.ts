@@ -18,6 +18,8 @@ import { MarcaEquipoListPage } from "../pages";
 import { MarcaEquipoPage } from "../pages";
 import { TipoServicioListPage } from "../pages";
 import { TipoServicioPage } from "../pages";
+import { CitaListPage } from "../pages";
+import { CitaPage } from "../pages";
 
 export const routesAdministration: ModuleRoute[] = [
     
@@ -155,5 +157,17 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'tipo-servicio/:tsrCodigo',
         Component: TipoServicioPage
+    },
+    {
+        path: 'cita-list',
+        Component: CitaListPage
+    },
+    {
+        path: 'cita',
+        Component: CitaPage
+    },
+    {
+        path: 'cita/:ctaCodigo',
+        Component: CitaPage
     }
 ];

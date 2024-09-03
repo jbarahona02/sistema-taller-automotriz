@@ -10,3 +10,4 @@ export * from './nivelGravedad.interface.ts';
 export * from './marcaProducto.interface.ts';
 export * from './marcaEquipo.interface.ts';
 export * from './tipoServicio.interface.ts';
+export * from './cita.interface.ts';
