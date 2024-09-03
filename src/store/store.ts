@@ -1,7 +1,7 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {sidenavSlice} from "./ui";
-import { ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, HerramientaInterface, HerramientaListInterface, MarcaHerramientaInterface, MarcaHerramientaListInterface, MechanicalSpecialtyInterface, MechanicalSpecialtyListInterface, MechanicInterface, MechanicListInterface, NivelGravedadInterface, NivelGravedadListInterface, ProveedorInterface, ProveedorListInterface, RepuestoInterface, RepuestoListInterface, TallerInterface, TallerListInterface, TipoPagoInterface, TipoPagoListInterface, TipoRepuestoInterface, TipoRepuestoListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
-import { cotizacionListSlice, cotizacionSlice, diasNoDisponiblesListSlice, diasNoDisponiblesSlice, marcaHerramientaListSlice, marcaHerramientaSlice, mechanicalSpecialtyListSlice, mechanicalSpecialtySlice, mechanicListSlice, mechanicSlice, proveedorListSlice, proveedorSlice, repuestoListSlice, repuestoSlice, tipoPagoListSlice, tipoPagoSlice, tipoRepuestoListSlice, tipoRepuestoSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice } from "./modules/administration";
+import { CitaInterface, CitaListInterface, ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, HerramientaInterface, HerramientaListInterface, MarcaEquipoInterface, MarcaEquipoListInterface, MarcaHerramientaInterface, MarcaHerramientaListInterface, MarcaProductoInterface, MarcaProductoListaInterface, MechanicalSpecialtyInterface, MechanicalSpecialtyListInterface, MechanicInterface, MechanicListInterface, NivelGravedadInterface, NivelGravedadListInterface, ProveedorInterface, ProveedorListInterface, RepuestoInterface, RepuestoListInterface, TallerInterface, TallerListInterface, TipoPagoInterface, TipoPagoListInterface, TipoRepuestoInterface, TipoRepuestoListInterface, TipoServicioInterface, TipoServicioListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
+import { cotizacionListSlice, cotizacionSlice, diasNoDisponiblesListSlice, diasNoDisponiblesSlice, marcaHerramientaListSlice, marcaHerramientaSlice, marcaProductoListaSlice, marcaProductoSlice, mechanicalSpecialtyListSlice, mechanicalSpecialtySlice, mechanicListSlice, mechanicSlice, proveedorListSlice, proveedorSlice, repuestoListSlice, repuestoSlice, tipoPagoListSlice, tipoPagoSlice, tipoRepuestoListSlice, tipoRepuestoSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice } from "./modules/administration";
 import { tallerListSlice } from "./modules/administration/taller/tallerListSlice";
 import { tallerSlice } from "./modules/administration/taller/tallerSlice";
 import { clienteListSlice } from "./modules/administration/cliente/clienteListSlice";
@@ -52,9 +52,7 @@ export interface StoreInterface {
     proveedorListSlice: ProveedorListInterface,
     proveedorSlice: ProveedorInterface,
     repuestoListSlice: RepuestoListInterface,
-    repuetosSlice: RepuestoInterface
-
-    nivelGravedadSlice: NivelGravedadInterface,
+    repuetosSlice: RepuestoInterface,
     marcaProductoListaSlice: MarcaProductoListaInterface,
     marcaProductoSlice: MarcaProductoInterface,
     marcaEquipoListSlice: MarcaEquipoListInterface,
@@ -99,8 +97,7 @@ export const store = configureStore({
         proveedorListSlice: proveedorListSlice.reducer,
         proveedorSlice: proveedorSlice.reducer,
         repuestoListSlice: repuestoListSlice.reducer,
-        repuetosSlice: repuestoSlice.reducer
-        nivelGravedadSlice: nivelGravedadSlice.reducer,
+        repuetosSlice: repuestoSlice.reducer,
         marcaProductoListaSlice: marcaProductoListaSlice.reducer,
         marcaProductoSlice: marcaProductoSlice.reducer,
         marcaEquipoListSlice: marcaEquipoListSlice.reducer,

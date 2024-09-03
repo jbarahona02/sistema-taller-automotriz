@@ -222,7 +222,6 @@ export const routesAdministration: ModuleRoute[] = [
         path: 'repuesto/:repCodigo',
         Component: RepuestoPage
     },
-    },
     {
         path: 'marca-producto-list',
         Component: MarcaProductoListaPage

@@ -14,7 +14,7 @@ import {
     RequestQuote,
     FindReplace,
     Inventory,
-    Engineering
+    Engineering,
     Category,
     BuildCircle,
     Hardware,
@@ -106,7 +106,6 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/repuestos-list`,
                 name: "Repuestos",
                 NavIcon:  Engineering
-            },
             },
             {
                 to: `${ADMIN_BASE_PATH}/marca-producto-list`,
