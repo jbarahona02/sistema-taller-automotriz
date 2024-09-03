@@ -52,7 +52,7 @@ export const CustomDatePicker = ({ xs = 6, onChange, restrictToToday = false, mi
                     sx={{ width: '100%' }}
                     format={'DD/MM/YYYY'}
                     maxDate={maxDate} // Usa undefined si no hay restricción de fecha máxima
-                    minDate={minDateMoment} // Aplica la fecha mínima si es proporcionada
+                    // minDate={minDateMoment} // Aplica la fecha mínima si es proporcionada
                     renderInput={(params) => (
                         <TextField
                             {...params}

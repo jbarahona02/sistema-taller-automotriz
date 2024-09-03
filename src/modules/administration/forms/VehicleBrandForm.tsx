@@ -47,7 +47,7 @@ export const VehicleBrandForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'mveNombre'} />
+            <CustomInputText label={'Nombre'} name={'mveNombre'} xs={3}/>
         </FormLayout>
     );
 };

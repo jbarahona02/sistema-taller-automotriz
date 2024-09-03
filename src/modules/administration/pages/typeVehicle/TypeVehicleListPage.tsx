@@ -41,8 +41,9 @@ export const TypeVehicleListPage = () => {
       <SearchBarLayout
         initialValues={{ nombre : ''}}
         onSubmit={({nombre}) => findAll(nombre)}
+        onClean={() => findAll()}
       >
-        <CustomInputText label={'Nombre'} name={'nombre'} xs={20} />
+        <CustomInputText label={'Nombre'} name={'nombre'} xs={12} />
       </SearchBarLayout>
 
       <QueryContentLayout

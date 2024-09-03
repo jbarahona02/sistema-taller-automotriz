@@ -56,12 +56,12 @@ export const ClienteForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'DPI'} name={'cliDpi'} />
-            <CustomInputText label={'Nombres'} name={'cliNombres'} />
-            <CustomInputText label={'Apellidos'} name={'cliApellidos'} />
-            <CustomInputText label={'NIT'} name={'cliNit'} />
-            <CustomInputText label={'Teléfono'} name={'cliTelefono'} />
-            <CustomInputText label={'Correo'} name={'cliCorreo'} />
+            <CustomInputText label={'DPI'} name={'cliDpi'} xs={3}/>
+            <CustomInputText label={'Nombres'} name={'cliNombres'} xs={3}/>
+            <CustomInputText label={'Apellidos'} name={'cliApellidos'} xs={3} />
+            <CustomInputText label={'NIT'} name={'cliNit'} xs={2}/>
+            <CustomInputText label={'Teléfono'} name={'cliTelefono'} xs={2}/>
+            <CustomInputText label={'Correo'} name={'cliCorreo'} xs={3}/>
         </FormLayout>
     );
 };

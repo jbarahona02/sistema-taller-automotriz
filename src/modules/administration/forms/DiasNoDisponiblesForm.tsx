@@ -58,10 +58,10 @@ export const DiasNoDisponiblesForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Motivo'} name={'dndMotivo'} />
-            <CustomDatePicker label={'Fecha'} name={'dndFecha'} />
+            <CustomInputText label={'Motivo'} name={'dndMotivo'} xs={5}/>
+            <CustomDatePicker label={'Fecha'} name={'dndFecha'} xs={4}/>
             
-            <CustomSelect label={'Taller'} name={'tllCodigo'}>
+            <CustomSelect label={'Taller'} name={'tllCodigo'} xs={3}>
                 {taller.map(t => (
                     <MenuItem key={t.tllCodigo} value={t.tllCodigo}>
                         {t.tllNombre}

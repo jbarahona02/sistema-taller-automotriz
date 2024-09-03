@@ -18,7 +18,7 @@ export const DiasNoDisponiblesPage = () => {
 
   return (
     <>
-      <TitleComponent title={'Dia No Disponible ' + (dndCodigo ? '- Editar' : '- Crear')} />
+      <TitleComponent title={'Día No Disponible ' + (dndCodigo ? '- Editar' : '- Crear')} />
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <DiasNoDisponiblesForm />

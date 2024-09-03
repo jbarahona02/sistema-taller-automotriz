@@ -24,7 +24,7 @@ export const useVehicleBrandListStore = () => {
             const { data } = await automotiveWorkshopApi.get(`${VITE_VEHICLE_BRAND_URI}`, {
                 params: {
                     search: nombre,
-                    sort: 'mveNombre,asc'
+                    sort: 'mveCodigo,asc'
                 }
               });
             dispatch(setVehicleBrandPageResult(data));

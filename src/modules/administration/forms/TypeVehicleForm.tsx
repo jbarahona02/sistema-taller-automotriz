@@ -49,7 +49,7 @@ export const TypeVehicleForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'tveNombre'} />
+            <CustomInputText label={'Nombre'} name={'tveNombre'} xs={3}/>
             <CustomInputText label={'Descripción'} name={'tveDescripcion'} />
         </FormLayout>
     );

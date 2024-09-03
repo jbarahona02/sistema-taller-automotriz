@@ -41,12 +41,13 @@ export const TallerListPage = () => {
 
       <SearchBarLayout
         initialValues={{ nombre : '', telefono: '', direccion: '', correo: ''}}
-        onSubmit={({nombre, telefono, direccion, correo}) => findAll(nombre, telefono, direccion, correo)}
+        onSubmit={({nombre, telefono, direccion, correo}) => findAll(nombre, direccion, telefono, correo)}
+        onClean={() => findAll()}
       >
-        <CustomInputText label={'Nombre'} name={'nombre'} xs={20} />
-        <CustomInputText label={'Télefono'} name={'telefono'} xs={20} />
-        <CustomInputText label={'Dirección'} name={'direccion'} xs={20} />
-        <CustomInputText label={'Correo'} name={'correo'} xs={20} />      
+        <CustomInputText label={'Nombre'} name={'nombre'} xs={12} />
+        <CustomInputText label={'Télefono'} name={'telefono'} xs={12} />
+        <CustomInputText label={'Dirección'} name={'direccion'} xs={12} />
+        <CustomInputText label={'Correo'} name={'correo'} xs={12} />      
       </SearchBarLayout>
       
 

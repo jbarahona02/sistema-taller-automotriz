@@ -41,11 +41,12 @@ export const ClienteListPage = () => {
       <SearchBarLayout
         initialValues={{ dpi : '', nit: '', telefono: '', correo: ''}}
         onSubmit={({dpi, nit, direccion, correo}) => findAll(dpi, nit, direccion, correo)}
+        onClean={() => findAll()}
       >
-        <CustomInputText label={'DPI'} name={'dpi'} xs={20} />
-        <CustomInputText label={'NIT'} name={'nit'} xs={20} />
-        <CustomInputText label={'Télefono'} name={'telefono'} xs={20} />
-        <CustomInputText label={'Correo'} name={'correo'} xs={20} />      
+        <CustomInputText label={'DPI'} name={'dpi'} xs={10} />
+        <CustomInputText label={'NIT'} name={'nit'} xs={10} />
+        <CustomInputText label={'Teléfono'} name={'telefono'} xs={10} />
+        <CustomInputText label={'Correo'} name={'correo'} xs={10} />      
       </SearchBarLayout>
 
       <QueryContentLayout

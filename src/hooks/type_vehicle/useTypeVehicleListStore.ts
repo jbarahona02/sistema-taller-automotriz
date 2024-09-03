@@ -24,7 +24,7 @@ export const useTypeVehicleListStore = () => {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TYPE_VEHICLE_URI}`, {
                 params: {
                     search: nombreODescripcion,
-                    sort: 'tveNombre,asc'
+                    sort: 'tveCodigo,asc'
                 }
               });
             dispatch(setTypeVehiclePageResult(data));
