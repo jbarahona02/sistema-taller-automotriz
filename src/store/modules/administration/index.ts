@@ -38,3 +38,5 @@ export * from './tipoServicio/tipoServicioListSlice';
 export * from './tipoServicio/tipoServicioSlice';
 export * from './cita/citaListSlice';
 export * from './cita/citaSlice';
+export * from './producto/productoListSlice';
+export * from './producto/productoSlice';

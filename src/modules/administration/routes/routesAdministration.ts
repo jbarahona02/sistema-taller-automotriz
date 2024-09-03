@@ -12,14 +12,11 @@ import { TypeVehicleListPage } from "../pages/typeVehicle/TypeVehicleListPage";
 import { TypeVehiclePage } from "../pages/typeVehicle/TypeVehiclePage";
 import { VehiculoListPage } from "../pages/vehiculo/VehiculoListPage";
 import { VehiculoPage } from "../pages/vehiculo/VehiculoPage";
-import { MarcaProductoListaPage } from "../pages";
-import { MarcaProductoPage } from "../pages";
-import { MarcaEquipoListPage } from "../pages";
-import { MarcaEquipoPage } from "../pages";
-import { TipoServicioListPage } from "../pages";
-import { TipoServicioPage } from "../pages";
-import { CitaListPage } from "../pages";
-import { CitaPage } from "../pages";
+import { MarcaProductoListaPage, MarcaProductoPage } from "../pages";
+import { MarcaEquipoListPage, MarcaEquipoPage } from "../pages";
+import { TipoServicioListPage, TipoServicioPage } from "../pages";
+import { CitaListPage, CitaPage } from "../pages";
+import { ProductoListPage, ProductoPage } from "../pages";
 
 export const routesAdministration: ModuleRoute[] = [
     
@@ -269,5 +266,17 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'cita/:ctaCodigo',
         Component: CitaPage
+    },
+    {
+        path: 'producto-list',
+        Component: ProductoListPage
+    },
+    {
+        path: 'producto',
+        Component: ProductoPage
+    },
+    {
+        path: 'producto/:proCodigo',
+        Component: ProductoPage
     }
 ];

@@ -38,3 +38,5 @@ export * from './tipoServicio/useTipoServicioListStore';
 export * from './tipoServicio/useTipoServicioStore';
 export * from './cita/useCitaListStore';
 export * from './cita/useCitaStore';
+export * from './producto/useProductoListStore';
+export * from './producto/useProductoStore';

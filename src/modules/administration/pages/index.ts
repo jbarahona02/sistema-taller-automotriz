@@ -38,3 +38,5 @@ export * from "./tipoServicio/TipoServicioListPage.tsx";
 export * from "./tipoServicio/TipoServicioPage.tsx";
 export * from "./cita/CitaListPage.tsx";
 export * from "./cita/CitaPage.tsx";
+export * from "./producto/ProductoListPage.tsx";
+export * from "./producto/ProductoPage.tsx";

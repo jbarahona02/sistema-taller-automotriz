@@ -18,7 +18,8 @@ import {
     Category,
     BuildCircle,
     Hardware,
-    Checklist
+    Checklist,
+    ShoppingCart
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -126,6 +127,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/cita-list`,
                 name: "Citas",
                 NavIcon: Checklist
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/producto-list`,
+                name: "Productos",
+                NavIcon: ShoppingCart
             }
         ]
     }
