@@ -4,7 +4,7 @@ import { MechanicalSpecialtyInterface } from "./mechanicalSpecialty.interface";
 
 
 export interface MechanicInterface {
-    mecCodigo : number | null;
+    mecCodigo : number;
     mecDpi : string;
     mecNombres : string | null;
     mecApellidos : string | null;

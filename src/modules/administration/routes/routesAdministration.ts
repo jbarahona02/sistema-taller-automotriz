@@ -17,6 +17,7 @@ import { MarcaEquipoListPage, MarcaEquipoPage } from "../pages";
 import { TipoServicioListPage, TipoServicioPage } from "../pages";
 import { CitaListPage, CitaPage } from "../pages";
 import { ProductoListPage, ProductoPage } from "../pages";
+import { EquipoTallerListPage, EquipoTallerPage } from "../pages";
 
 export const routesAdministration: ModuleRoute[] = [
     
@@ -278,5 +279,17 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'producto/:proCodigo',
         Component: ProductoPage
+    },
+    {
+        path: 'equipo-taller-list',
+        Component: EquipoTallerListPage
+    },
+    {
+        path: 'equipo-taller',
+        Component: EquipoTallerPage
+    },
+    {
+        path: 'equipo-taller/:etaCodigo',
+        Component: EquipoTallerPage
     }
 ];

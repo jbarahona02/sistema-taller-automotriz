@@ -40,3 +40,5 @@ export * from './cita/citaListSlice';
 export * from './cita/citaSlice';
 export * from './producto/productoListSlice';
 export * from './producto/productoSlice';
+export * from './equipoTaller/equipoTallerListSlice';
+export * from './equipoTaller/equipoTallerSlice';

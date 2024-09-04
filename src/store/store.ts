@@ -1,6 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 import {sidenavSlice} from "./ui";
-import { CitaInterface, CitaListInterface, ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, HerramientaInterface, HerramientaListInterface, MarcaEquipoInterface, MarcaEquipoListInterface, MarcaHerramientaInterface, MarcaHerramientaListInterface, MarcaProductoInterface, MarcaProductoListaInterface, MechanicalSpecialtyInterface, MechanicalSpecialtyListInterface, MechanicInterface, MechanicListInterface, NivelGravedadInterface, NivelGravedadListInterface, ProductoInterface, ProductoListInterface, ProveedorInterface, ProveedorListInterface, RepuestoInterface, RepuestoListInterface, TallerInterface, TallerListInterface, TipoPagoInterface, TipoPagoListInterface, TipoRepuestoInterface, TipoRepuestoListInterface, TipoServicioInterface, TipoServicioListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
+import { CitaInterface, CitaListInterface, ClienteInterface, ClienteListInterface, DiasNoDisponiblesInterface, DiasNoDisponiblesListInterface, EquipoTallerInterface, EquipoTallerListInterface, HerramientaInterface, HerramientaListInterface, MarcaEquipoInterface, MarcaEquipoListInterface, MarcaHerramientaInterface, MarcaHerramientaListInterface, MarcaProductoInterface, MarcaProductoListaInterface, MechanicalSpecialtyInterface, MechanicalSpecialtyListInterface, MechanicInterface, MechanicListInterface, NivelGravedadInterface, NivelGravedadListInterface, ProductoInterface, ProductoListInterface, ProveedorInterface, ProveedorListInterface, RepuestoInterface, RepuestoListInterface, TallerInterface, TallerListInterface, TipoPagoInterface, TipoPagoListInterface, TipoRepuestoInterface, TipoRepuestoListInterface, TipoServicioInterface, TipoServicioListInterface, TypeVehicleInterface, TypeVehicleListInterface, VehicleBrandInterface, VehicleBrandListInterface, VehiculoInterface, VehiculoListInterface } from "../interfaces";
 import { cotizacionListSlice, cotizacionSlice, diasNoDisponiblesListSlice, diasNoDisponiblesSlice, marcaHerramientaListSlice, marcaHerramientaSlice, marcaProductoListaSlice, marcaProductoSlice, mechanicalSpecialtyListSlice, mechanicalSpecialtySlice, mechanicListSlice, mechanicSlice, proveedorListSlice, proveedorSlice, repuestoListSlice, repuestoSlice, tipoPagoListSlice, tipoPagoSlice, tipoRepuestoListSlice, tipoRepuestoSlice, typeVehicleListSlice, typeVehicleSlice, vehicleBrandListSlice, vehicleBrandSlice } from "./modules/administration";
 import { tallerListSlice } from "./modules/administration/taller/tallerListSlice";
 import { tallerSlice } from "./modules/administration/taller/tallerSlice";
@@ -13,14 +13,11 @@ import { nivelGravedadSlice } from "./modules/administration/nivelGravedad/nivel
 import { herramientaListSlice } from "./modules/administration/herramienta/herramientaListSlice";
 import { herramientaSlice } from "./modules/administration/herramienta/herramientaSlice";
 import { CotizacionInterface, CotizacionListInterface } from "../interfaces/cotizacion.interface";
-import { marcaEquipoListSlice } from "./modules/administration";
-import { marcaEquipoSlice } from "./modules/administration";
-import { tipoServicioListSlice } from "./modules/administration";
-import { tipoServicioSlice } from "./modules/administration";
-import { citaListSlice } from "./modules/administration";
-import { citaSlice } from "./modules/administration";
-import { productoListSlice } from "./modules/administration";
-import { productoSlice } from "./modules/administration";
+import { marcaEquipoListSlice, marcaEquipoSlice } from "./modules/administration";
+import { tipoServicioListSlice, tipoServicioSlice } from "./modules/administration";
+import { citaListSlice, citaSlice } from "./modules/administration";
+import { productoListSlice, productoSlice } from "./modules/administration";
+import { equipoTallerListSlice, equipoTallerSlice } from "./modules/administration";
 
 export interface StoreInterface {
     mechanicListSlice: MechanicListInterface,
@@ -64,7 +61,9 @@ export interface StoreInterface {
     citaListSlice: CitaListInterface,
     citaSlice: CitaInterface,
     productoListSlice: ProductoListInterface,
-    productoSlice: ProductoInterface
+    productoSlice: ProductoInterface,
+    equipoTallerListSlice: EquipoTallerListInterface,
+    equipoTallerSlice: EquipoTallerInterface
 }
 
 export const store = configureStore({
@@ -111,7 +110,9 @@ export const store = configureStore({
         citaListSlice: citaListSlice.reducer,
         citaSlice: citaSlice.reducer,
         productoListSlice: productoListSlice.reducer,
-        productoSlice: productoSlice.reducer
+        productoSlice: productoSlice.reducer,
+        equipoTallerListSlice: equipoTallerListSlice.reducer,
+        equipoTallerSlice: equipoTallerSlice.reducer
     }
 });
 

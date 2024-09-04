@@ -40,3 +40,5 @@ export * from './cita/useCitaListStore';
 export * from './cita/useCitaStore';
 export * from './producto/useProductoListStore';
 export * from './producto/useProductoStore';
+export * from './equipoTaller/useEquipoTallerListStore';
+export * from './equipoTaller/useEquipoTallerStore';

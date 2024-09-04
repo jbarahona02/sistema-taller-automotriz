@@ -40,3 +40,5 @@ export * from "./cita/CitaListPage.tsx";
 export * from "./cita/CitaPage.tsx";
 export * from "./producto/ProductoListPage.tsx";
 export * from "./producto/ProductoPage.tsx";
+export * from "./equipoTaller/EquipoTallerListPage.tsx";
+export * from "./equipoTaller/EquipoTallerPage.tsx";
