@@ -74,8 +74,7 @@ export const HerramientaForm = () => {
             <CustomSelect label={'Mecánico'} name={'mecCodigo'} xs={4}>
                 {mecanicos.map(mecanico => (
                     <MenuItem key={mecanico.mecCodigo} value={mecanico.mecCodigo}>
-                       {`${mecanico.mecCodigo ? mecanico.mecCodigo + ' -' : ""}  ${Utilities.capitalizeFirstLetter(mecanico.mecNombres!)} 
-                             ${Utilities.capitalizeFirstLetter(mecanico.mecApellidos!)}`}
+                       {`${mecanico.mecCodigo ? mecanico.mecCodigo + ' -' : ""} ${mecanico.mecNombres} ${mecanico.mecApellidos}`}
                     </MenuItem>
                 ))}
             </CustomSelect>
