@@ -18,23 +18,31 @@ export const MarcaEquipoForm = () => {
     } = useMarcaEquipoStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             meqCodigo: meqCodigo ? meqCodigo : 0,
             meqNombre: values.meqNombre,
             meqDescripcion: values.meqDescripcion,
-        });
+        },
+        meqCodigo ? true : false
+    );
+
         if(meqCodigo){
-            await findById(Number(meqCodigo));
+            await findById(meqCodigo);
         }
-    }
+
+        if(isSuccess) {
+            onClean();
+        }
+
+    };
 
     const onClean = () => {
-        
-    }
+        navigate(`${ADMIN_BASE_PATH}/marca-equipo-list`);
+    };
 
     const onCancel = () => {
         navigate(`${ADMIN_BASE_PATH}/marca-equipo-list`);
-    }
+    };
 
     return (
         <FormLayout
@@ -45,8 +53,8 @@ export const MarcaEquipoForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'meqNombre'} />
-            <CustomInputText label={'Descripción'} name={'meqDescripcion'} />
+            <CustomInputText label={'Nombre'} name={'meqNombre'} xs={3}/>
+            <CustomInputText label={'Descripción'} name={'meqDescripcion'} xs={6}/>
         </FormLayout>
     );
 };

@@ -4,6 +4,7 @@ import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import { useCitaListStore } from "../../../../hooks";
+import moment from "moment";
 
 const tableHeaders = ['Codigo', 'Fecha Cita', 'Descripción', 'Duración Estimada (min)', 'Confirmación', 'Vehiculo', 'Acciones'];
 
@@ -33,6 +34,7 @@ export const CitaListPage = () => {
     return content.map((item) => ({
       ...item,
       'vehiculo.vehPlaca': item.vehiculo ? item.vehiculo.vehPlaca : 'No disponible',
+      'fechaCita': `${moment(item.ctaFechaHora).format('DD/MM/YYYY')}`,
       'estado': item.ctaConfirmacion
     }));
   };
@@ -43,13 +45,10 @@ export const CitaListPage = () => {
 
       <SearchBarLayout
         initialValues={{ search: '' }}
-        onSubmit={() => findAll()}
+        onSubmit={({search}) => findAll(search)}
         onClean={() => findAll()}
-        onClick={() => { }}
       >
-        <CustomInputText label={'Placa'} name={'vehiculo.vehPlaca'} xs={20} />
-        <CustomInputText label={'Fecha cita'} name={'ctaFechaHora'} xs={20} />
-        <CustomInputText label={'Descripción'} name={'ctaDescripcion'} xs={20} />
+        <CustomInputText label={'Descripción'} name={'search'} xs={20} />
       </SearchBarLayout>
 
       <QueryContentLayout
@@ -57,7 +56,7 @@ export const CitaListPage = () => {
         onAdd={onAdd}
         onDelete={onDelete}
         onUpdate={onUpdate}
-        properties={['ctaCodigo', 'ctaFechaHora', 'ctaDescripcion', 'ctaDuracionEstimadaMin', 'estado', 'vehiculo.vehPlaca']}
+        properties={['ctaCodigo', 'fechaCita', 'ctaDescripcion', 'ctaDuracionEstimadaMin', 'estado', 'vehiculo.vehPlaca']}
         tableBody={renderTableBody()}
         idField="ctaCodigo"
       />

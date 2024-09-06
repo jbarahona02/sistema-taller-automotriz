@@ -32,18 +32,19 @@ export const useCitaStore = () => {
         }
     }
 
-    const saveOrUpdate = async (cita: CitaInterface) => {
+    const saveOrUpdate = async (cita: CitaInterface, isUpdate: boolean): Promise<boolean> => {
         try {
-            if (cita.ctaCodigo) {
+            if (isUpdate) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_CITA_URI}/${cita.ctaCodigo}`, cita);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setCitaResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_CITA_URI}`, cita);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setCitaResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -52,6 +53,7 @@ export const useCitaStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

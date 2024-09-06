@@ -14,14 +14,19 @@ export const useMarcaEquipoListStore = () => {
 
     const marcaEquipoListValues = useSelector((state: StoreInterface) => state.marcaEquipoListSlice);
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (nombreODescripcion?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_MARCA_EQUIPO_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_MARCA_EQUIPO_URI}`, {
+                params: {
+                    search: nombreODescripcion,
+                    sort: 'meqCodigo,asc'
+                }
+            });
             dispatch(setMarcaEquipoPageResult(data));
         } catch (e) {
             let errorMessage: string;

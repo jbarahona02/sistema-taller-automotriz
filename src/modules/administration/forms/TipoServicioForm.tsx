@@ -19,24 +19,32 @@ export const TipoServicioForm = () => {
     } = useTipoServicioStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             tsrCodigo: tsrCodigo ? tsrCodigo : 0,
             tsrNombre: values.tsrNombre,
             tsrDescripcion: values.tsrDescripcion,
             tsrEstado: values.tsrEstado,
-        });
+        },
+        tsrCodigo ? true : false
+    );
+
         if(tsrCodigo){
-            await findById(Number(tsrCodigo));
+            await findById(tsrCodigo);
         }
-    }
+
+        if(isSuccess) {
+            onClean();
+        }
+
+    };
 
     const onClean = () => {
-        
-    }
+        navigate(`${ADMIN_BASE_PATH}/tipo-servicio-list`);
+    };
 
     const onCancel = () => {
         navigate(`${ADMIN_BASE_PATH}/tipo-servicio-list`);
-    }
+    };
 
     return (
         <FormLayout
@@ -47,8 +55,8 @@ export const TipoServicioForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'tsrNombre'} />
-            <CustomInputText label={'Descripción'} name={'tsrDescripcion'} />
+            <CustomInputText label={'Nombre'} name={'tsrNombre'} xs={3}/>
+            <CustomInputText label={'Descripción'} name={'tsrDescripcion'} xs={6}/>
             <CustomSwitchComponent label={'Estado'} name={'tsrEstado'} />
         </FormLayout>
     );

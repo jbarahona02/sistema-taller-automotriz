@@ -1,3 +1,4 @@
+import moment from "moment";
 import { CitaInterface } from "../../../../interfaces";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -31,10 +32,10 @@ export const citaSlice = createSlice({
         },
         cleanCitaData: (state) => {
             state.ctaCodigo = 0;
-            state.ctaFechaHora = '';
+            state.ctaFechaHora = moment();
             state.ctaEstado = false;
             state.ctaDescripcion = '';
-            state.ctaFechaCreacion = '';
+            state.ctaFechaCreacion = moment();
             state.ctaDuracionEstimadaMin = 0;
             state.ctaConfirmacion = false;
             state.vehPlaca = null;

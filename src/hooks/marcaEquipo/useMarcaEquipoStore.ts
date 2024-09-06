@@ -31,18 +31,19 @@ export const useMarcaEquipoStore = () => {
         }
     }
 
-    const saveOrUpdate = async (marcaEquipo: MarcaEquipoInterface) => {
+    const saveOrUpdate = async (marcaEquipo: MarcaEquipoInterface, isUpdate: boolean): Promise<boolean> => {
         try {
-            if (marcaEquipo.meqCodigo) {
+            if (isUpdate) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_MARCA_EQUIPO_URI}/${marcaEquipo.meqCodigo}`, marcaEquipo);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setMarcaEquipoResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_MARCA_EQUIPO_URI}`, marcaEquipo);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setMarcaEquipoResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -51,6 +52,7 @@ export const useMarcaEquipoStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

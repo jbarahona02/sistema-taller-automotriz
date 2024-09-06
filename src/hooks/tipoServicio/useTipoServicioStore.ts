@@ -31,18 +31,19 @@ export const useTipoServicioStore = () => {
         }
     }
 
-    const saveOrUpdate = async (tipoServicio: TipoServicioInterface) => {
+    const saveOrUpdate = async (tipoServicio: TipoServicioInterface, isUpdate: boolean): Promise<boolean> => {
         try {
-            if (tipoServicio.tsrCodigo) {
+            if (isUpdate) {
                 const {data} = await automotiveWorkshopApi.patch(`${VITE_TIPO_SERVICIO_URI}/${tipoServicio.tsrCodigo}`, tipoServicio);
                 await Utilities.successAlarm('Registro actualizado');
                 dispatch(setTipoServicioResult(data));
-                return;
+                return true;
             }
 
             const {data} = await automotiveWorkshopApi.post(`${VITE_TIPO_SERVICIO_URI}`, tipoServicio);
             await Utilities.successAlarm('Registro guardado');
             dispatch(setTipoServicioResult(data));
+            return true;
         } catch (e) {
             let errorMessage: string;
             if (e instanceof Error) {
@@ -51,6 +52,7 @@ export const useTipoServicioStore = () => {
                 errorMessage = String(e);
             }
             await Utilities.errorAlarm(errorMessage);
+            return false;
         }
     }
 

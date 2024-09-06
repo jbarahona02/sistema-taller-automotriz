@@ -19,9 +19,14 @@ export const useTipoServicioListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (nombreODescripcion?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_TIPO_SERVICIO_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_TIPO_SERVICIO_URI}`, {
+                params: {
+                    search: nombreODescripcion,
+                    sort: 'tsrCodigo,asc'
+                }
+            });
             dispatch(setTipoServicioPageResult(data));
         } catch (e) {
             let errorMessage: string;

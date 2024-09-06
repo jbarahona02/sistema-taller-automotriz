@@ -17,9 +17,14 @@ export const useMarcaProductoListaStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (nombre?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_MARCA_PRODUCTO_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_MARCA_PRODUCTO_URI}`, {
+                params: {
+                    search: nombre,
+                    sort: 'mapCodigo,asc'
+                }
+            });
             dispatch(setMarcaProductoPageResult(data));
         } catch(e) {
             let errorMessage: string;

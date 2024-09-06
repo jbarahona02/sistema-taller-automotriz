@@ -19,9 +19,14 @@ export const useCitaListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async () => {
+    const findAll = async (descripcion?: string) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_CITA_URI}`, {  });
+            const { data } = await automotiveWorkshopApi.get(`${VITE_CITA_URI}`, {
+                params: {
+                    search: descripcion,
+                    sort: 'ctaCodigo,asc'
+                }
+            });
             console.log(data);
             dispatch(setCitaPageResult(data));
         } catch (e) {

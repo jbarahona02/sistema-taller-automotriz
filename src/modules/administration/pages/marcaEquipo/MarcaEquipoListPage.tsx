@@ -29,7 +29,9 @@ export const MarcaEquipoListPage = () => {
 
   const renderTableBody = () => {
     if (!content || content.length === 0) return [];
-    return content;
+    return content.map((item) => ({
+      ...item
+    }));
   };
 
 
@@ -39,12 +41,10 @@ export const MarcaEquipoListPage = () => {
 
       <SearchBarLayout
         initialValues={{ search: '' }}
-        onSubmit={() => findAll()}
+        onSubmit={({search}) => findAll(search)}
         onClean={() => findAll()}
-        onClick={() => { }}
       >
-        <CustomInputText label={'Nombre'} name={'meqNombre'} xs={20} />
-        <CustomInputText label={'Descripción'} name={'meqDescripcion'} xs={20} />
+        <CustomInputText label={'Nombre o Descripción'} name={'search'} xs={20} />
       </SearchBarLayout>
 
       <QueryContentLayout

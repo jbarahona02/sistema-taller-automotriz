@@ -29,19 +29,20 @@ export const MarcaProductoListaPage = () => {
 
     const renderTableBody = () => {
         if(!content || content.length === 0) return [];
-        return content;
+        return content.map((item) => ({
+            ...item
+        }));
     };
 
     return (
         <>
-            <TitleComponent title={'Marca Producto'}/>
+            <TitleComponent title={'Marcas de Productos'}/>
             <SearchBarLayout
                 initialValues={{ search: '' }}
-                onSubmit={() => findAll()}
+                onSubmit={({search}) => findAll(search)}
                 onClean={() => findAll()}
-                onClick={() => { }}
             >
-                <CustomInputText label={'Nombre'} name={'mapNombre'} xs={20}/>
+                <CustomInputText label={'Nombre'} name={'search'} xs={20}/>
             </SearchBarLayout>
 
             <QueryContentLayout

@@ -18,22 +18,30 @@ export const MarcaProductoForm = () => {
     } = useMarcaProductoStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             mapCodigo: mapCodigo ? mapCodigo : 0,
             mapNombre: values.mapNombre
-        });
+        },
+        mapCodigo ? true : false
+    );
+
         if(mapCodigo) {
-            await findById(Number(mapCodigo));
+            await findById(mapCodigo);
         }
-    }
+
+        if(isSuccess) {
+            onClean();
+        }
+
+    };
 
     const onClean = () => {
-
-    }
+        navigate(`${ADMIN_BASE_PATH}/marca-producto-list`);
+    };
 
     const onCancel = () => {
         navigate(`${ADMIN_BASE_PATH}/marca-producto-list`);
-    }
+    };
 
     return(
         <FormLayout
@@ -44,7 +52,7 @@ export const MarcaProductoForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={"Nombre"} name={"mapNombre"}/>
+            <CustomInputText label={"Nombre"} name={"mapNombre"} xs={3}/>
         </FormLayout>
     );
 
