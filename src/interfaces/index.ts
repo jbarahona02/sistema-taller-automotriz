@@ -21,3 +21,5 @@ export * from './tipoServicio.interface.ts';
 export * from './cita.interface.ts';
 export * from './producto.interface.ts';
 export * from './equipoTaller.interface.ts';
+export * from './usuario.interface.ts';
+export * from './servicio.interface.ts';

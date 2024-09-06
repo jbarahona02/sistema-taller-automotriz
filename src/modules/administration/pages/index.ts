@@ -42,3 +42,7 @@ export * from "./producto/ProductoListPage.tsx";
 export * from "./producto/ProductoPage.tsx";
 export * from "./equipoTaller/EquipoTallerListPage.tsx";
 export * from "./equipoTaller/EquipoTallerPage.tsx";
+export * from "./usuario/UsuarioListPage.tsx";
+export * from "./usuario/UsuarioPage.tsx";
+export * from "./servicio/ServicioListPage.tsx";
+export * from "./servicio/ServicioPage.tsx";

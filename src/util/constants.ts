@@ -20,7 +20,9 @@ import {
     Hardware,
     Checklist,
     ShoppingCart,
-    PrecisionManufacturing
+    PrecisionManufacturing,
+    Person,
+    DesignServices
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -138,6 +140,16 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/equipo-taller-list`,
                 name: "Equipos de taller",
                 NavIcon: PrecisionManufacturing
+            },
+            /*{
+                to: `${ADMIN_BASE_PATH}/usuario-list`,
+                name: "Usuarios",
+                NavIcon: Person
+            },*/
+            { 
+                to: `${ADMIN_BASE_PATH}/servicio-list`,
+                name: "Servicios",
+                NavIcon: DesignServices
             }
         ]
     }

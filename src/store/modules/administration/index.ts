@@ -42,3 +42,7 @@ export * from './producto/productoListSlice';
 export * from './producto/productoSlice';
 export * from './equipoTaller/equipoTallerListSlice';
 export * from './equipoTaller/equipoTallerSlice';
+export * from './usuario/usuarioListSlice';
+export * from './usuario/usuarioSlice';
+export * from './servicio/servicioListSlice';
+export * from './servicio/servicioSlice';
