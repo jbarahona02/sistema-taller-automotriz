@@ -22,7 +22,7 @@ export const mechanicValidationSchema = Yup.object({
         .required('El NIT es requerido'),
     mecTelefono: Yup
         .string()
-        //.matches(/^\d{1,6}-\d{4}-\d{4}$/, 'El número de teléfono no es válido. Debe seguir el formato "extensión 1234-5678"')
+        .matches(/^\+\d{1,4} \d{4}-\d{4}$/, 'El número de teléfono no es válido. Debe seguir el formato "extensión 1234-5678"')
         .max(15, 'El teléfono puede ser de 15 caracteres máximo')
         .required('El teléfono es requerido'),
     mecCorreo: Yup
