@@ -36,7 +36,7 @@ export const TypeVehicleListPage = () => {
 
   return (
     <>
-      <TitleComponent title={'Tipos de vehiculos'} />
+      <TitleComponent title={'Tipos de vehículos'} />
 
       <SearchBarLayout
         initialValues={{ nombre : ''}}

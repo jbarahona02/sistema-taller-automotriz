@@ -18,7 +18,7 @@ export const VehiculoPage = () => {
 
   return (
     <>
-      <TitleComponent title={'Vehiculo ' + (vehPlaca ? '- Editar' : '- Crear')} />
+      <TitleComponent title={'Vehículo ' + (vehPlaca ? '- Editar' : '- Crear')} />
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <VehiculoForm />

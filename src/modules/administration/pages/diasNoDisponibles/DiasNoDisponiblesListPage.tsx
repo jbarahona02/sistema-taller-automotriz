@@ -40,7 +40,7 @@ export const DiasNoDisponiblesListPage = () => {
 
   return (
     <>
-      <TitleComponent title={'Dias No Disponibles'} />
+      <TitleComponent title={'Días No Disponibles'} />
 
       <SearchBarLayout
         initialValues={{ motivo : ''}}

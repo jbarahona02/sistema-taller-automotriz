@@ -40,7 +40,7 @@ export const VehiculoListPage = () => {
 
   return (
     <>
-      <TitleComponent title={'Vehiculos'} />
+      <TitleComponent title={'Vehículos'} />
 
       <SearchBarLayout
         initialValues={{ placa : '', chasis: '', color: '', kilometraje: ''}}
