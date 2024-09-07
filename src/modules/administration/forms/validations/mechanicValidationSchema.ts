@@ -47,7 +47,7 @@ export const mechanicValidationSchema = Yup.object({
         .required('El salario es requerido'),
     mecFechaContratacion: Yup 
         .date()
-        .max(moment().toDate(), "La fecha no puede ser mayor a la fecha actual")
+        // .max(moment().toDate(), "La fecha no puede ser mayor a la fecha actual")
         .required('La fecha de contratación requerida'),
     mecAniosExperiencia: Yup
         .number()
