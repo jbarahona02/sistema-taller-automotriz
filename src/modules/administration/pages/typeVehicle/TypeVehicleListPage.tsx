@@ -5,7 +5,7 @@ import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import { useTypeVehicleListStore } from "../../../../hooks";
 
-const tableHeaders = ['Id', 'Nombre', 'Acciones'];
+const tableHeaders = ['Id', 'Nombre', 'Descripción', 'Acciones'];
 
 export const TypeVehicleListPage = () => {
   const navigate = useNavigate();
@@ -36,16 +36,14 @@ export const TypeVehicleListPage = () => {
 
   return (
     <>
-      <TitleComponent title={'Tipos de vehiculos'} />
+      <TitleComponent title={'Tipos de vehículos'} />
 
       <SearchBarLayout
-        initialValues={{ search: '' }}
-        onSubmit={() => findAll()}
+        initialValues={{ nombre : ''}}
+        onSubmit={({nombre}) => findAll(nombre)}
         onClean={() => findAll()}
-        onClick={() => { }}
       >
-        <CustomInputText label={'Nombre'} name={'tveNombre'} xs={20} />
-        <CustomInputText label={'Descripción'} name={'tveDescripcion'} xs={20} />
+        <CustomInputText label={'Nombre'} name={'nombre'} xs={12} />
       </SearchBarLayout>
 
       <QueryContentLayout

@@ -1,58 +1,67 @@
-import React, { useState } from 'react';
-import { Switch, FormControlLabel } from '@mui/material';
+import React from 'react';
+import { Switch, FormControlLabel, Grid } from '@mui/material';
 import { styled } from '@mui/system';
+import { useField } from 'formik';
 
 const CustomSwitch = styled(Switch)(({ theme }) => ({
-    width: 50,   // Reduced width of the switch container
-    height: 25,  // Reduced height of the switch container
-    padding: 0,
-    display: 'flex',
-    '& .MuiSwitch-switchBase': {
-      padding: 2,
-      '&.Mui-checked': {
-        transform: 'translateX(25px)',  // Adjusted position for the thumb when checked
-        color: '#fff',
-        '& + .MuiSwitch-track': {
-          backgroundColor: '#22007D',
-          opacity: 1,
-          border: 'none',
-        },
+  width: 50,
+  height: 25,
+  padding: 0,
+  marginLeft: 20,
+  display: 'flex',
+  '& .MuiSwitch-switchBase': {
+    padding: 2,
+    '&.Mui-checked': {
+      transform: 'translateX(25px)',
+      color: '#fff',
+      '& + .MuiSwitch-track': {
+        backgroundColor: '#22007D',
+        opacity: 1,
+        border: 'none',
       },
     },
-    '& .MuiSwitch-thumb': {
-      width: 21,  // Smaller width for the thumb (white circle)
-      height: 21, // Smaller height for the thumb (white circle)
-      boxShadow: 'none',
-    },
-    '& .MuiSwitch-track': {
-      borderRadius: 12.5, // Adjusted border radius to fit the smaller switch
-      backgroundColor: '#b3b3b3',
-      opacity: 1,
-    },
-  }));
+  },
+  '& .MuiSwitch-thumb': {
+    width: 21,
+    height: 21,
+    boxShadow: 'none',
+  },
+  '& .MuiSwitch-track': {
+    borderRadius: 12.5,
+    backgroundColor: '#b3b3b3',
+    opacity: 1,
+  },
+}));
+
+const CustomLabel = styled('span')(({ theme }) => ({
+  marginLeft: 9, // Añade margen izquierdo de 9px
+}));
 
 interface Props {
-	label: string;
-	value: boolean;
+  label: string;
+  name: string;
+  xs?: number;
 }
 
-export const CustomSwitchComponent = ({...props}: Props) => {
-  
+export const CustomSwitchComponent = ({ label, name, xs = 15 }: Props) => {
+  const [field, , helpers] = useField(name);
 
-  const handleChange = () => {
-    console.log("");
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    helpers.setValue(event.target.checked);
   };
 
   return (
-    <FormControlLabel
-      control={
-        <CustomSwitch
-          checked={props.value}
-          onChange={handleChange}
-        />
-      }
-      label={props.label}
-    />
+    <Grid item xs={xs}>
+      <FormControlLabel
+        control={
+          <CustomSwitch
+            checked={field.value}
+            onChange={handleChange}
+          />
+        }
+        label={<CustomLabel>{label}</CustomLabel>} // Usa el componente CustomLabel
+      />
+    </Grid>
   );
 };
 

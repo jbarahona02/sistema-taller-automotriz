@@ -18,7 +18,7 @@ export const TypeVehicleForm = () => {
     } = useTypeVehicleStore();
 
     const onSubmit = async (values: FormikValues) => {
-        await saveOrUpdate({
+        const isSuccess = await saveOrUpdate({
             tveCodigo: tveCodigo ? tveCodigo : 0,
             tveNombre: values.tveNombre,
             tveDescripcion: values.tveDescripcion,
@@ -26,10 +26,14 @@ export const TypeVehicleForm = () => {
         if(tveCodigo){
             await findById(Number(tveCodigo));
         }
+
+        if(isSuccess){
+            onClean();
+        }
     }
 
     const onClean = () => {
-        
+        navigate(`${ADMIN_BASE_PATH}/type-vehicle-list`);
     }
 
     const onCancel = () => {
@@ -45,7 +49,7 @@ export const TypeVehicleForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomInputText label={'Nombre'} name={'tveNombre'} />
+            <CustomInputText label={'Nombre'} name={'tveNombre'} xs={3}/>
             <CustomInputText label={'Descripción'} name={'tveDescripcion'} />
         </FormLayout>
     );

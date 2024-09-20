@@ -18,7 +18,7 @@ export const VehicleBrandPage = () => {
 
   return (
     <>
-      <TitleComponent title={'Marcas de vehiculos ' + (mveCodigo ? '- Editar' : '- Crear')} />
+      <TitleComponent title={'Marcas de vehículos ' + (mveCodigo ? '- Editar' : '- Crear')} />
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <VehicleBrandForm />

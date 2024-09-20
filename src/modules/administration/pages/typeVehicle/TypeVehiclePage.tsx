@@ -18,7 +18,7 @@ export const TypeVehiclePage = () => {
 
   return (
     <>
-      <TitleComponent title={'Tipos de vehiculos ' + (tveCodigo ? '- Editar' : '- Crear')} />
+      <TitleComponent title={'Tipos de vehículos ' + (tveCodigo ? '- Editar' : '- Crear')} />
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <TypeVehicleForm />
