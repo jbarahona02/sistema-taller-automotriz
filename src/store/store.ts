@@ -10,7 +10,7 @@ import { vehiculoListSlice } from "./modules/administration/vehiculo/vehiculoLis
 import { vehiculoSlice } from "./modules/administration/vehiculo/vehiculoSlice";
 import { nivelGravedadListSlice } from "./modules/administration/nivelGravedad/nivelGravedadListSlice";
 import { nivelGravedadSlice } from "./modules/administration/nivelGravedad/nivelGravedadSlice";
-import { herramientaListSlice } from "./modules/administration/herramienta/herramientaListSlice";
+import { herramientaListSlice } from "./modules/administration";
 import { herramientaSlice } from "./modules/administration/herramienta/herramientaSlice";
 import { CotizacionInterface, CotizacionListInterface } from "../interfaces/cotizacion.interface";
 import { marcaEquipoListSlice, marcaEquipoSlice } from "./modules/administration";
@@ -20,6 +20,7 @@ import { productoListSlice, productoSlice } from "./modules/administration";
 import { equipoTallerListSlice, equipoTallerSlice } from "./modules/administration";
 import { usuarioListSlice, usuarioSlice } from "./modules/administration";
 import { servicioListSlice, servicioSlice } from "./modules/administration";
+import {reportSlice} from './modules/administration/report/reportSlice.ts';
 
 export interface StoreInterface {
     mechanicListSlice: MechanicListInterface,
@@ -122,7 +123,8 @@ export const store = configureStore({
         usuarioListSlice: usuarioListSlice.reducer,
         usuarioSlice: usuarioSlice.reducer,
         servicioListSlice: servicioListSlice.reducer,
-        servicioSlice: servicioSlice.reducer
+        servicioSlice: servicioSlice.reducer,
+        reportSlice: reportSlice.reducer
     }
 });
 

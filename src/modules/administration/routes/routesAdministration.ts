@@ -20,6 +20,7 @@ import { ProductoListPage, ProductoPage } from "../pages";
 import { EquipoTallerListPage, EquipoTallerPage } from "../pages";
 import { UsuarioListPage, UsuarioPage } from "../pages";
 import { ServicioListPage, ServicioPage } from "../pages";
+import {DialogReport} from '../pages/reports/DialogReport.tsx';
 
 export const routesAdministration: ModuleRoute[] = [
     
@@ -317,5 +318,9 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'servicio/:srvCodigo',
         Component: ServicioPage
+    },
+    {
+        path: 'report/:url/:title',
+        Component: DialogReport
     }
 ];

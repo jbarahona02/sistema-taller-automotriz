@@ -46,3 +46,4 @@ export * from './usuario/useUsuarioListStore';
 export * from './usuario/useUsuarioStore';
 export * from './servicio/useServicioListStore';
 export * from './servicio/useServicioStore';
+export * from './reports/useReportsStore.ts';
