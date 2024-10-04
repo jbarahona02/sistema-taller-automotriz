@@ -1,7 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import {ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import {SidNavItemInterface} from "../interfaces";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setOpenDialog} from '../store/modules/administration/report/reportSlice.ts';
 
 
 
@@ -9,9 +10,13 @@ export const SideNavItem = ({to, name, NavIcon}: SidNavItemInterface) => {
 
     const navigate = useNavigate();
     const sideNav = useSelector(state => state.sideNav);
+    const dispatch = useDispatch();
 
 
     const onNavigate = () => {
+        if (to.includes('report')) {
+            dispatch(setOpenDialog(true));
+        }
         navigate(to);
     }
 

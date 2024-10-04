@@ -21,8 +21,8 @@ import {
     Checklist,
     ShoppingCart,
     PrecisionManufacturing,
-    Person,
-    DesignServices
+    DesignServices,
+    Report, Work, Workspaces, WorkHistory
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -151,6 +151,86 @@ export const NAVBAR_ROUTES: SideNavType = [
                 name: "Servicios",
                 NavIcon: DesignServices
             }
+        ]
+    },
+    {
+        moduleName: 'Operaciones',
+        items: [
+            {
+                to: `${ADMIN_BASE_PATH}/order-create`,
+                name: 'Ordenes de trabajo',
+                NavIcon: Work
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/query-orders`,
+                name: 'Consulta Ordenes de Trabajo',
+                NavIcon: WorkHistory
+            }
+        ]
+    },
+    {
+        moduleName: 'Reportes',
+        items: [
+            {
+                to: `${ADMIN_BASE_PATH}/report/serviciosMasSolicitados/Servicios más solicitados`,
+                name: "Reporte servicios más solicitados",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/serviciosMenosSolicitados/Servicios menos solicitados`,
+                name: "Reporte servicios menos solicitados",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/repuestosMasCaros/Repuestos más caros`,
+                name: "Reporte repuestos más caros",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/repuestosMenosCaros/Repuestos menos caros`,
+                name: "Reporte repuestos menos caros",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/marcasMasAtendidas/Marcas más atendidas`,
+                name: "Reporte marcas más atendidas",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/clientesMasRecurrentes/Clientes más recurrentes`,
+                name: "Reporte clientes más recurrentes",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/mecanicosConMaServicios/Mecanicos con más servicios`,
+                name: "Reporte mecanicos con más servicios",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/serviciosPrestadosMasCaros/Servicios prestados mas caros`,
+                name: "Reporte servicios prestados mas caros",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/serviciosPrestadosMenosCaros/Servicios prestados menos caros`,
+                name: "Reporte servicios prestados menos caros",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/vehiculosMasNuevosReparados/Vehiculos más nuevos reparados`,
+                name: "Reporte vehiculos más nuevos reparados",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/vehiculosMenosNuevosReparados/Vehiculos más antiguos reparados`,
+                name: "Reporte vehiculos más antiguos reparados",
+                NavIcon: Report
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/report/diasConMasMenosCitas/Dias con más y menos citas`,
+                name: "Reporte dias con más y menos citas",
+                NavIcon: Report
+            },
         ]
     }
 ];

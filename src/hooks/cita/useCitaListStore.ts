@@ -10,24 +10,26 @@ import { Utilities } from "../../util";
 
 const { VITE_CITA_URI } = getEnvVariables();
 
-export const useCitaListStore = () => {
+export const useCitaListStore = (useDefaultEffect = true) => {
 
     const citaListValues = useSelector((state: StoreInterface) => state.citaListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll();
+        if (useDefaultEffect) {
+            findAll().then();
+        }
     }, []);
 
-    const findAll = async (descripcion?: string) => {
+    const findAll = async (descripcion?: string, status?: boolean) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_CITA_URI}`, {
                 params: {
                     search: descripcion,
-                    sort: 'ctaCodigo,asc'
+                    sort: 'ctaFechaHora,asc',
+                    status
                 }
             });
-            console.log(data);
             dispatch(setCitaPageResult(data));
         } catch (e) {
             let errorMessage: string;

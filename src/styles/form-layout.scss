@@ -12,7 +12,12 @@
   }
   
   .query-content {
-    height: calc(100vh - (8px + 24px + 56px + 32px + 37px + 48px + 1rem + 25px + 1rem + 32px));
+    height: calc(100vh - (209px + 1rem));
+    overflow-y: auto;
+  }
+
+  .query-content-without-searchbar {
+    height: calc(100vh - 120px);
     overflow-y: auto;
   }
   
@@ -41,4 +46,3 @@
     }
   
   }
-  

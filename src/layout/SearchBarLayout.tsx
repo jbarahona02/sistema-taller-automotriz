@@ -1,11 +1,8 @@
-import { Avatar, Box, Grid, IconButton } from "@mui/material";
-import { Form, Formik, FormikValues } from "formik";
-import {FormikProps} from "formik/dist/types";
-import { ReactElement, useRef } from "react";
-import { FormikHelpers } from "formik/dist/types";
-import { CancelOutlined, SearchOutlined } from "@mui/icons-material";
-import React from "react";
-import { CustomSwitchComponent } from "../components/form";
+import {Grid, IconButton} from "@mui/material";
+import {Form, Formik, FormikValues} from "formik";
+import {FormikHelpers, FormikProps} from "formik/dist/types";
+import React, {ReactElement, useRef} from "react";
+import {CancelOutlined, SearchOutlined} from "@mui/icons-material";
 
 interface Props {
     children: ReactElement | ReactElement[];
@@ -13,21 +10,23 @@ interface Props {
     validationSchema?: any | (() => any);
     onSubmit: (values: FormikValues, formikHelpers: FormikHelpers<FormikValues>) => void;
     onClean?: () => void;
+    useCustom?: boolean;
 }
 
 export const SearchBarLayout = ({
-    children,
-    initialValues,
-    validationSchema,
-    onSubmit,
-    onClean
-}: Props) => {
+                                    children,
+                                    initialValues,
+                                    validationSchema,
+                                    onSubmit,
+                                    onClean,
+                                    useCustom,
+                                }: Props) => {
     const formRef = useRef<FormikProps<any>>(null);
 
     const onClick = () => {
         formRef.current?.resetForm();
-        if(onClean) onClean();
-    } 
+        if (onClean) onClean();
+    }
 
     return (
         <Grid
@@ -38,12 +37,12 @@ export const SearchBarLayout = ({
                 borderRadius: 5,
                 paddingTop: 0,
                 marginTop: 2,
-                marginLeft: -1,
+                marginLeft: -1
             }}
             alignItems={'center'}
             className={'grid-main-container'}
         >
-            <Grid item xs={10} style={{ paddingBottom: 15 }}>
+            <Grid item xs={10} style={{paddingBottom: 15}}>
                 <Formik
                     initialValues={initialValues}
                     onSubmit={onSubmit}
@@ -55,27 +54,28 @@ export const SearchBarLayout = ({
 
                         return (
                             <Form>
-                                <Grid container spacing={2} direction="row">
-                                    {React.Children.map(children, (child) => (
-                                        <Grid item xs="auto">
-                                            {child}
+                                {
+                                    useCustom
+                                        ? <Grid container spacing={2} direction="row"> {children} </Grid>
+                                        : <Grid container spacing={2} direction="row">
+                                            {React.Children.map(children, (child) => (
+                                                <Grid item xs="auto">
+                                                    {child}
+                                                </Grid>
+                                            ))}
                                         </Grid>
-                                    ))}
-                                    {/* <Grid item xs="auto">
-                                        <CustomSwitchComponent label="Valor" name="valor" />
-                                    </Grid> */}
-                                </Grid>
+                                }
                             </Form>
                         )
                     }}
                 </Formik>
             </Grid>
-            <Grid item xs={2} sx={{ pl: 1.5 }}>
+            <Grid item xs={2} sx={{pl: 1.5}}>
                 <IconButton onClick={() => formRef.current?.submitForm()}>
-                    <SearchOutlined />
+                    <SearchOutlined/>
                 </IconButton>
                 <IconButton onClick={onClick}>
-                    <CancelOutlined style={{ color: 'red' }} />
+                    <CancelOutlined style={{color: 'red'}}/>
                 </IconButton>
             </Grid>
         </Grid>
