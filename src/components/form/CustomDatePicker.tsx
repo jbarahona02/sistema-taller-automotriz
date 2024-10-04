@@ -15,12 +15,13 @@ interface Props {
     placeholder?: string;
     xs?: number;
     restrictToToday?: boolean; // Para restringir la fecha máxima
-    minDate?: string; // Nueva propiedad para la fecha mínima en formato string
+    minDate?: Moment; // Nueva propiedad para la fecha mínima en formato string
     [x: string]: any;
     onChange?: (value: Moment | null) => void;
+    useRestrictToToday?: boolean;
 }
 
-export const CustomDatePicker = ({ xs = 6, onChange, restrictToToday = false, minDate, ...props }: Props) => {
+export const CustomDatePicker = ({ xs = 6, onChange, restrictToToday = false, useRestrictToToday = true, minDate, ...props }: Props) => {
     const { setFieldValue } = useFormikContext();
     const [field, meta] = useField(props);
 
@@ -29,9 +30,6 @@ export const CustomDatePicker = ({ xs = 6, onChange, restrictToToday = false, mi
 
     // Configura la fecha máxima permitida si restrictToToday es true
     const maxDate: Moment | undefined = restrictToToday ? moment() : undefined;
-
-    // Convierte minDate de string a Moment, si es proporcionada
-    const minDateMoment: Moment | undefined = minDate ? moment(minDate, 'DD/MM/YYYY') : undefined;
 
     return (
         <Grid item xs={xs}>
@@ -44,15 +42,15 @@ export const CustomDatePicker = ({ xs = 6, onChange, restrictToToday = false, mi
                     {...props}
                     value={fieldValue}
                     onChange={(value: Moment | null) => {
-                        setFieldValue(field.name, value ? value.toDate() : undefined); 
+                        setFieldValue(field.name, value);
                         if (onChange) {
                             onChange(value);
                         }
                     }}
                     sx={{ width: '100%' }}
                     format={'DD/MM/YYYY'}
-                    maxDate={maxDate} // Usa undefined si no hay restricción de fecha máxima
-                    // minDate={minDateMoment} // Aplica la fecha mínima si es proporcionada
+                    minDate={minDate}
+                    maxDate={props.maxDate}
                     renderInput={(params) => (
                         <TextField
                             {...params}

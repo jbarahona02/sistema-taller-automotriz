@@ -5,8 +5,9 @@ import { getEnvVariables } from "../../helpers";
 import { automotiveWorkshopApi } from "../../api";
 import { setServicioPageResult } from "../../store/modules/administration";
 import { Utilities } from "../../util";
+import {ProductoInterface, RepuestoInterface} from '../../interfaces';
 
-const { VITE_SERVICIO_URI } = getEnvVariables();
+const { VITE_SERVICIO_URI, VITE_SERVICIO_PRODUCTO_URI, VITE_SERVICIO_REPUESTO_URI } = getEnvVariables();
 
 export const useServicioListStore = () => {
 
@@ -58,9 +59,21 @@ export const useServicioListStore = () => {
         }
     };
 
+    const productosPorServicio = async (srvCodigo: number): Promise<ProductoInterface[]> => {
+        const { data } = await automotiveWorkshopApi.get<ProductoInterface[], ProductoInterface[]>(`${VITE_SERVICIO_PRODUCTO_URI}/productos/${srvCodigo}`);
+        return data;
+    }
+
+    const repuestosPorServicio = async (srvCodigo: number): Promise<RepuestoInterface[]> => {
+        const { data } = await automotiveWorkshopApi.get<RepuestoInterface[], RepuestoInterface[]>(`${VITE_SERVICIO_REPUESTO_URI}/repuestos/${srvCodigo}`);
+        return data;
+    }
+
     return {
         ...servicioListValues,
         findAll,
-        remove
+        remove,
+        productosPorServicio,
+        repuestosPorServicio
     }
 };

@@ -19,7 +19,6 @@ export const useCitaStore = () => {
     const findById = async (code: number) => {
         try {
             const {data} = await automotiveWorkshopApi.get(`${VITE_CITA_URI}/${code}`);
-            console.log(data);
             dispatch(setCitaResult(data));
         } catch (e) {
             let errorMessage: string;
@@ -64,6 +63,7 @@ export const useCitaStore = () => {
 
     return {
         ...citaValue,
+        citaValue,
         findById,
         saveOrUpdate,
         cleanForm

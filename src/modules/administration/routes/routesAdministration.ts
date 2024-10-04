@@ -21,6 +21,8 @@ import { EquipoTallerListPage, EquipoTallerPage } from "../pages";
 import { UsuarioListPage, UsuarioPage } from "../pages";
 import { ServicioListPage, ServicioPage } from "../pages";
 import {DialogReport} from '../pages/reports/DialogReport.tsx';
+import {OrdenDeTrabajoListarCitas} from '../pages-operation/ordenTrabajo/OrdenDeTrabajoListarCitas.tsx';
+import {ConsultaOrdenesDeTrabajo} from '../pages-operation/ordenTrabajo/ConsultaOrdenesDeTrabajo.tsx';
 
 export const routesAdministration: ModuleRoute[] = [
     
@@ -322,5 +324,13 @@ export const routesAdministration: ModuleRoute[] = [
     {
         path: 'report/:url/:title',
         Component: DialogReport
+    },
+    {
+        path: 'order-create',
+        Component: OrdenDeTrabajoListarCitas
+    },
+    {
+        path: 'query-orders',
+        Component: ConsultaOrdenesDeTrabajo
     }
 ];

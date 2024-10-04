@@ -6,7 +6,7 @@ import {ReactElement} from "react";
 import {FormikHelpers} from "formik/dist/types";
 
 interface Props {
-    update?: boolean;
+    useButtons?: boolean;
     useStatus?: boolean;
     statusActive?: boolean;
     children: ReactElement | ReactElement[];
@@ -14,20 +14,19 @@ interface Props {
     validationSchema?: any | (() => any);
     onSubmit: (values: FormikValues, formikHelpers: FormikHelpers<FormikValues>) => void;
     onCancel: () => void;
-    onClean: () => void;
+    onClean?: () => void;
     onChangeStatus?: () => void;
 }
 
 
 export const FormLayout = ({
-                               update = true,
+                               useButtons = true,
                                useStatus = false,
                                statusActive = false,
                                children,
                                initialValues,
                                validationSchema,
                                onSubmit,
-                               onClean,
                                onCancel,
                                onChangeStatus,
                            }: Props) => {
@@ -77,10 +76,17 @@ export const FormLayout = ({
                                             {children}
                                         </Grid>
                                     </Box>
-                                    <div className="button-container">
-                                        <Button variant="contained" type="button" onClick={onCancel} id="cancel-button"> Cancelar  <Backspace sx={{ marginLeft: '5px', color: "white", height:"18px"}} /></Button>
-                                        <Button variant="contained" type="submit" id="submit-button"> Guardar <SaveAs sx={{ marginLeft: '5px', color: "white", height:"18px"}} /> </Button>
-                                    </div>
+                                    {
+                                        useButtons &&
+                                        <div className="button-container">
+                                            <Button variant="contained" type="button" onClick={onCancel}
+                                                    id="cancel-button"> Cancelar <Backspace
+                                                sx={{marginLeft: '5px', color: "white", height: "18px"}}/></Button>
+                                            <Button variant="contained" type="submit"
+                                                    id="submit-button"> Guardar <SaveAs
+                                                sx={{marginLeft: '5px', color: "white", height: "18px"}}/> </Button>
+                                        </div>
+                                    }
                                 </Form>
                             )
                         }

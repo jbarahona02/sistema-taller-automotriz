@@ -22,7 +22,7 @@ import {
     ShoppingCart,
     PrecisionManufacturing,
     DesignServices,
-    Report
+    Report, Work, Workspaces, WorkHistory
 } from "@mui/icons-material";
 
 export const ADMIN_BASE_PATH = '/admin';
@@ -150,6 +150,21 @@ export const NAVBAR_ROUTES: SideNavType = [
                 to: `${ADMIN_BASE_PATH}/servicio-list`,
                 name: "Servicios",
                 NavIcon: DesignServices
+            }
+        ]
+    },
+    {
+        moduleName: 'Operaciones',
+        items: [
+            {
+                to: `${ADMIN_BASE_PATH}/order-create`,
+                name: 'Ordenes de trabajo',
+                NavIcon: Work
+            },
+            {
+                to: `${ADMIN_BASE_PATH}/query-orders`,
+                name: 'Consulta Ordenes de Trabajo',
+                NavIcon: WorkHistory
             }
         ]
     },

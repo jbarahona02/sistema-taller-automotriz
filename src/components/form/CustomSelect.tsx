@@ -1,5 +1,5 @@
 import { FormControl, FormHelperText, Grid, InputLabel, Select } from "@mui/material";
-import { useField } from "formik";
+import {useField, useFormikContext} from "formik";
 import { ReactElement } from "react";
 
 interface Props {
@@ -9,10 +9,12 @@ interface Props {
     xs?: number;
     children: ReactElement | ReactElement[];
     [x: string]: any;
+    onChange?: (value) => void;
 }
 
-export const CustomSelect = ({ xs = 6, label, children, ...props }: Props) => {
+export const CustomSelect = ({ xs = 6, label, children, onChange, ...props }: Props) => {
     const [field, meta] = useField(props);
+    const {setFieldValue} = useFormikContext();
 
     const isError = meta.touched && Boolean(meta.error);
 
@@ -28,6 +30,12 @@ export const CustomSelect = ({ xs = 6, label, children, ...props }: Props) => {
                     label={label} 
                     {...field} 
                     {...props}
+                    onChange={
+                        event => {
+                            if (onChange) onChange(event.target.value);
+                            setFieldValue(field.name, event.target.value);
+                        }
+                    }
                     value={field.value || ''}
                 >
                     {children}
