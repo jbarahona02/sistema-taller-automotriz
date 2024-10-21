@@ -10,21 +10,22 @@ import { Utilities } from "../../util";
 
 const { VITE_TYPE_VEHICLE_URI } = getEnvVariables();
 
-export const useTypeVehicleListStore = () => {
+export const useTypeVehicleListStore = (size = 10) => {
 
     const typeVehicleListValues = useSelector((state: StoreInterface) => state.typeVehicleListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll();
+        findAll(null, size);
     }, []);
 
-    const findAll = async (nombreODescripcion?: string) => {
+    const findAll = async (nombreODescripcion?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TYPE_VEHICLE_URI}`, {
                 params: {
                     search: nombreODescripcion,
-                    sort: 'tveCodigo,asc'
+                    sort: 'tveCodigo,asc',
+                    size
                 }
               });
             dispatch(setTypeVehiclePageResult(data));

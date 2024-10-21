@@ -9,19 +9,19 @@ import { setTipoRepuestoPageResult } from "../../store/modules/administration";
 
 const { VITE_TIPO_REPUESTO_URI } = getEnvVariables();
 
-export const useTipoRepuestoListStore = () => {
+export const useTipoRepuestoListStore = (size= 10) => {
     const tipoRepuestoListValues = useSelector((state: StoreInterface) => state.tipoRepuestoListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll();
+        findAll(null, size);
     }, []);
 
-    const findAll = async (nombreODescripcion?: string) => {
+    const findAll = async (nombreODescripcion?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TIPO_REPUESTO_URI}`, { params:
                {
-                search: nombreODescripcion, sort: 'trpCodigo,asc'
+                search: nombreODescripcion, sort: 'trpCodigo,asc', size
             }});
             dispatch(setTipoRepuestoPageResult(data));
         } catch (e) {

@@ -10,21 +10,22 @@ import { Utilities } from "../../util";
 
 const { VITE_TIPO_SERVICIO_URI } = getEnvVariables();
 
-export const useTipoServicioListStore = () => {
+export const useTipoServicioListStore = (size = 10) => {
 
     const tipoServicioListValues = useSelector((state: StoreInterface) => state.tipoServicioListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll();
+        findAll(null, size);
     }, []);
 
-    const findAll = async (nombreODescripcion?: string) => {
+    const findAll = async (nombreODescripcion?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TIPO_SERVICIO_URI}`, {
                 params: {
                     search: nombreODescripcion,
-                    sort: 'tsrCodigo,asc'
+                    sort: 'tsrCodigo,asc',
+                    size
                 }
             });
             dispatch(setTipoServicioPageResult(data));

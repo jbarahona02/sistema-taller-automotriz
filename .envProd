@@ -1,4 +1,4 @@
-VITE_BASE_URL=http://localhost:3001/api/workshop-administration
+VITE_BASE_URL=http://localhost/api/workshop-administration
 VITE_VEHICLE_BRAND_URI=/marca-vehiculo
 VITE_TYPE_VEHICLE_URI=/tipo-vehiculo
 VITE_TALLER_URI=/taller
