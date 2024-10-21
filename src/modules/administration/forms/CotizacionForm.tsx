@@ -67,8 +67,8 @@ export const CotizacionForm = () => {
             onClean={onClean}
             onCancel={onCancel}
         >
-            <CustomDatePicker label={'Fecha de creación'} name={'cotFechaCreacion'}  xs={3} restrictToToday={true} minDate={moment().format('DD/MM/YYYY')}/>
-            <CustomDatePicker label={'Fecha de vencimiento'} name={'cotFechaVencimiento'}  xs={3} minDate={moment().format('DD/MM/YYYY')}/>
+            <CustomDatePicker label={'Fecha de creación'} name={'cotFechaCreacion'}  xs={3} restrictToToday={true} minDate={moment()}/>
+            <CustomDatePicker label={'Fecha de vencimiento'} name={'cotFechaVencimiento'}  xs={3} minDate={moment()}/>
             <CustomInputText label={'Porcentaje de descuento'} name={'cotDescuento'} xs={2}/>
             <CustomInputText label={'Subtotal'} name={'cotSubtotal'} xs={2}/>
             <CustomInputText label={'Total'} name={'cotTotal'} xs={2}/>

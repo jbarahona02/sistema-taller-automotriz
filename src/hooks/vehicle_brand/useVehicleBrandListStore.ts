@@ -10,16 +10,16 @@ import { Utilities } from "../../util";
 
 const { VITE_VEHICLE_BRAND_URI } = getEnvVariables();
 
-export const useVehicleBrandListStore = () => {
+export const useVehicleBrandListStore = (size = 10) => {
 
     const vehicleBrandListValues = useSelector((state: StoreInterface) => state.vehicleBrandListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll();
+        findAll(null, size);
     }, []);
 
-    const findAll = async (nombre?: string) => {
+    const findAll = async (nombre?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_VEHICLE_BRAND_URI}`, {
                 params: {

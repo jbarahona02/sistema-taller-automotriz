@@ -1,25 +1,23 @@
-import { useDispatch, useSelector } from "react-redux";
-import { StoreInterface } from "../../store";
-import { useEffect } from "react";
-import { getEnvVariables } from "../../helpers";
-import { automotiveWorkshopApi } from "../../api";
-import {
-    setMechanicPageResult,
-} from "../../store/modules/administration";
-import { Utilities } from "../../util";
+import {useDispatch, useSelector} from "react-redux";
+import {StoreInterface} from "../../store";
+import {useEffect} from "react";
+import {getEnvVariables} from "../../helpers";
+import {automotiveWorkshopApi} from "../../api";
+import {setMechanicPageResult,} from "../../store/modules/administration";
+import {Utilities} from "../../util";
 
 const { VITE_MECHANIC_URI } = getEnvVariables();
 
-export const useMechanicListStore = () => {
+export const useMechanicListStore = (size = 10) => {
 
     const mechanicListValues = useSelector((state: StoreInterface) => state.mechanicListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll();
+        findAll(null, null, null, null, null, size);
     }, []);
 
-    const findAll = async (nombresApellidos?:string,dpi?:string, nit?:string,telefono?:string,correo?:string) => {
+    const findAll = async (nombresApellidos?: string, dpi?: string, nit?: string, telefono?: string, correo?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_MECHANIC_URI}`, {
                 params: {
@@ -28,7 +26,8 @@ export const useMechanicListStore = () => {
                     nit,
                     telefono,
                     correo,
-                    sort: 'mecCodigo,asc'
+                    sort: 'mecCodigo,asc',
+                    size
                 }
               });
 

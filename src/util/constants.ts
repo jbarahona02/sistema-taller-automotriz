@@ -234,3 +234,19 @@ export const NAVBAR_ROUTES: SideNavType = [
         ]
     }
 ];
+
+
+export const reportsKeys = {
+    serviciosMasSolicitados: 'serviciosMasSolicitados',
+    serviciosMenosSolicitados: 'serviciosMenosSolicitados',
+    repuestosMasCaros: 'repuestosMasCaros',
+    repuestosMenosCaros: 'repuestosMenosCaros',
+    marcasMasAtendidas: 'marcasMasAtendidas',
+    clientesMasRecurrentes: 'clientesMasRecurrentes',
+    mecanicosConMaServicios: 'mecanicosConMaServicios',
+    serviciosPrestadosMasCaros: 'serviciosPrestadosMasCaros',
+    serviciosPrestadosMenosCaros: 'serviciosPrestadosMenosCaros',
+    vehiculosMasNuevosReparados: 'vehiculosMasNuevosReparados',
+    vehiculosMenosNuevosReparados: 'vehiculosMenosNuevosReparados',
+    diasConMasMenosCitas: 'diasConMasMenosCitas',
+}
