@@ -8,24 +8,27 @@ import { Utilities } from "../../util";
 
 const { VITE_PROVEEDOR_URI } = getEnvVariables();
 
-export const useProveedorListStore = () => {
+export const useProveedorListStore = (size = 10) => {
 
     const proveedorListValues = useSelector((state: StoreInterface) => state.proveedorListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll();
+        findAll(null, null, null, size);
     }, []);
 
-    const findAll = async (nombre?:string,telefono?:string,correo?:string) => {
+    const findAll = async (nombre?:string,telefono?:string,correo?:string, size?: number) => {
         try {
-            const { data } = await automotiveWorkshopApi.get(`${VITE_PROVEEDOR_URI}`, { params:
-                {
-                 search: nombre,
-                 telefono,
-                 correo, 
-                 sort: 'prvCodigo,asc'
-             }});
+            const {data} = await automotiveWorkshopApi.get(`${VITE_PROVEEDOR_URI}`, {
+                params:
+                    {
+                        search: nombre,
+                        telefono,
+                        correo,
+                        sort: 'prvCodigo,asc',
+                        size
+                    }
+            });
             dispatch(setProveedorPageResult(data));
         } catch (e) {
             let errorMessage: string;

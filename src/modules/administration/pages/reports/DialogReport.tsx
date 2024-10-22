@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {setOpenDialog} from '../../../../store/modules/administration/report/reportSlice.ts';
 import {
-    useClienteListStore, useMechanicListStore,
+    useClienteListStore, useMechanicListStore, useProveedorListStore,
     useReportsStore,
     useTipoRepuestoListStore,
     useTipoServicioListStore,
@@ -24,6 +24,7 @@ export const DialogReport = () => {
     const {content: marcaVehiculoContent} = useVehicleBrandListStore(5000);
     const {content: mecanicoContent} = useMechanicListStore(5000);
     const {content: clientesContent} = useClienteListStore(5000);
+    const {content: proveedorContent} = useProveedorListStore(5000);
     const {url, title} = useParams();
     const {handleDownloadReport} = useReportsStore();
     const formikRef = useRef<FormikProps<any>>();
@@ -36,13 +37,13 @@ export const DialogReport = () => {
         dispatch(setOpenDialog(false));
     }
 
-    const handleDownload = async () => {
-        await handleDownloadReport(url, title);
+    const handleDownload = async (params) => {
+        await handleDownloadReport(params, url, title);
         dispatch(setOpenDialog(false));
     }
 
     const handleSubmit = async (formValues) => {
-        console.log(formValues);
+        await handleDownload(formValues);
     }
 
     useEffect(() => {
@@ -58,8 +59,7 @@ export const DialogReport = () => {
             case reportsKeys.repuestosMenosCaros:
             case reportsKeys.repuestosMasCaros:
                 setInitValues({
-                    startDate: moment().startOf('month'),
-                    endDate: moment(),
+                    proveedor: '',
                     tipoRepuesto: 0
                 });
                 return;
@@ -67,7 +67,7 @@ export const DialogReport = () => {
                 setInitValues({
                     startDate: moment().startOf('month'),
                     endDate: moment(),
-                    tipoDeVehiculo: 0,
+                    tipoVehiculo: 0,
                     marca: 0
                 });
                 return;
@@ -75,7 +75,9 @@ export const DialogReport = () => {
                 setInitValues({
                     startDate: moment().startOf('month'),
                     endDate: moment(),
-                    tipoDeVehiculo: 0,
+                    place: '',
+                    tipoVehiculo: 0,
+                    marca: 0
                 });
                 return;
             case reportsKeys.mecanicosConMaServicios:
@@ -146,21 +148,16 @@ export const DialogReport = () => {
             case reportsKeys.repuestosMasCaros:
                 return (
                     <>
-                        <CustomDatePicker
-                            xs={3}
-                            label={'Fecha inicial'}
-                            name={'startDate'}
-                            maxDate={moment()}
-                            onChange={value => setStartDateValue(value)}
-                        />
-                        <CustomDatePicker
-                            xs={3}
-                            label={'Fecha final'}
-                            name={'endDate'}
-                            maxDate={moment()}
-                            minDate={startDateValue}
-                        />
-                        <CustomSelect label={'Tipo de Repuesto'} name={'tipoServicio'}>
+                        <CustomSelect xs={4} label={'Proveedor'} name={'proveedor'}>
+                            {
+                                proveedorContent.map(item => (
+                                    <MenuItem key={item.prvCodigo} value={item.prvCodigo}>
+                                        {item.prvNombre}
+                                    </MenuItem>
+                                ))
+                            }
+                        </CustomSelect>
+                        <CustomSelect xs={3} label={'Tipo de Repuesto'} name={'tipoRepuesto'}>
                             {
                                 tipoRepuestoContent.map(item => (
                                     <MenuItem key={item.trpCodigo} value={item.trpCodigo}>
@@ -189,7 +186,7 @@ export const DialogReport = () => {
                             minDate={startDateValue}
                         />
 
-                        <CustomSelect xs={3} label={'Tipo de Vehiculo'} name={'tipoDeVehiculo'}>
+                        <CustomSelect xs={3} label={'Tipo de Vehiculo'} name={'tipoVehiculo'}>
                             {
                                 tipoVehiculoContent.map((item) => (
                                     <MenuItem key={item.tveCodigo} value={item.tveCodigo}>
@@ -227,6 +224,16 @@ export const DialogReport = () => {
                             maxDate={moment()}
                             minDate={startDateValue}
                         />
+                        <CustomInputText xs={1.5} label={'Placa'} name={'placa'} />
+                        <CustomSelect xs={2.5} label={'Marca'} name={'marca'}>
+                            {
+                                marcaVehiculoContent.map((item) => (
+                                    <MenuItem key={item.mveCodigo} value={item.mveCodigo}>
+                                        {item.mveNombre}
+                                    </MenuItem>
+                                ))
+                            }
+                        </CustomSelect>
 
                         <CustomSelect xs={4} label={'Tipo de Vehiculo'} name={'tipoVehiculo'}>
                             {

@@ -3,8 +3,11 @@ import automotiveWorkshopApi from '../../api/baseApi.ts';
 
 export const useReportsStore = () => {
 
-    const handleDownloadReport = async (path: string, title: string) => {
-        const response = await automotiveWorkshopApi.get(`reports/${path}`, { responseType: 'blob' });
+    const handleDownloadReport = async (params: any, path: string, title: string) => {
+        const response = await automotiveWorkshopApi.get(`reports/${path}`, {
+            responseType: 'blob',
+            params
+        });
         const blob = new Blob([response.data], { type: 'application/pdf' });
         const url = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
