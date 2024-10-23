@@ -8,6 +8,7 @@ import {FormikHelpers} from "formik/dist/types";
 interface Props {
     useButtons?: boolean;
     useStatus?: boolean;
+    useHeigth?: boolean;
     statusActive?: boolean;
     children: ReactElement | ReactElement[];
     initialValues: FormikValues;
@@ -23,6 +24,7 @@ export const FormLayout = ({
                                useButtons = true,
                                useStatus = false,
                                statusActive = false,
+                               useHeigth = true,
                                children,
                                initialValues,
                                validationSchema,
@@ -71,7 +73,7 @@ export const FormLayout = ({
                         {
                             _ => (
                                 <Form>
-                                    <Box className={'form-content'}>
+                                    <Box className={`form-content ${useHeigth ? 'height' : ''}`}>
                                         <Grid container spacing={2}>
                                             {children}
                                         </Grid>

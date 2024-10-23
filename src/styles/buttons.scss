@@ -48,6 +48,7 @@
   .button-container {
     display: flex;
     justify-content: end;
+    padding-top: 1rem;
 
     #cancel-button {
       border-radius: 5px !important;
@@ -66,5 +67,4 @@
       box-shadow: none;
     }
   }
-  
   

@@ -1,9 +1,12 @@
 
 .form-content {
     padding-top: 1rem;
-    height: calc(100vh - (8px + 24px + 56px + 32px + 37px + 48px + 1rem + 25px));
     overflow-y: auto;
-  }
+
+    &.height {
+      height: calc(100vh - (8px + 24px + 56px + 32px + 37px + 48px + 1rem + 25px));
+    }
+}
   
   .query-search-bar {
     padding-top: 1rem;

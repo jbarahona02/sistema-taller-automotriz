@@ -80,6 +80,7 @@ export const OrdenDeTrabajoListarCitas = () => {
                 </DialogTitle>
                 <DialogContent>
                     <FormLayout
+                        useHeigth={false}
                         initialValues={{
                             detalleEstadoPrevio: '',
                             diasGarantia: 1,
@@ -90,10 +91,10 @@ export const OrdenDeTrabajoListarCitas = () => {
                         onSubmit={handleOnSubmit}
                         onCancel={() => setOpenDialog(false)}
                     >
-                        <CustomInputText label={'Vehiculo'} name={'vehiculo'} value={citaValue.vehiculo?.vehPlaca} disabled/>
-                        <CustomInputText label={'Cliente'} name={'cliente'} value={`${citaValue.vehiculo?.cliente?.cliNombres} ${citaValue.vehiculo?.cliente?.cliApellidos}`} disabled/>
-                        <CustomInputText label={'Dias de garantia*'} name={'diasGarantia'} />
-                        <CustomSelect label={'Taller*'} name={'tallCodigo'}>
+                        <CustomInputText xs={1.5} label={'Vehiculo'} name={'vehiculo'} value={citaValue.vehiculo?.vehPlaca} disabled/>
+                        <CustomInputText xs={3} label={'Cliente'} name={'cliente'} value={`${citaValue.vehiculo?.cliente?.cliNombres} ${citaValue.vehiculo?.cliente?.cliApellidos}`} disabled/>
+                        <CustomInputText xs={1.5} label={'Dias de garantia*'} name={'diasGarantia'} />
+                        <CustomSelect xs={3} label={'Taller*'} name={'tallCodigo'}>
                             {talleresContent.map(t => (
                                 <MenuItem key={t.tllCodigo} value={t.tllCodigo}>
                                     {t.tllNombre}
@@ -101,7 +102,7 @@ export const OrdenDeTrabajoListarCitas = () => {
                             ))}
                         </CustomSelect>
                         <CustomDatePicker
-                            xs={12}
+                            xs={3}
                             label={'Fecha estimada de entrega*'}
                             name={'ortFechaEntrega'}
                             minDate={moment().add('days', 1)}

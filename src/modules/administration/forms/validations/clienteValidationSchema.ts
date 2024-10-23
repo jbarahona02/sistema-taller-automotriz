@@ -25,7 +25,7 @@ export const clienteValidationSchema = Yup.object({
         .required('El teléfono es requerido'),
     cliCorreo: Yup
         .string()
-        .max(20, 'El correo puede ser de 20 caracteres máximo')
+        .max(150, 'El correo puede ser de 150 caracteres máximo')
         .matches(
             /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
             "El correo electrónico no es válido"

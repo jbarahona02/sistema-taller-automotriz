@@ -470,6 +470,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
                 </DialogTitle>
                 <DialogContent>
                     <FormLayout
+                        useHeigth={false}
                         initialValues={{
                             estadoPrevio: '',
                             fechaEntrega: moment().add('days', 1),
@@ -481,17 +482,17 @@ export const ConsultaOrdenesDeTrabajo = () => {
                         validationSchema={agregarServicioValidations(body?.ortDiasGarantia ?? 0)}
                         onCancel={() => setOpenAddService(false)}
                     >
-                        <CustomDatePicker label={'Fecha de Entrega*'} name={'fechaEntrega'}
+                        <CustomDatePicker xs={2} label={'Fecha de Entrega*'} name={'fechaEntrega'}
                                           minDate={moment().add('days', 1)}/>
-                        <CustomInputText label={'Dias de garantía*'} name={'diasGarantia'}/>
-                        <CustomSelect label={'Servicio*'} name={'srvCodigo'}>
+                        <CustomInputText xs={1.5} label={'Dias de garantía*'} name={'diasGarantia'}/>
+                        <CustomSelect xs={3.5} label={'Servicio*'} name={'srvCodigo'}>
                             {serviciosContent.map(item => (
                                 <MenuItem key={item.srvCodigo} value={item.srvCodigo}>
                                     {item.srvNombre}
                                 </MenuItem>
                             ))}
                         </CustomSelect>
-                        <CustomSelect label={'Mecanico*'} name={'mecCodigo'}>
+                        <CustomSelect xs={5} label={'Mecanico*'} name={'mecCodigo'}>
                             {mechanicContent.map(item => (
                                 <MenuItem key={item.mecCodigo} value={item.mecCodigo}>
                                     {`${item.mecNombres} ${item.mecApellidos}`}
@@ -508,7 +509,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
                     <Typography variant={'h5'}>DETALLE ORDEN TRABAJO</Typography>
                 </DialogTitle>
                 <DialogContent>
-                    <FormLayout initialValues={{
+                    <FormLayout useHeigth={false} initialValues={{
                         vehiculo: body?.vehiculo.vehPlaca,
                         cliente: `${body?.vehiculo.cliente.cliNombres} ${body?.vehiculo.cliente.cliApellidos}`,
                         taller: body?.taller.tllNombre,
@@ -519,10 +520,10 @@ export const ConsultaOrdenesDeTrabajo = () => {
                                 onSubmit={console.log}
                                 onCancel={console.log}
                     >
-                        <CustomInputText label={'Cliente'} name={'cliente'} disabled/>
-                        <CustomInputText label={'Vehiculo'} name={'vehiculo'} disabled/>
-                        <CustomInputText label={'Taller'} name={'taller'} disabled/>
-                        <CustomInputText label={'Fecha estimada de entrega'} name={'fechaEntrega'} disabled/>
+                        <CustomInputText xs={3} label={'Cliente'} name={'cliente'} disabled/>
+                        <CustomInputText xs={2} label={'Vehiculo'} name={'vehiculo'} disabled/>
+                        <CustomInputText xs={3} label={'Taller'} name={'taller'} disabled/>
+                        <CustomInputText xs={4} label={'Fecha estimada de entrega'} name={'fechaEntrega'} disabled/>
                         <CustomInputText label={'Detalle Estado Previo'} name={'detalle'} disabled xs={12}/>
 
                         <Box sx={{width: '100vw', p: '1.5rem'}}>
@@ -607,7 +608,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
                     <Typography variant={'h5'}>DETALLE SERVICIO</Typography>
                 </DialogTitle>
                 <DialogContent>
-                    <Box sx={{width: '100%', p: 5}}>
+                    <Box sx={{width: '100%', p: 2}}>
                         <Formik
                             initialValues={{
                                 servicio: servicioOrdenTrabajo?.servicio.srvNombre,
@@ -621,11 +622,11 @@ export const ConsultaOrdenesDeTrabajo = () => {
                                 _ => (
                                     <Form>
                                         <Grid container spacing={2}>
-                                            <CustomInputText label={'Servicio'} name={'servicio'} disabled/>
-                                            <CustomInputText label={'Costo'} name={'costo'} disabled/>
-                                            <CustomInputText label={'Fecha inicio servicio'} name={'initDate'}
+                                            <CustomInputText xs={4} label={'Servicio'} name={'servicio'} disabled/>
+                                            <CustomInputText xs={2} label={'Costo'} name={'costo'} disabled/>
+                                            <CustomInputText xs={3} label={'Fecha inicio servicio'} name={'initDate'}
                                                              disabled/>
-                                            <CustomInputText label={'Fecha entrega servicio'} name={'endDate'}
+                                            <CustomInputText xs={3} label={'Fecha entrega servicio'} name={'endDate'}
                                                              disabled/>
                                         </Grid>
                                     </Form>
@@ -703,7 +704,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
                     <Typography variant={'h5'}> AGREGAR PRODUCTOS A SERVICIO </Typography>
                 </DialogTitle>
                 <DialogContent>
-                    <Box sx={{width: '100%', p: 5}}>
+                    <Box sx={{width: '100%', p: 1, pb: 0}}>
                         <Formik
                             initialValues={{cantidad: 0, proCodigo: 0}}
                             onSubmit={handleSubmitAgregarProducto}
@@ -714,7 +715,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
                                     <Form>
                                         <Box>
                                             <Grid container spacing={2}>
-                                                <CustomSelect label={'Producto'} name={'proCodigo'}>
+                                                <CustomSelect xs={5} label={'Producto'} name={'proCodigo'}>
                                                     {
                                                         productos.map(item => (
                                                             <MenuItem key={item.proCodigo} value={item.proCodigo}>
@@ -723,11 +724,11 @@ export const ConsultaOrdenesDeTrabajo = () => {
                                                         ))
                                                     }
                                                 </CustomSelect>
-                                                <CustomInputText label={'Cantidad'} name={'cantidad'}/>
+                                                <CustomInputText xs={3} label={'Cantidad'} name={'cantidad'}/>
                                             </Grid>
                                         </Box>
 
-                                        <Box className="button-container" sx={{mt: 5}}>
+                                        <Box className="button-container">
                                             <Button
                                                 variant="contained"
                                                 type="button"
@@ -758,7 +759,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
                     <Typography variant={'h5'}> AGREGAR REPUESTOS A SERVICIO </Typography>
                 </DialogTitle>
                 <DialogContent>
-                    <Box sx={{width: '100%', p: 5}}>
+                    <Box sx={{width: '100%', p: 1, pb: 0}}>
                         <Formik
                             initialValues={{
                                 cantidad: 0,
@@ -772,7 +773,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
                                     <Form>
                                         <Box>
                                             <Grid container spacing={2}>
-                                                <CustomSelect label={'Repuesto'} name={'repCodigo'}>
+                                                <CustomSelect xs={5} label={'Repuesto'} name={'repCodigo'}>
                                                     {
                                                         repuestos.map(item => (
                                                             <MenuItem key={item.repCodigo} value={item.repCodigo}>
@@ -781,11 +782,11 @@ export const ConsultaOrdenesDeTrabajo = () => {
                                                         ))
                                                     }
                                                 </CustomSelect>
-                                                <CustomInputText label={'Cantidad'} name={'cantidad'}/>
+                                                <CustomInputText xs={3} label={'Cantidad'} name={'cantidad'}/>
                                             </Grid>
                                         </Box>
 
-                                        <Box className="button-container" sx={{mt: 5}}>
+                                        <Box className="button-container">
                                             <Button
                                                 variant="contained"
                                                 type="button"
