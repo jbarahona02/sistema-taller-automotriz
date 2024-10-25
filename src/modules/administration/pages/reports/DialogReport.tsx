@@ -75,7 +75,7 @@ export const DialogReport = () => {
                 setInitValues({
                     startDate: moment().startOf('month'),
                     endDate: moment(),
-                    place: '',
+                    placa: '',
                     tipoVehiculo: 0,
                     marca: 0
                 });
