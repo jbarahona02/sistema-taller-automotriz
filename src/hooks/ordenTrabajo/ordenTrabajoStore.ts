@@ -253,12 +253,13 @@ export const ordenTrabajoStore = () => {
         }
     }
 
-    const findAll = async (startDate: Moment, endDate: Moment): Promise<OrdenTrabajoPaging> => {
+    const findAll = async (page = 0, startDate: Moment, endDate: Moment): Promise<OrdenTrabajoPaging> => {
         try {
             const {data} = await automotiveWorkshopApi.get<OrdenTrabajoPaging, OrdenTrabajoPaging>(`${VITE_ORDEN_TRABAJO_URI}`, {
                 params: {
                     inicioFechaCreacion: startDate.toDate(),
-                    finFechaCreacion: endDate.toDate()
+                    finFechaCreacion: endDate.toDate(),
+                    page
                 }
             });
 

@@ -16,16 +16,17 @@ export const useTipoServicioListStore = (size = 10) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll(null, size);
+        findAll(0,null, size);
     }, []);
 
-    const findAll = async (nombreODescripcion?: string, size?: number) => {
+    const findAll = async (page = 10, nombreODescripcion?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TIPO_SERVICIO_URI}`, {
                 params: {
                     search: nombreODescripcion,
                     sort: 'tsrCodigo,asc',
-                    size
+                    size,
+                    page
                 }
             });
             dispatch(setTipoServicioPageResult(data));

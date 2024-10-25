@@ -7,13 +7,15 @@ import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import moment from "moment";
 import { useMechanicListStore } from "../../../../hooks";
+import {useEffect, useState} from 'react';
 
 const tableHeaders = ['DPI', 'Nombres', 'Apellidos','NIT','Teléfono','Correo','Salario','Acciones'];
 
 export const MechanicListPage = () => {
 
   const navigate = useNavigate();
-  const { content, findAll, remove } = useMechanicListStore();
+  const { content, totalElements, findAll, remove } = useMechanicListStore();
+  const [page, setPage] = useState(0);
 
   const onAdd = () => {
     navigate(`${ADMIN_BASE_PATH}/mechanic`);
@@ -31,6 +33,11 @@ export const MechanicListPage = () => {
     }
   }
 
+  const changePage = async (newPage: number) => {
+        setPage(newPage);
+        await findAll(newPage);
+  }
+
   const renderTableBody = () => {
     if (!content || content.length === 0) return [];
    
@@ -40,6 +47,11 @@ export const MechanicListPage = () => {
     }));
   };
 
+    useEffect(() => {
+        setPage(0);
+    }, []);
+
+
     return (
        <>
          <TitleComponent title={'Mecánicos'}></TitleComponent>
@@ -48,7 +60,16 @@ export const MechanicListPage = () => {
             initialValues={{
               nombreApellidos: '', dpi: '', nit: '',telefono:'',correo:''
             }}
-            onSubmit={({nombreApellidos,dpi,nit,telefono,correo}) => findAll(nombreApellidos,dpi,nit,telefono,correo) }
+            onSubmit={async ({
+                           nombreApellidos,
+                           dpi,
+                           nit,
+                           telefono,
+                           correo
+                       }) => {
+                setPage(0);
+                await findAll(0, nombreApellidos, dpi, nit, telefono, correo);
+            }}
             onClean={() => findAll()}
          >
           <CustomInputText label={'Nombres o apellidos'} name={'nombreApellidos'} xs={10} />
@@ -60,6 +81,11 @@ export const MechanicListPage = () => {
 
          <QueryContentLayout
                 tableHeaders={tableHeaders}
+                paginationOptions={{
+                    totalElements,
+                    page,
+                    changePage
+                }}
                 onAdd={onAdd}
                 onDelete={onDelete}
                 onUpdate={onUpdate}

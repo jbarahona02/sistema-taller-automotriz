@@ -17,12 +17,13 @@ export const useEquipoTallerListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombreODescripcion?:string) => {
+    const findAll = async (page = 0, nombreODescripcion?:string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_EQUIPO_TALLER_URI}`,{
                 params: {
                     search: nombreODescripcion,
-                    sort: 'etaCodigo,asc'
+                    sort: 'etaCodigo,asc',
+                    page
                 }
               }
             );

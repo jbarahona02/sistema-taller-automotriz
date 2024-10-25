@@ -195,16 +195,6 @@ export const DialogReport = () => {
                                 ))
                             }
                         </CustomSelect>
-
-                        <CustomSelect xs={5} label={'Marca Vehiculo'} name={'marca'}>
-                            {
-                                marcaVehiculoContent.map((item) => (
-                                    <MenuItem key={item.mveCodigo} value={item.mveCodigo}>
-                                        {item.mveNombre}
-                                    </MenuItem>
-                                ))
-                            }
-                        </CustomSelect>
                     </>
                 );
             case reportsKeys.clientesMasRecurrentes:
@@ -337,21 +327,21 @@ export const DialogReport = () => {
                 return (
                     <>
                         <CustomDatePicker
-                            xs={3}
+                            xs={2}
                             label={'Fecha inicial'}
                             name={'startDate'}
                             maxDate={moment()}
                             onChange={value => setStartDateValue(value)}
                         />
                         <CustomDatePicker
-                            xs={3}
+                            xs={2}
                             label={'Fecha final'}
                             name={'endDate'}
                             maxDate={moment()}
                             minDate={startDateValue}
                         />
-                        <CustomInputText label={'Placa'} name={'placa'} />
-                        <CustomSelect xs={3} label={'Tipo de Vehiculo'} name={'tipoDeVehiculo'}>
+                        <CustomInputText xs={2.5} label={'Placa'} name={'placa'} />
+                        <CustomSelect xs={4.5} label={'Tipo de Vehiculo'} name={'tipoDeVehiculo'}>
                             {
                                 tipoVehiculoContent.map((item) => (
                                     <MenuItem key={item.tveCodigo} value={item.tveCodigo}>
@@ -360,11 +350,11 @@ export const DialogReport = () => {
                                 ))
                             }
                         </CustomSelect>
-                        <CustomSelect xs={3} label={'Cliente'} name={'cliente'}>
+                        <CustomSelect xs={5} label={'Cliente'} name={'cliente'}>
                             {
                                 clientesContent.map((item) => (
                                     <MenuItem key={item.cliCodigo} value={item.cliCodigo}>
-                                        {item.cliNombres}
+                                        {`${item.cliCodigo} - ${item.cliNombres} ${item.cliApellidos}`}
                                     </MenuItem>
                                 ))
                             }

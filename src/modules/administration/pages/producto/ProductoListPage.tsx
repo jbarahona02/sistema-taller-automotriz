@@ -1,63 +1,82 @@
-import { useNavigate } from "react-router-dom";
-import { CustomInputText } from "../../../../components/form";
-import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
-import { TitleComponent } from "../../components";
-import { ADMIN_BASE_PATH } from "../../../../util";
-import { useProductoListStore } from "../../../../hooks";
+import {useNavigate} from "react-router-dom";
+import {CustomInputText} from "../../../../components/form";
+import {QueryContentLayout, SearchBarLayout} from "../../../../layout";
+import {TitleComponent} from "../../components";
+import {ADMIN_BASE_PATH} from "../../../../util";
+import {useProductoListStore} from "../../../../hooks";
+import {useEffect, useState} from 'react';
 
 const tableHeaders = ['Codigo', 'Nombre', 'Descripción', 'Precio compra', 'Cantidad disponible', 'Proveedor', 'Marca', 'Acciones'];
 
 export const ProductoListPage = () => {
-  const navigate = useNavigate();
-  const { content, findAll, remove } = useProductoListStore();
+    const navigate = useNavigate();
+    const {content, totalElements, findAll, remove} = useProductoListStore();
+    const [page, setPage] = useState(0);
 
-  const onAdd = () => {
-    navigate(`${ADMIN_BASE_PATH}/producto/`);
-  };
+    const onAdd = () => {
+        navigate(`${ADMIN_BASE_PATH}/producto/`);
+    };
 
-  const onUpdate = (proCodigo: string) => {
-    if (proCodigo !== null) {
-      navigate(`${ADMIN_BASE_PATH}/producto/${proCodigo}`);
+    const onUpdate = (proCodigo: string) => {
+        if (proCodigo !== null) {
+            navigate(`${ADMIN_BASE_PATH}/producto/${proCodigo}`);
+        }
+    };
+
+    const onDelete = (proCodigo: string) => {
+        if (proCodigo !== null) {
+            remove(proCodigo);
+        }
+    };
+
+    const renderTableBody = () => {
+        if (!content || content.length === 0) return [];
+
+        return content.map((item) => ({
+            ...item,
+            'proveedor.prvNombre': item.proveedor ? item.proveedor.prvNombre : 'No disponible',
+            'marcaProducto.mapNombre': item.marcaProducto ? item.marcaProducto.mapNombre : 'No disponible',
+        }));
+    };
+
+    useEffect(() => {
+        setPage(0);
+    }, []);
+
+    const changePage = async (newPage: number) => {
+        setPage(newPage);
+        await findAll(newPage);
     }
-  };
 
-  const onDelete = (proCodigo: string) => {
-    if (proCodigo !== null) {
-      remove(proCodigo);
-    }
-  };
+    return (
+        <>
+            <TitleComponent title={'Productos'}/>
 
-  const renderTableBody = () => {
-    if (!content || content.length === 0) return [];
+            <SearchBarLayout
+                initialValues={{search: ''}}
+                onSubmit={async ({search}) => {
+                    setPage(0);
+                    await findAll(0, search);
+                }}
+                onClean={() => findAll()}
+            >
+                <CustomInputText label={'Nombre o descripción'} name={'search'} xs={20}/>
+            </SearchBarLayout>
 
-    return content.map((item) => ({
-      ...item,
-      'proveedor.prvNombre': item.proveedor ? item.proveedor.prvNombre : 'No disponible',
-      'marcaProducto.mapNombre': item.marcaProducto ? item.marcaProducto.mapNombre : 'No disponible',
-    }));
-  };
-
-  return (
-    <>
-      <TitleComponent title={'Productos'} />
-
-      <SearchBarLayout
-        initialValues={{ search: '' }}
-        onSubmit={({search}) => findAll(search)}
-        onClean={() => findAll()}
-      >
-        <CustomInputText label={'Nombre o descripción'} name={'search'} xs={20} />
-      </SearchBarLayout>
-
-      <QueryContentLayout
-        tableHeaders={tableHeaders}
-        onAdd={onAdd}
-        onDelete={onDelete}
-        onUpdate={onUpdate}
-        properties={['proCodigo', 'proNombre','proDescripcion','proPrecioCompra', 'proCantidadDisponible', 'proveedor.prvNombre', 'marcaProducto.mapNombre']}
-        tableBody={renderTableBody()}
-        idField="proCodigo"
-      />
-    </>
-  );
+            <QueryContentLayout
+                paginationOptions={{
+                    page,
+                    totalElements,
+                    changePage
+                }}
+                tableHeaders={tableHeaders}
+                onAdd={onAdd}
+                onDelete={onDelete}
+                onUpdate={onUpdate}
+                properties={['proCodigo', 'proNombre', 'proDescripcion', 'proPrecioCompra', 'proCantidadDisponible', 'proveedor.prvNombre', 'marcaProducto.mapNombre']}
+                tableBody={renderTableBody()}
+                idField="proCodigo"
+            />
+        </>
+    );
 };

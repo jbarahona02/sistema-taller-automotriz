@@ -9,8 +9,8 @@ import {
     TableBody,
     TableCell,
     tableCellClasses,
-    TableContainer,
-    TableHead,
+    TableContainer, TableFooter,
+    TableHead, TablePagination,
     TableRow,
     Tooltip
 } from "@mui/material";
@@ -23,6 +23,12 @@ import {
     Payment,
     RemoveRedEye
 } from "@mui/icons-material";
+
+interface PaginationOptions {
+    totalElements: number;
+    page: number;
+    changePage: (newPage: number) => void;
+}
 
 interface Props<T> {
     tableHeaders: string[];
@@ -50,6 +56,7 @@ interface Props<T> {
     showPaymentHistory?: boolean;
     disabledPaymentHistory?: (body: T) => boolean;
     paymentHistory?: (body?: T) => void;
+    paginationOptions?: PaginationOptions;
 }
 
 const StyledTableCell = styled(TableCell)((_) => ({
@@ -91,7 +98,8 @@ export const QueryContentLayout = <T extends Object>({
                                                          applyPayment,
                                                          showPaymentHistory,
                                                          paymentHistory,
-                                                         disabledPaymentHistory
+                                                         disabledPaymentHistory,
+                                                         paginationOptions
                                                      }: Props<T>) => {
     return (
         <>
@@ -208,6 +216,20 @@ export const QueryContentLayout = <T extends Object>({
                             </TableBody>
                         </Table>
                     </TableContainer>
+                    <TableFooter>
+                        <TableRow>
+                            <TablePagination
+                                count={paginationOptions?.totalElements ?? 0}
+                                page={paginationOptions?.page ?? 0}
+                                rowsPerPage={10}
+                                onPageChange={(_, page) => paginationOptions?.changePage(page)}
+                                rowsPerPageOptions={[]}
+                                labelDisplayedRows={
+                                    ({from, to, count}) => `${from}-${to} de ${count}`
+                                }
+                            />
+                        </TableRow>
+                    </TableFooter>
                 </Box>
 
                 {

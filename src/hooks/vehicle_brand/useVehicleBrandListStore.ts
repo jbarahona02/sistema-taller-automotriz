@@ -16,13 +16,14 @@ export const useVehicleBrandListStore = (size = 10) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll(null, size);
+        findAll(0, null, size);
     }, []);
 
-    const findAll = async (nombre?: string, size?: number) => {
+    const findAll = async (page = 0, nombre?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_VEHICLE_BRAND_URI}`, {
                 params: {
+                    page,
                     search: nombre,
                     sort: 'mveCodigo,asc'
                 }

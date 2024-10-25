@@ -4,12 +4,14 @@ import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import { useTallerListStore } from "../../../../hooks";
+import {useEffect, useState} from 'react';
 
 const tableHeaders = ['Nombre', 'Télefono', 'Dirección', 'Correo', 'Acciones'];
 
 export const TallerListPage = () => {
   const navigate = useNavigate();
-  const { content, findAll, remove } = useTallerListStore();
+  const { content, totalElements, findAll, remove } = useTallerListStore();
+  const [page, setPage] = useState(0);
 
   const onAdd = () => {
     navigate(`${ADMIN_BASE_PATH}/taller/`);
@@ -33,6 +35,15 @@ export const TallerListPage = () => {
     return content;
   };
 
+  useEffect(() => {
+    setPage(0);
+  }, []);
+
+  const changePage = async (newPage: number) => {
+    setPage(0);
+    await findAll(newPage);
+  }
+
 
   return (
     <>
@@ -41,7 +52,10 @@ export const TallerListPage = () => {
 
       <SearchBarLayout
         initialValues={{ nombre : '', telefono: '', direccion: '', correo: ''}}
-        onSubmit={({nombre, telefono, direccion, correo}) => findAll(nombre, direccion, telefono, correo)}
+        onSubmit={async ({nombre, telefono, direccion, correo}) => {
+          setPage(0);
+          await findAll(0, nombre, direccion, telefono, correo);
+        }}
         onClean={() => findAll()}
       >
         <CustomInputText label={'Nombre'} name={'nombre'} xs={12} />
@@ -53,6 +67,11 @@ export const TallerListPage = () => {
 
       <QueryContentLayout
         tableHeaders={tableHeaders}
+        paginationOptions={{
+          page,
+          totalElements,
+          changePage
+        }}
         onAdd={onAdd}
         onDelete={onDelete}
         onUpdate={onUpdate}

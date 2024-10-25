@@ -20,10 +20,10 @@ export const useCotizacionListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (inicioFechaCreacion?:string,finFechaCreacion?:string,inicioFechaVencimiento?:string,
+    const findAll = async (page = 0, inicioFechaCreacion?:string,finFechaCreacion?:string,inicioFechaVencimiento?:string,
         finFechaVencimiento?:string
     ) => {
-        let params : any = {};
+        let params : any = { page };
 
         if (inicioFechaCreacion) {
             params.inicioFechaCreacion = moment(inicioFechaCreacion).utc().format("YYYY-MM-DD 00:00:00");

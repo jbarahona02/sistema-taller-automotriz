@@ -67,6 +67,7 @@ const parseValue = (estado: string): string => {
 export const ConsultaOrdenesDeTrabajo = () => {
 
     const {findAll, findById, agregarDesperfecto} = ordenTrabajoStore();
+    const [page, setPage] = useState(0);
     const {describePayment, applyPayment, historialDePagos} = pagosStore();
     const {findAll: findAllTipoPagos, content: contentTipoPagos} = useTipoPagoListStore();
     const {
@@ -116,7 +117,8 @@ export const ConsultaOrdenesDeTrabajo = () => {
     }))
 
     const handleSubmit = async (formValues) => {
-        const response = await findAll(formValues.inicioFechaCreacion, formValues.finFechaCreacion);
+        setPage(0);
+        const response = await findAll(0, formValues.inicioFechaCreacion, formValues.finFechaCreacion);
         setResponsePaging(response);
     }
 
@@ -325,7 +327,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
     }
 
     useEffect(() => {
-        findAll(startDate, endDate).then(
+        findAll(0, startDate, endDate).then(
             value => {
                 setResponsePaging(value);
             }
@@ -351,6 +353,12 @@ export const ConsultaOrdenesDeTrabajo = () => {
             }))
         );
     }, [responsePaging]);
+
+    const changePage = async (newPage: number) => {
+        setPage(newPage);
+        const value = await findAll(newPage, startDate, endDate);
+        setResponsePaging(value);
+    }
 
     return (
         <>
@@ -387,6 +395,11 @@ export const ConsultaOrdenesDeTrabajo = () => {
 
 
             <QueryContentLayout<ContentOrdenTrabajo>
+                paginationOptions={{
+                    page,
+                    changePage,
+                    totalElements: responsePaging?.totalElements ?? 0
+                }}
                 tableHeaders={['Vehiculo', 'Taller', 'Descripcion', 'Estado', 'Fecha estimada entrega', 'Acciones']}
                 tableBody={parseResponsing}
                 properties={['vehiculo', 'taller', 'estadoPrevio', 'estadoOrden', 'fechaEntrega']}

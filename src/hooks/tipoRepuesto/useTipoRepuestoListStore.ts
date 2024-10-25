@@ -14,14 +14,14 @@ export const useTipoRepuestoListStore = (size= 10) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll(null, size);
+        findAll(0, null, size);
     }, []);
 
-    const findAll = async (nombreODescripcion?: string, size?: number) => {
+    const findAll = async (page = 0, nombreODescripcion?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TIPO_REPUESTO_URI}`, { params:
                {
-                search: nombreODescripcion, sort: 'trpCodigo,asc', size
+                search: nombreODescripcion, sort: 'trpCodigo,asc', size, page
             }});
             dispatch(setTipoRepuestoPageResult(data));
         } catch (e) {

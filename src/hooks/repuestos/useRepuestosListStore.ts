@@ -17,13 +17,14 @@ export const useRepuestoListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombreODescripcion?:string) => {
+    const findAll = async (page = 0, nombreODescripcion?:string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_REPUESTO_URI}`,{
                 
                 params: {
                     search: nombreODescripcion,
-                    sort: 'repCodigo,asc'
+                    sort: 'repCodigo,asc',
+                    page
                 }
               }
             );

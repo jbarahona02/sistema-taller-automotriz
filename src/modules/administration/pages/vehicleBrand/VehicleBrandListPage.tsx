@@ -4,12 +4,14 @@ import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import { useVehicleBrandListStore } from "../../../../hooks";
+import {useEffect, useState} from 'react';
 
 const tableHeaders = ['Id', 'Nombre', 'Acciones'];
 
 export const VehicleBrandListPage = () => {
   const navigate = useNavigate();
-  const { content, findAll, remove } = useVehicleBrandListStore();
+  const { content, totalElements, findAll, remove } = useVehicleBrandListStore();
+    const [page, setPage] = useState(0);
 
   const onAdd = () => {
     navigate(`${ADMIN_BASE_PATH}/vehicle-brand/`);
@@ -33,6 +35,14 @@ export const VehicleBrandListPage = () => {
     return content;
   };
 
+  const changePage = async (newPage: number) => {
+        setPage(newPage);
+        await findAll(newPage);
+  }
+
+    useEffect(() => {
+        setPage(0);
+    }, []);
 
   return (
     <>
@@ -40,21 +50,29 @@ export const VehicleBrandListPage = () => {
 
       <SearchBarLayout
         initialValues={{ nombre : '' }}
-        onSubmit={({nombre}) => findAll(nombre)}
+        onSubmit={async ({nombre}) => {
+            setPage(0);
+            await findAll(0, nombre);
+        }}
         onClean={() => findAll()}
       >
         <CustomInputText label={'Nombre'} name={'nombre'} xs={20} />
       </SearchBarLayout>
 
-      <QueryContentLayout
-        tableHeaders={tableHeaders}
-        onAdd={onAdd}
-        onDelete={onDelete}
-        onUpdate={onUpdate}
-        properties={['mveCodigo', 'mveNombre']}
-        tableBody={renderTableBody()}
-        idField="mveCodigo"
-      />
+        <QueryContentLayout
+            paginationOptions={{
+                totalElements,
+                page,
+                changePage
+            }}
+            tableHeaders={tableHeaders}
+            onAdd={onAdd}
+            onDelete={onDelete}
+            onUpdate={onUpdate}
+            properties={['mveCodigo', 'mveNombre']}
+            tableBody={renderTableBody()}
+            idField="mveCodigo"
+        />
     </>
   );
 };

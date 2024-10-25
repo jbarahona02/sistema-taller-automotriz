@@ -56,11 +56,11 @@ export const NAVBAR_ROUTES: SideNavType = [
                 name: "Clientes",
                 NavIcon: Group
             },
-            {
-                to: `${ADMIN_BASE_PATH}/dias-no-disponibles-list`,
-                name: "Días no disponibles",
-                NavIcon: CalendarMonth
-            },
+            // {
+            //     to: `${ADMIN_BASE_PATH}/dias-no-disponibles-list`,
+            //     name: "Días no disponibles",
+            //     NavIcon: CalendarMonth
+            // },
             {
                 to: `${ADMIN_BASE_PATH}/vehiculo-list`,
                 name: "Vehículos",

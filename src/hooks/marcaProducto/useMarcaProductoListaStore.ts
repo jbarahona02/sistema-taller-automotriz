@@ -17,12 +17,13 @@ export const useMarcaProductoListaStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombre?: string) => {
+    const findAll = async (page = 0, nombre?: string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_MARCA_PRODUCTO_URI}`, {
                 params: {
                     search: nombre,
-                    sort: 'mapCodigo,asc'
+                    sort: 'mapCodigo,asc',
+                    page
                 }
             });
             dispatch(setMarcaProductoPageResult(data));

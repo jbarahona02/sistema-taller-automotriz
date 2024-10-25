@@ -19,12 +19,13 @@ export const useHerramientaListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombreODescripcion?:string) => {
+    const findAll = async (page = 0, nombreODescripcion?:string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_HERRAMIENTA_URI}`, {
                 params: {
                     search: nombreODescripcion,
-                    sort: 'herCodigo,asc'
+                    sort: 'herCodigo,asc',
+                    page
                 }
               });
             dispatch(setHerramientaPageResult(data));

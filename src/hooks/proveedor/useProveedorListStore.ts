@@ -14,10 +14,10 @@ export const useProveedorListStore = (size = 10) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll(null, null, null, size);
+        findAll(0,null, null, null, size);
     }, []);
 
-    const findAll = async (nombre?:string,telefono?:string,correo?:string, size?: number) => {
+    const findAll = async (page = 0, nombre?:string,telefono?:string,correo?:string, size?: number) => {
         try {
             const {data} = await automotiveWorkshopApi.get(`${VITE_PROVEEDOR_URI}`, {
                 params:
@@ -26,7 +26,8 @@ export const useProveedorListStore = (size = 10) => {
                         telefono,
                         correo,
                         sort: 'prvCodigo,asc',
-                        size
+                        size,
+                        page
                     }
             });
             dispatch(setProveedorPageResult(data));

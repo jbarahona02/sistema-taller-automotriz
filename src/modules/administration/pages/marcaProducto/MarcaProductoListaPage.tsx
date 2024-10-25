@@ -4,12 +4,14 @@ import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import { useMarcaProductoListaStore } from "../../../../hooks";
+import {useEffect, useState} from 'react';
 
 const tableHeaders = ['Id', 'Nombre', 'Acciones'];
 
 export const MarcaProductoListaPage = () => {
     const navigate = useNavigate();
-    const { content, findAll, remove } = useMarcaProductoListaStore();
+    const { content, totalElements, findAll, remove } = useMarcaProductoListaStore();
+    const [page, setPage] = useState(0);
 
     const onAdd = () => {
         navigate(`${ADMIN_BASE_PATH}/marca-producto/`);
@@ -34,18 +36,37 @@ export const MarcaProductoListaPage = () => {
         }));
     };
 
+    useEffect(() => {
+        setPage(0);
+    }, []);
+
+
+    const changePage = async (newPage: number) => {
+        setPage(newPage);
+        await findAll(newPage);
+    }
+
+
     return (
         <>
             <TitleComponent title={'Marcas de Productos'}/>
             <SearchBarLayout
                 initialValues={{ search: '' }}
-                onSubmit={({search}) => findAll(search)}
+                onSubmit={async ({search}) => {
+                    setPage(0);
+                    await findAll(0, search);
+                }}
                 onClean={() => findAll()}
             >
                 <CustomInputText label={'Nombre'} name={'search'} xs={20}/>
             </SearchBarLayout>
 
             <QueryContentLayout
+                paginationOptions={{
+                    page,
+                    changePage,
+                    totalElements
+                }}
                 tableHeaders={tableHeaders}
                 onAdd={onAdd}
                 onDelete={onDelete}

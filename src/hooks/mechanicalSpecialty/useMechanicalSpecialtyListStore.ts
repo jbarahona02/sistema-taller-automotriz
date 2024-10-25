@@ -17,11 +17,11 @@ export const useMechanicalSpecialtyListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombre?: string) => {
+    const findAll = async (page = 0, nombre?: string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_MECHANICAL_SPECIALTY_URI}`, { params:
                {
-                search: nombre, sort: 'emeCodigo,asc'
+                search: nombre, sort: 'emeCodigo,asc', page
             }});
             dispatch(setMechanicalSpecialtyPageResult(data));
         } catch (e) {

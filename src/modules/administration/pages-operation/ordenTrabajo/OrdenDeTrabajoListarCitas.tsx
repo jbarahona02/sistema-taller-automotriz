@@ -14,15 +14,17 @@ const tableHeaders = ['Codigo', 'Fecha Cita', 'Descripción', 'Duración Estimad
 
 export const OrdenDeTrabajoListarCitas = () => {
 
-    const {content, findAll} = useCitaListStore(false);
+    const {content, totalElements, findAll} = useCitaListStore(false);
     const {findById, citaValue} = useCitaStore();
     const {content: talleresContent, findAll: findAllTalleres } = useTallerListStore();
     const {save} = ordenTrabajoStore();
     const [parsedContent, setParsedContent] = useState<any[]>([]);
     const [openDialog, setOpenDialog] = useState(false);
+    const [page, setPage] = useState(0);
 
     useEffect(() => {
-        findAll('', true);
+        setPage(0);
+        findAll(0, true);
         findAllTalleres();
     }, []);
 
@@ -58,11 +60,22 @@ export const OrdenDeTrabajoListarCitas = () => {
         await findAll(undefined, true);
     }
 
+    const changePage = async (newPage: number) => {
+        setPage(newPage);
+        await findAll(newPage);
+    }
+
+
     return (
         <>
             <TitleComponent title={'Creacion de Ordenes de Trabajo'}/>
 
             <QueryContentLayout
+                paginationOptions={{
+                    page,
+                    totalElements,
+                    changePage
+                }}
                 revertStatus={true}
                 contentClassName={'query-content-without-searchbar'}
                 tableHeaders={tableHeaders}

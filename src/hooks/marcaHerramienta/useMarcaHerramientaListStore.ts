@@ -19,12 +19,13 @@ export const useMarcaHerramientaListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombre?: string) => {
+    const findAll = async (page = 0, nombre?: string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_MARCA_HERRAMIENTA_URI}`, {
                 params: {
                     search: nombre,
-                    sort: 'mheCodigo,asc'
+                    sort: 'mheCodigo,asc',
+                    page
                 }
               });
             dispatch(setMarcaHerramientaPageResult(data));

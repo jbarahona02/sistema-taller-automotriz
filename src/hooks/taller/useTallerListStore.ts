@@ -19,7 +19,7 @@ export const useTallerListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombre?: string, direccion?: string, telefono?: string, correo?: string) => {
+    const findAll = async (page = 0, nombre?: string, direccion?: string, telefono?: string, correo?: string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TALLER_URI}`, {
                 params: {
@@ -27,7 +27,8 @@ export const useTallerListStore = () => {
                     direccion: direccion,
                     telefono: telefono,
                     correo: correo,
-                    sort: 'tllNombre,asc'
+                    sort: 'tllNombre,asc',
+                    page
                 }
             });
             dispatch(setTallerPageResult(data));

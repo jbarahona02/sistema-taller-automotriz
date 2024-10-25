@@ -18,7 +18,8 @@ export const  mainTheme = createTheme({
                 paper: {
                     backgroundColor: '#001b40',
                     color: 'white',
-                    overflow: 'auto'
+                    'overflow-y': 'auto',
+                    'overflow-x': 'hidden'
                 }
             }
         }

@@ -19,12 +19,13 @@ export const useMarcaEquipoListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombreODescripcion?: string) => {
+    const findAll = async (page = 0, nombreODescripcion?: string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_MARCA_EQUIPO_URI}`, {
                 params: {
                     search: nombreODescripcion,
-                    sort: 'meqCodigo,asc'
+                    sort: 'meqCodigo,asc',
+                    page
                 }
             });
             dispatch(setMarcaEquipoPageResult(data));

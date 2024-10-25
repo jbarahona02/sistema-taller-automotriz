@@ -18,12 +18,13 @@ export const useServicioListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombreODescripcion?:string) => {
+    const findAll = async (page = 0, nombreODescripcion?:string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_SERVICIO_URI}`,{
                 params: {
                     search: nombreODescripcion,
-                    sort: 'srvCodigo,asc'
+                    sort: 'srvCodigo,asc',
+                    page
                 }
               }
             );

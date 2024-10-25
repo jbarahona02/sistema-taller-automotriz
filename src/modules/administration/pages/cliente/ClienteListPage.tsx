@@ -4,12 +4,14 @@ import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
 import { TitleComponent } from "../../components";
 import { ADMIN_BASE_PATH } from "../../../../util";
 import { useClienteListStore } from "../../../../hooks";
+import {useEffect, useState} from 'react';
 
 const tableHeaders = ['DPI', 'Nombres', 'Apellidos', 'Nit', 'Teléfono', 'Correo', 'Acciones'];
 
 export const ClienteListPage = () => {
   const navigate = useNavigate();
-  const { content, findAll, remove } = useClienteListStore();
+  const { content, totalElements, findAll, remove } = useClienteListStore();
+  const [page, setPage] = useState(0);
 
   const onAdd = () => {
     navigate(`${ADMIN_BASE_PATH}/cliente/`);
@@ -33,6 +35,15 @@ export const ClienteListPage = () => {
     return content;
   };
 
+  useEffect(() => {
+    setPage(0);
+  }, []);
+
+  const changePage = async (newPage: number) => {
+    setPage(newPage);
+    await findAll(newPage);
+  }
+
 
   return (
     <>
@@ -40,7 +51,10 @@ export const ClienteListPage = () => {
 
       <SearchBarLayout
         initialValues={{ dpi : '', nit: '', telefono: '', correo: ''}}
-        onSubmit={({dpi, nit, direccion, correo}) => findAll(dpi, nit, direccion, correo)}
+        onSubmit={async ({dpi, nit, direccion, correo}) => {
+          setPage(0);
+          await findAll(0, dpi, nit, direccion, correo);
+        }}
         onClean={() => findAll()}
       >
         <CustomInputText label={'DPI'} name={'dpi'} xs={10} />
@@ -51,6 +65,11 @@ export const ClienteListPage = () => {
 
       <QueryContentLayout
         tableHeaders={tableHeaders}
+        paginationOptions={{
+          page,
+          totalElements,
+          changePage
+        }}
         onAdd={onAdd}
         onDelete={onDelete}
         onUpdate={onUpdate}

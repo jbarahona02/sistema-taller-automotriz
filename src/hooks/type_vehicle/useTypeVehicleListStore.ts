@@ -16,16 +16,17 @@ export const useTypeVehicleListStore = (size = 10) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll(null, size);
+        findAll(0, null, size);
     }, []);
 
-    const findAll = async (nombreODescripcion?: string, size?: number) => {
+    const findAll = async (page = 0, nombreODescripcion?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TYPE_VEHICLE_URI}`, {
                 params: {
                     search: nombreODescripcion,
                     sort: 'tveCodigo,asc',
-                    size
+                    size,
+                    page
                 }
               });
             dispatch(setTypeVehiclePageResult(data));

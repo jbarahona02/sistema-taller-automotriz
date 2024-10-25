@@ -21,13 +21,14 @@ export const useCitaListStore = (useDefaultEffect = true) => {
         }
     }, []);
 
-    const findAll = async (descripcion?: string, status?: boolean) => {
+    const findAll = async (page = 0, descripcion?: string, status?: boolean) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_CITA_URI}`, {
                 params: {
                     search: descripcion,
                     sort: 'ctaFechaHora,asc',
-                    status
+                    status,
+                    page
                 }
             });
             dispatch(setCitaPageResult(data));

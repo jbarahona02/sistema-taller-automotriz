@@ -16,10 +16,10 @@ export const useClienteListStore = (size = 10) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll(null, null, null, null, size);
+        findAll(0,null, null, null, null, size);
     }, []);
 
-    const findAll = async (dpi?: string, nit?: string, telefono?: string, correo?: string, size?: number) => {
+    const findAll = async (page = 0, dpi?: string, nit?: string, telefono?: string, correo?: string, size?: number) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_CLIENTE_URI}`, { 
                 params: {
@@ -28,7 +28,8 @@ export const useClienteListStore = (size = 10) => {
                     telefono: telefono,
                     correo: correo,
                     sort: 'cliNombres,asc',
-                    size
+                    size,
+                    page
                 }
              });
             dispatch(setClientePageResult(data));

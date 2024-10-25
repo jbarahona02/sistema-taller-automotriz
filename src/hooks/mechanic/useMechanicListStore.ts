@@ -14,10 +14,18 @@ export const useMechanicListStore = (size = 10) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll(null, null, null, null, null, size);
+        findAll(0,null, null, null, null, null, size);
     }, []);
 
-    const findAll = async (nombresApellidos?: string, dpi?: string, nit?: string, telefono?: string, correo?: string, size?: number) => {
+    const findAll = async (
+        page = 0,
+        nombresApellidos?: string,
+        dpi?: string,
+        nit?: string,
+        telefono?: string,
+        correo?: string,
+        size?: number
+    ) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_MECHANIC_URI}`, {
                 params: {

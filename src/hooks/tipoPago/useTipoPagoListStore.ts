@@ -17,12 +17,13 @@ export const useTipoPagoListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombre?: string) => {
+    const findAll = async (page = 0, nombre?: string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_TIPO_PAGO_URI}`, {
                 params: {
                     search: nombre,
-                    sort: 'tpaCodigo,asc'
+                    sort: 'tpaCodigo,asc',
+                    page
                 }
               });
             dispatch(setTipoPagoPageResult(data));

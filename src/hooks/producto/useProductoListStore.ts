@@ -17,12 +17,13 @@ export const useProductoListStore = () => {
         findAll();
     }, []);
 
-    const findAll = async (nombreODescripcion?:string) => {
+    const findAll = async (page = 0, nombreODescripcion?:string) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_PRODUCTO_URI}`,{
                 params: {
                     search: nombreODescripcion,
-                    sort: 'proCodigo,asc'
+                    sort: 'proCodigo,asc',
+                    page
                 }
               }
             );

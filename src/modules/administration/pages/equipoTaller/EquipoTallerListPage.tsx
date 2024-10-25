@@ -1,65 +1,84 @@
-import { useNavigate } from "react-router-dom";
-import { CustomInputText } from "../../../../components/form";
-import { QueryContentLayout, SearchBarLayout } from "../../../../layout";
-import { TitleComponent } from "../../components";
-import { ADMIN_BASE_PATH } from "../../../../util";
-import { useEquipoTallerListStore } from "../../../../hooks";
+import {useNavigate} from "react-router-dom";
+import {CustomInputText} from "../../../../components/form";
+import {QueryContentLayout, SearchBarLayout} from "../../../../layout";
+import {TitleComponent} from "../../components";
+import {ADMIN_BASE_PATH} from "../../../../util";
+import {useEquipoTallerListStore} from "../../../../hooks";
 import moment from "moment";
+import {useEffect, useState} from 'react';
 
 const tableHeaders = ['Nombre', 'Descripción', 'Modelo', 'Fecha de ingreso', 'Estado', 'Mecánico', 'Marca', 'Acciones'];
 
 export const EquipoTallerListPage = () => {
-  const navigate = useNavigate();
-  const { content, findAll, remove } = useEquipoTallerListStore();
+    const navigate = useNavigate();
+    const {content, totalElements, findAll, remove} = useEquipoTallerListStore();
+    const [page, setPage] = useState(0);
 
-  const onAdd = () => {
-    navigate(`${ADMIN_BASE_PATH}/equipo-taller/`);
-  };
+    const onAdd = () => {
+        navigate(`${ADMIN_BASE_PATH}/equipo-taller/`);
+    };
 
-  const onUpdate = (etaCodigo: string) => {
-    if (etaCodigo !== null) {
-      navigate(`${ADMIN_BASE_PATH}/equipo-taller/${etaCodigo}`);
+    const onUpdate = (etaCodigo: string) => {
+        if (etaCodigo !== null) {
+            navigate(`${ADMIN_BASE_PATH}/equipo-taller/${etaCodigo}`);
+        }
+    };
+
+    const onDelete = (etaCodigo: string) => {
+        if (etaCodigo !== null) {
+            remove(etaCodigo);
+        }
+    };
+
+    const renderTableBody = () => {
+        if (!content || content.length === 0) return [];
+
+        return content.map((item) => ({
+            ...item,
+            'fechaIngreso': `${moment(item.etaFechaIngreso).format('DD/MM/YYYY')}`,
+            'mecanico.mecNombres': item.mecanico ? item.mecanico.mecNombres : 'No disponible',
+            'marcaEquipo.meqNombre': item.marcaEquipo ? item.marcaEquipo.meqNombre : 'No disponible',
+        }));
+    };
+
+    useEffect(() => {
+        setPage(0);
+    }, []);
+
+    const changePage = async (newPage: number) => {
+        setPage(newPage);
+        await findAll(newPage);
     }
-  };
 
-  const onDelete = (etaCodigo: string) => {
-    if (etaCodigo !== null) {
-      remove(etaCodigo);
-    }
-  };
+    return (
+        <>
+            <TitleComponent title={'Equipos de Taller'}/>
 
-  const renderTableBody = () => {
-    if (!content || content.length === 0) return [];
+            <SearchBarLayout
+                initialValues={{search: ''}}
+                onSubmit={async ({search}) => {
+                    setPage(0);
+                    await findAll(0, search);
+                }}
+                onClean={() => findAll()}
+            >
+                <CustomInputText label={'Nombre o descripción'} name={'search'} xs={20}/>
+            </SearchBarLayout>
 
-    return content.map((item) => ({
-      ...item,
-      'fechaIngreso': `${moment(item.etaFechaIngreso).format('DD/MM/YYYY')}`,
-      'mecanico.mecNombres': item.mecanico ? item.mecanico.mecNombres : 'No disponible',
-      'marcaEquipo.meqNombre': item.marcaEquipo ? item.marcaEquipo.meqNombre : 'No disponible',
-    }));
-  };
-
-  return (
-    <>
-      <TitleComponent title={'Equipos de Taller'} />
-
-      <SearchBarLayout
-        initialValues={{ search: '' }}
-        onSubmit={({search}) => findAll(search)}
-        onClean={() => findAll()}
-      >
-        <CustomInputText label={'Nombre o descripción'} name={'search'} xs={20} />
-      </SearchBarLayout>
-
-      <QueryContentLayout
-        tableHeaders={tableHeaders}
-        onAdd={onAdd}
-        onDelete={onDelete}
-        onUpdate={onUpdate}
-        properties={['etaNombre', 'etaDescripcion','etaModelo','fechaIngreso', 'etaEstado', 'mecanico.mecNombres', 'marcaEquipo.meqNombre']}
-        tableBody={renderTableBody()}
-        idField="etaCodigo"
-      />
-    </>
-  );
+            <QueryContentLayout
+                paginationOptions={{
+                  page,
+                  changePage,
+                  totalElements
+                }}
+                tableHeaders={tableHeaders}
+                onAdd={onAdd}
+                onDelete={onDelete}
+                onUpdate={onUpdate}
+                properties={['etaNombre', 'etaDescripcion', 'etaModelo', 'fechaIngreso', 'etaEstado', 'mecanico.mecNombres', 'marcaEquipo.meqNombre']}
+                tableBody={renderTableBody()}
+                idField="etaCodigo"
+            />
+        </>
+    );
 };
