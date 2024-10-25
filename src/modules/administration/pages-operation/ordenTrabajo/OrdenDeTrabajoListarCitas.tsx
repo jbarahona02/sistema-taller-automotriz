@@ -24,7 +24,7 @@ export const OrdenDeTrabajoListarCitas = () => {
 
     useEffect(() => {
         setPage(0);
-        findAll(0, true);
+        findAll(0, null, true);
         findAllTalleres();
     }, []);
 
@@ -57,12 +57,12 @@ export const OrdenDeTrabajoListarCitas = () => {
             ctaCodigo: citaValue.ctaCodigo,
         }
         await save(body);
-        await findAll(undefined, true);
+        await findAll(0, undefined, true);
     }
 
     const changePage = async (newPage: number) => {
         setPage(newPage);
-        await findAll(newPage);
+        await findAll(newPage, null, true);
     }
 
 
