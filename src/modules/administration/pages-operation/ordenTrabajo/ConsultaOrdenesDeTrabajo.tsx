@@ -196,13 +196,13 @@ export const ConsultaOrdenesDeTrabajo = () => {
 
         setOpenPayment(prev => !prev);
         await applyPayment(applyPaymentBody);
-        const pagingResponse = await findAll(startDate, endDate);
+        const pagingResponse = await findAll(0, startDate, endDate);
         setResponsePaging(pagingResponse);
     }
 
     const handleCloseViewDialog = async () => {
         setOpenVewDialog(false);
-        const pageResponse = await findAll(startDate, endDate);
+        const pageResponse = await findAll(0, startDate, endDate);
         setResponsePaging(pageResponse);
     }
 
@@ -217,7 +217,7 @@ export const ConsultaOrdenesDeTrabajo = () => {
 
     const closeApplyPayment = async () => {
         setOpenPayment(false);
-        const response = await findAll(startDate, endDate);
+        const response = await findAll(0, startDate, endDate);
         setResponsePaging(response);
     }
 
@@ -230,12 +230,12 @@ export const ConsultaOrdenesDeTrabajo = () => {
             ortCodigo: body?.ortCodigo,
             estadoPrevio: formikValues.estadoPrevio.trim()
         }
-        const resultSave = await saveServicioOrdenTrabajo(servicioOrdenTrabajo);
-        if (!resultSave) return;
-        const pagingResponse = await findAll(startDate, endDate);
-        setResponsePaging(pagingResponse);
+
         setOpenAddService(false);
+        await saveServicioOrdenTrabajo(servicioOrdenTrabajo);
         await Utilities.successAlarm('Se ha creado el nuevo servicio');
+        const pagingResponse = await findAll(0, startDate, endDate);
+        setResponsePaging(pagingResponse);
     }
 
     const handleSubmitDesperfecto = async (formikValues) => {
@@ -400,9 +400,9 @@ export const ConsultaOrdenesDeTrabajo = () => {
                     changePage,
                     totalElements: responsePaging?.totalElements ?? 0
                 }}
-                tableHeaders={['Vehiculo', 'Taller', 'Descripcion', 'Estado', 'Fecha estimada entrega', 'Acciones']}
+                tableHeaders={['Código', 'Vehiculo', 'Taller', 'Descripcion', 'Estado', 'Fecha estimada entrega', 'Acciones']}
                 tableBody={parseResponsing}
-                properties={['vehiculo', 'taller', 'estadoPrevio', 'estadoOrden', 'fechaEntrega']}
+                properties={['ortCodigo' ,'vehiculo', 'taller', 'estadoPrevio', 'estadoOrden', 'fechaEntrega']}
                 idField={'ortCodigo'}
                 onView={handleOnView}
                 useDelete={false}

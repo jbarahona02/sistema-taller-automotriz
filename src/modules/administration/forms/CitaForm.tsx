@@ -25,7 +25,7 @@ export const CitaForm = () => {
         findById
     } = useCitaStore();
 
-    const { content: vehiculo } = useVehiculoListStore();
+    const { content: vehiculo } = useVehiculoListStore(5000);
 
     const onSubmit = async (values: FormikValues) => {
         const isSuccess =   await saveOrUpdate({
@@ -76,7 +76,7 @@ export const CitaForm = () => {
             <CustomSelect label={'Vehiculo'} name={'vehPlaca'} xs={3}>
                 {vehiculo.map(t => (
                     <MenuItem key={t.vehPlaca} value={t.vehPlaca}>
-                        {t.vehPlaca}
+                        {`${t.cliente?.cliNombres} - ${t.vehPlaca} - ${t.vehNumeroChasis}`}
                     </MenuItem>
                 ))}
             </CustomSelect>

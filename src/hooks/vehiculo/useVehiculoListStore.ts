@@ -10,16 +10,16 @@ import { Utilities } from "../../util";
 
 const { VITE_VEHICULO_URI } = getEnvVariables();
 
-export const useVehiculoListStore = () => {
+export const useVehiculoListStore = (size = 10) => {
 
     const vehiculoListValues = useSelector((state: StoreInterface) => state.vehiculoListSlice);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        findAll();
+        findAll(0, null, null, null, null, size);
     }, []);
 
-    const findAll = async (page = 0, placa?: string, chasis?: string, color?: string, kilometraje?: string) => {
+    const findAll = async (page = 0, placa?: string, chasis?: string, color?: string, kilometraje?: string, size = 10) => {
         try {
             const { data } = await automotiveWorkshopApi.get(`${VITE_VEHICULO_URI}`, {
                 params: {
@@ -27,7 +27,7 @@ export const useVehiculoListStore = () => {
                     chasis: chasis,
                     color: color,
                     sort: 'vehPlaca,asc',
-                    size: 10,
+                    size,
                     page
                 }
               });
